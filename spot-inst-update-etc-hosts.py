@@ -221,6 +221,16 @@ def update_remote_etc_hosts(ec2_inst_info):
 		print ""
 
 
+def update_remote_hostname(ec2_inst_info):
+	for eii in ec2_inst_info:
+		remote_ip = eii.ipaddr
+		print "Updating hostname on %s ..." % (remote_ip)
+
+		# modify the ip address
+		remote_exe(remote_ip, "sudo hostname %s" % eii.hostname)
+	print ""
+
+
 def main(argv):
 	if len(argv) != 1:
 		sys.exit("Usage: %s\n"
@@ -234,10 +244,9 @@ def main(argv):
 	ec2_inst_info = desc_spot_instances_and_get_ipaddrs(conn)
 
 	delete_ssh_known_hosts(ec2_inst_info)
-
 	update_etc_hosts(ec2_inst_info)
-
 	update_remote_etc_hosts(ec2_inst_info)
+	update_remote_hostname(ec2_inst_info)
 
 
 if __name__ == "__main__":
