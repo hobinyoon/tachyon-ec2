@@ -180,16 +180,32 @@ def remote_exe(remote_ip, cmd):
 def delete_ssh_known_hosts(ec2_inst_info):
 	known_hosts_file = "~/.ssh/known_hosts"
 
+	print "Deleting hostnames in %s" % known_hosts_file
 	for eii in ec2_inst_info:
 		cmd = "sed -i='' '/^%s.*/d' %s" % (eii.hostname, known_hosts_file)
 		subprocess.check_call(cmd, shell=True)
-		print "Deleted %s from %s" % (eii.hostname, known_hosts_file)
+		print "  Deleted %s from %s" % (eii.hostname, known_hosts_file)
 
 		# dots in ipaddr need to be escaped. although the chance of incorrect
 		# deletion is very low.
 		cmd = "sed -i='' '/^%s.*/d' %s" % (eii.ipaddr, known_hosts_file)
 		subprocess.check_call(cmd, shell=True)
-		print "Deleted %s from %s" % (eii.ipaddr, known_hosts_file)
+		print "  Deleted %s from %s" % (eii.ipaddr, known_hosts_file)
+	print ""
+
+
+def delete_remote_ssh_known_hosts(ec2_inst_info):
+	known_hosts_file = "~/.ssh/known_hosts"
+
+	print "Deleting hostnames in %s on remote nodes" % known_hosts_file
+	for eii in ec2_inst_info:
+		remote_exe(eii.ipaddr, "sed -i='' '/^%s.*/d' %s" % (eii.hostname, known_hosts_file))
+		print "  Deleted %s from %s" % (eii.hostname, known_hosts_file)
+
+		remote_exe(eii.ipaddr, "sed -i='' '/^%s.*/d' %s" % (eii.ipaddr, known_hosts_file))
+		print "  Deleted %s from %s" % (eii.ipaddr, known_hosts_file)
+
+		remote_exe(eii.ipaddr, "ssh-keygen -f \"/home/ubuntu/.ssh/known_hosts\" -R localhost")
 	print ""
 
 
@@ -244,6 +260,7 @@ def main(argv):
 	ec2_inst_info = desc_spot_instances_and_get_ipaddrs(conn)
 
 	delete_ssh_known_hosts(ec2_inst_info)
+	delete_remote_ssh_known_hosts(ec2_inst_info)
 	update_etc_hosts(ec2_inst_info)
 	update_remote_etc_hosts(ec2_inst_info)
 	update_remote_hostname(ec2_inst_info)
