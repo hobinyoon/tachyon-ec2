@@ -128,7 +128,7 @@ def desc_spot_instances_and_get_ipaddrs(conn):
 
 
 def req_spot_inst(conn):
-	res = conn.request_spot_instances(price = 0.014, image_id = 'ami-a87a05c1', count=2, type='one-time', launch_group='tachyon', key_name='hobinyoon@gmail.com', security_groups=['default'], instance_type='m1.medium')
+	res = conn.request_spot_instances(price = 0.014, image_id = 'ami-a87a05c1', count=2, type='one-time', launch_group='tachyon', key_name='hobinyoon@gmail.com', security_groups=['tachyon'], instance_type='m1.medium')
 	print res
 
 
