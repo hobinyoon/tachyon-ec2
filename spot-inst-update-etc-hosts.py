@@ -158,9 +158,9 @@ def update_etc_hosts(ec2_inst_info):
 	print ""
 
 
-def remote_exe(remote_ip, cmd):
+def remote_exe(remote_addr, cmd):
 	# nesting quotation marks does not work. make a temp file and redirect it.
-	#cmd = "ssh ubuntu@%s 'sudo bash -c 'echo \"%s\" >> %s''" % (remote_ip, new_entry, filename)
+	#cmd = "ssh ubuntu@%s 'sudo bash -c 'echo \"%s\" >> %s''" % (remote_addr, new_entry, filename)
 
 	remote_cmd_filename = ".remote_cmd"
 	fo = open(remote_cmd_filename, "w")
@@ -171,7 +171,7 @@ def remote_exe(remote_ip, cmd):
 	# terminal." is not disappearing even after following
 	# http://stackoverflow.com/questions/7114990/pseudo-terminal-will-not-be-allocated-because-stdin-is-not-a-terminal
 	# Worse, it makes the script hangs.
-	cmd = "ssh ubuntu@%s < %s > /dev/null" % (remote_ip, remote_cmd_filename)
+	cmd = "ssh ubuntu@%s < %s > /dev/null" % (remote_addr, remote_cmd_filename)
 	subprocess.check_call(cmd, shell=True)
 
 	os.remove(remote_cmd_filename)
@@ -260,8 +260,9 @@ def main(argv):
 	ec2_inst_info = desc_spot_instances_and_get_ipaddrs(conn)
 
 	delete_ssh_known_hosts(ec2_inst_info)
-	delete_remote_ssh_known_hosts(ec2_inst_info)
 	update_etc_hosts(ec2_inst_info)
+
+	delete_remote_ssh_known_hosts(ec2_inst_info)
 	update_remote_etc_hosts(ec2_inst_info)
 	update_remote_hostname(ec2_inst_info)
 
