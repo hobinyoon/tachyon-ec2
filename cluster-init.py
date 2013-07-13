@@ -118,6 +118,7 @@ def get_active_spot_inst_info(conn):
 			r.instances[0].instance_type, r.instances[0]._placement,
 			r.instances[0].launch_time)
 		ec2_inst_info.append(ec2_ii)
+		print "  %s" % ec2_ii
 	print ""
 
 	ec2_inst_info_sorted = sorted(ec2_inst_info)
