@@ -224,7 +224,7 @@ def update_remote_etc_hosts(ec2_inst_info):
 			#print "[%s]" % output
 			output = int(output.strip())
 
-			new_entry = "%s %s" % (eii2.ipaddr, eii2.hostname)
+			new_entry = "%s %s" % (eii2.private_ipaddr, eii2.hostname)
 			if output >= 1:
 				# modify the ip address
 				remote_exe(remote_ip, "sudo sed -i='' 's/.* %s$/%s/' %s" %
