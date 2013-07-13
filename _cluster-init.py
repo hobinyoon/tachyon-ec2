@@ -50,6 +50,10 @@ def delete_ssh_known_hosts(machine_info):
 		cmd = "sed -i='' '/^%s.*/d' %s" % (mi.priv_ip, known_hosts_file)
 		subprocess.check_call(cmd, shell=True)
 		print "  Deleted %s from %s" % (mi.priv_ip, known_hosts_file)
+
+		cmd = "ssh-keygen -f \"/home/ubuntu/.ssh/known_hosts\" -R localhost"
+		subprocess.check_call(cmd, shell=True)
+		print "  Deleted %s from %s" % (mi.priv_ip, known_hosts_file)
 	print ""
 
 
