@@ -1,7 +1,5 @@
 #! /usr/bin/python
 
-# ref: http://docs.pythonboto.org/en/latest/ec2_tut.html
-
 import sys
 import boto.ec2
 import pprint
@@ -80,7 +78,7 @@ def assign_hostname(ec2_inst_info):
 		i += 1
 
 
-def desc_spot_instances_and_get_ipaddrs(conn):
+def get_active_spot_inst_info(conn):
 	sir = None
 	sys.stdout.write("Waiting for 2 active requests .")
 	while True:
@@ -171,7 +169,7 @@ def remote_exe(remote_addr, cmd):
 	# terminal." is not disappearing even after following
 	# http://stackoverflow.com/questions/7114990/pseudo-terminal-will-not-be-allocated-because-stdin-is-not-a-terminal
 	# Worse, it makes the script hangs.
-	cmd = "ssh ubuntu@%s < %s > /dev/null" % (remote_addr, remote_cmd_filename)
+	cmd = "ssh ubuntu@%s < %s" % (remote_addr, remote_cmd_filename)
 	subprocess.check_call(cmd, shell=True)
 
 	os.remove(remote_cmd_filename)
@@ -194,57 +192,17 @@ def delete_ssh_known_hosts(ec2_inst_info):
 	print ""
 
 
-def delete_remote_ssh_known_hosts(ec2_inst_info):
-	known_hosts_file = "~/.ssh/known_hosts"
+def remote_init(ec2_inst_info):
+	print "Initializing tachyon ec2 instances"
 
-	print "Deleting hostnames in %s on remote nodes" % known_hosts_file
-	for eii in ec2_inst_info:
-		remote_exe(eii.ipaddr, "sed -i='' '/^%s.*/d' %s" % (eii.hostname, known_hosts_file))
-		print "  Deleted %s from %s" % (eii.hostname, known_hosts_file)
-
-		remote_exe(eii.ipaddr, "sed -i='' '/^%s.*/d' %s" % (eii.ipaddr, known_hosts_file))
-		print "  Deleted %s from %s" % (eii.ipaddr, known_hosts_file)
-
-		remote_exe(eii.ipaddr, "ssh-keygen -f \"/home/ubuntu/.ssh/known_hosts\" -R localhost")
-	print ""
-
-
-def update_remote_etc_hosts(ec2_inst_info):
-	filename = "/etc/hosts"
-
-	for eii in ec2_inst_info:
-		remote_ip = eii.ipaddr
-		print "Updating %s on %s ..." % (filename, remote_ip)
-
-		for eii2 in ec2_inst_info:
-			# do they have the hn in /etc/hosts?
-			cmd = "ssh ubuntu@%s 'grep \" %s$\" %s | wc -l'" % (remote_ip, eii2.hostname, filename)
-
-			output = subprocess.check_output(cmd, stderr=subprocess.STDOUT, shell=True)
-			#print "[%s]" % output
-			output = int(output.strip())
-
-			new_entry = "%s %s" % (eii2.private_ipaddr, eii2.hostname)
-			if output >= 1:
-				# modify the ip address
-				remote_exe(remote_ip, "sudo sed -i='' 's/.* %s$/%s/' %s" %
-						(eii2.hostname, new_entry, filename))
-				print "  Modified \"%s\"" % new_entry
-			else:
-				# append the ip hn pair
-				remote_exe(remote_ip, "sudo bash -c 'echo \"%s\" >> %s'" % (new_entry, filename))
-				print "  Added \"%s\" to %s" % (new_entry, filename)
-		print ""
-
-
-def update_remote_hostname(ec2_inst_info):
-	for eii in ec2_inst_info:
-		remote_ip = eii.ipaddr
-		print "Updating hostname on %s ..." % (remote_ip)
-
-		# modify the ip address
-		remote_exe(remote_ip, "sudo hostname %s" % eii.hostname)
-	print ""
+	cnt = 0
+	for e in ec2_inst_info:
+		cmd = "~/work/tachyon-ec2/_cluster-init.py %d" % cnt
+		for e2 in ec2_inst_info:
+			cmd += (" %s %s" % (e2.hostname, e2.private_ipaddr))
+		# can be parallelized when it becomes a matter.
+		remote_exe(e.ipaddr, cmd)
+		cnt += 1
 
 
 def main(argv):
@@ -257,14 +215,14 @@ def main(argv):
 
 	#req_spot_inst(conn)
 
-	ec2_inst_info = desc_spot_instances_and_get_ipaddrs(conn)
+	# I am assuming that all active spot requests are for tachyon cluster. A VM
+	# tagging will be needed when you have multiple spot requests.
+	ec2_inst_info = get_active_spot_inst_info(conn)
 
 	delete_ssh_known_hosts(ec2_inst_info)
 	update_etc_hosts(ec2_inst_info)
 
-	delete_remote_ssh_known_hosts(ec2_inst_info)
-	update_remote_etc_hosts(ec2_inst_info)
-	update_remote_hostname(ec2_inst_info)
+	remote_init(ec2_inst_info)
 
 
 if __name__ == "__main__":
