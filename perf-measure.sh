@@ -75,7 +75,9 @@ run_sparkshell_example()
 }
 
 
-rm -f ~/work/tachyon/logs/spark-shell.log
+cd ~/work/tachyon
+bin/stop.sh
+
 
 for ((i = 0; i < 10; i ++))
 do
