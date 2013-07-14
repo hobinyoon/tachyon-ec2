@@ -1,15 +1,6 @@
 #!/bin/bash
 
 
-restart_tachyon()
-{
-	# restart tachyon
-	cd ~/work/tachyon
-	bin/start-local.sh
-	echo
-}
-
-
 sparkshellcount()
 {
 	echo "spark-shell count"
@@ -41,6 +32,8 @@ sparkshellcount_with_tachyon()
 	# tachyon daemons need to be stopped for tee outside stop waiting
 	cd ~/work/tachyon
 	bin/stop.sh
+	sudo rm -rf /mnt/ramdisk/*
+	bin/format.sh
 	echo
 }
 
@@ -65,11 +58,11 @@ run_sparkshell_example()
 	for s in "${SIZES[@]}"
 	do
 		# spark-shell only
-		filename=/mnt/data/hit_data.tsv.$s
+		filename=/mnt/data/hit_data.tsv.$s.gz
 		( sparkshellcount $filename 2>&1 ) | tee -a $OUTFILE
 
 		# spark-shell with tachyon
-		filename=tachyon://localhost:19998/hit_data.tsv.$s
+		filename=tachyon://localhost:19998/hit_data.tsv.$s.gz
 		( sparkshellcount_with_tachyon $filename 2>&1 ) | tee -a $OUTFILE
 	done
 }
@@ -77,6 +70,7 @@ run_sparkshell_example()
 
 cd ~/work/tachyon
 bin/stop.sh
+sudo rm -rf /mnt/ramdisk/*
 
 
 for ((i = 0; i < 10; i ++))
