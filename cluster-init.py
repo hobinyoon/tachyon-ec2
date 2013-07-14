@@ -66,8 +66,12 @@ class Ec2InstInfo:
 		return ', '.join("%s: %s" % item for item in attrs.items())
 
 	def __lt__(self, other):
-		#return self.inst_id < other.inst_id
-		return self.ipaddr < other.ipaddr
+		if self.launchtime < other.launchtime:
+			return True
+		elif self.launchtime > other.launchtime:
+			return False
+
+		return self.private_ipaddr < other.private_ipaddr
 
 
 def assign_hostname(ec2_inst_info):
@@ -78,56 +82,48 @@ def assign_hostname(ec2_inst_info):
 		i += 1
 
 
-def get_active_spot_inst_info(conn):
+def wait_and_get_tachyon_ec2_instance_info(conn, num_inst):
+	# Assume that tachyon ec2 instances have the tag name "tachyon". Does not
+	# check the value of the tag.
+
 	sir = None
-	sys.stdout.write("Waiting for 2 active requests .")
+	sys.stdout.write("Waiting for %d tachyon instances ." % num_inst)
+	sys.stdout.flush()
+
+	reservations = None
+
 	while True:
-		# sir = conn.get_all_spot_instance_requests(filters={'state':'cancelled'})
-		sir = conn.get_all_spot_instance_requests(filters={'state':'active'})
-		if len(sir) >= 2:
+		reservations = conn.get_all_instances(filters={'tag-key': 'tachyon'})
+		if len(reservations) == num_inst:
 			break
 		time.sleep(2)
 		sys.stdout.write(".")
+		sys.stdout.flush()
 	sys.stdout.write(" done\n")
 
-	inst_ids = []
-	for r in sir:
-		#print r.instance_id
-		inst_ids.append(r.instance_id)
-		#print_attrs(r)
-	#print 'instance IDs: %s' % ', '.join(map(str, inst_ids))
-	#print ""
-
-	reservations = conn.get_all_instances(instance_ids=inst_ids)
-
-	ec2_inst_info = []
-
-	# You may want to sort the result by their private ip addrs to group
-	# network-distance-wise close machines together.
-
+	tachyon_ec2_instances = []
 	for r in reservations:
-		#print r
-		#print_attrs(r)
-		#print_attrs(r.instances[0])
-		#print "DNS: %s, %s" % (r.instances[0].public_dns_name, r.instances[0].private_dns_name)
-		#print_attrs(r.instances[0].region)
-		#print_attrs(r.connection)
-		ec2_ii = Ec2InstInfo(
-			r.instances[0].id, r.instances[0].image_id,
-			r.instances[0].ip_address, r.instances[0].private_ip_address,
-			r.instances[0].instance_type, r.instances[0]._placement,
-			r.instances[0].launch_time)
-		ec2_inst_info.append(ec2_ii)
-		print "  %s" % ec2_ii
+		for i in r.instances:
+			#print_attrs(i)
+			ii = Ec2InstInfo(
+				i.id, i.image_id,
+				i.ip_address, i.private_ip_address,
+				i.instance_type, i._placement,
+				i.launch_time)
+			tachyon_ec2_instances.append(ii)
+	for ti in tachyon_ec2_instances:
+		print "  %s" % ti
 	print ""
 
-	ec2_inst_info_sorted = sorted(ec2_inst_info)
-	assign_hostname(ec2_inst_info_sorted)
-	return ec2_inst_info_sorted
+	tei_sorted = sorted(tachyon_ec2_instances)
+	assign_hostname(tei_sorted)
+	return tei_sorted
 
 
 def req_spot_inst(conn):
+	# TODO: parameterize image-id, count, and max-price
 	res = conn.request_spot_instances(price = 0.014, image_id = 'ami-a87a05c1', count=2, type='one-time', launch_group='tachyon', key_name='hobinyoon@gmail.com', security_groups=['tachyon'], instance_type='m1.medium')
+	# TODO: wait for them and assign tags
 	print res
 
 
@@ -215,10 +211,7 @@ def main(argv):
 	conn = get_conn(region_name)
 
 	#req_spot_inst(conn)
-
-	# I am assuming that all active spot requests are for tachyon cluster. A VM
-	# tagging will be needed when you have multiple spot requests.
-	ec2_inst_info = get_active_spot_inst_info(conn)
+	ec2_inst_info = wait_and_get_tachyon_ec2_instance_info(conn, 2)
 
 	delete_ssh_known_hosts(ec2_inst_info)
 	update_etc_hosts(ec2_inst_info)
