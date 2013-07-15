@@ -1,0 +1,296 @@
+run #: 0
+scala> val s = sc.textFile("/mnt/data/hit_data.tsv.100")
+scala> s.count()
+0714-070908.890 SS Job finished: count at <console>:15, took 0.482728928 s
+res0: Long = 100
+scala> s.count()
+0714-070909.386 SS Job finished: count at <console>:15, took 0.091575153 s
+res1: Long = 100
+scala> s.count()
+0714-070909.784 SS Job finished: count at <console>:15, took 0.092452276 s
+res2: Long = 100
+scala> s.count()
+0714-070910.513 SS Job finished: count at <console>:15, took 0.046312031 s
+res3: Long = 100
+
+scala> s.count()
+0714-070910.849 SS Job finished: count at <console>:15, took 0.052851402 s
+res4: Long = 100
+
+scala> val s = sc.textFile("tachyon://localhost:19998/hit_data.tsv.100")
+scala> s.count()
+0714-070940.597 SS Job finished: count at <console>:15, took 0.719365771 s
+res0: Long = 100
+
+scala> s.count()
+0714-070941.343 SS Job finished: count at <console>:15, took 0.130515374 s
+res1: Long = 100
+
+scala> s.count()
+0714-070942.085 SS Job finished: count at <console>:15, took 0.067925892 s
+res2: Long = 100
+
+scala> s.count()
+0714-070942.451 SS Job finished: count at <console>:15, took 0.054993124 s
+res3: Long = 100
+
+scala> s.count()
+0714-070942.798 SS Job finished: count at <console>:15, took 0.041941669 s
+res4: Long = 100
+
+scala> val s = sc.textFile("/mnt/data/hit_data.tsv.1000")
+scala> s.count()
+0714-071007.183 SS Job finished: count at <console>:15, took 0.45594935 s
+res0: Long = 1000
+
+scala> s.count()
+0714-071007.732 SS Job finished: count at <console>:15, took 0.124485559 s
+res1: Long = 1000
+
+scala> s.count()
+0714-071008.210 SS Job finished: count at <console>:15, took 0.107866178 s
+res2: Long = 1000
+
+scala> s.count()
+0714-071008.912 SS Job finished: count at <console>:15, took 0.049715993 s
+res3: Long = 1000
+
+scala> s.count()
+0714-071009.255 SS Job finished: count at <console>:15, took 0.076179134 s
+res4: Long = 1000
+
+scala> val s = sc.textFile("tachyon://localhost:19998/hit_data.tsv.1000")
+scala> s.count()
+0714-071038.997 SS Job finished: count at <console>:15, took 0.870614453 s
+res0: Long = 1000
+
+scala> s.count()
+0714-071040.013 SS Job finished: count at <console>:15, took 0.233819419 s
+res1: Long = 1000
+
+scala> s.count()
+0714-071040.806 SS Job finished: count at <console>:15, took 0.092481373 s
+res2: Long = 1000
+
+scala> s.count()
+0714-071041.212 SS Job finished: count at <console>:15, took 0.106579933 s
+res3: Long = 1000
+
+scala> s.count()
+0714-071041.618 SS Job finished: count at <console>:15, took 0.058047577 s
+res4: Long = 1000
+
+scala> val s = sc.textFile("/mnt/data/hit_data.tsv.10000")
+scala> s.count()
+0714-071105.780 SS Job finished: count at <console>:15, took 0.828541716 s
+res0: Long = 10000
+
+scala> s.count()
+0714-071106.398 SS Job finished: count at <console>:15, took 0.191268041 s
+res1: Long = 10000
+
+scala> s.count()
+0714-071106.912 SS Job finished: count at <console>:15, took 0.209909871 s
+res2: Long = 10000
+
+scala> s.count()
+0714-071107.596 SS Job finished: count at <console>:15, took 0.100495083 s
+res3: Long = 10000
+
+scala> s.count()
+0714-071107.989 SS Job finished: count at <console>:15, took 0.128140282 s
+res4: Long = 10000
+
+scala> val s = sc.textFile("tachyon://localhost:19998/hit_data.tsv.10000")
+scala> s.count()
+0714-071141.952 SS Job finished: count at <console>:15, took 5.424590962 s
+res0: Long = 10000
+
+scala> s.count()
+0714-071143.541 SS Job finished: count at <console>:15, took 0.886584265 s
+res1: Long = 10000
+
+scala> s.count()
+0714-071144.289 SS Job finished: count at <console>:15, took 0.242432462 s
+res2: Long = 10000
+
+scala> s.count()
+0714-071144.866 SS Job finished: count at <console>:15, took 0.280943855 s
+res3: Long = 10000
+
+scala> s.count()
+0714-071145.414 SS Job finished: count at <console>:15, took 0.193077837 s
+res4: Long = 10000
+
+scala> val s = sc.textFile("/mnt/data/hit_data.tsv.100000")
+scala> s.count()
+0714-071211.283 SS Job finished: count at <console>:15, took 1.842816686 s
+res0: Long = 100002
+
+scala> s.count()
+0714-071212.569 SS Job finished: count at <console>:15, took 0.894928171 s
+res1: Long = 100002
+
+scala> s.count()
+0714-071213.949 SS Job finished: count at <console>:15, took 1.084270789 s
+res2: Long = 100002
+
+scala> s.count()
+0714-071215.146 SS Job finished: count at <console>:15, took 0.753995647 s
+res3: Long = 100002
+
+scala> s.count()
+0714-071216.163 SS Job finished: count at <console>:15, took 0.749794641 s
+res4: Long = 100002
+
+scala> val s = sc.textFile("tachyon://localhost:19998/hit_data.tsv.100000")
+scala> s.count()
+0714-071256.620 SS Job finished: count at <console>:15, took 9.668469059 s
+res0: Long = 100002
+
+scala> s.count()
+0714-071259.088 SS Job finished: count at <console>:15, took 1.894604234 s
+res1: Long = 100002
+
+scala> s.count()
+0714-071300.956 SS Job finished: count at <console>:15, took 1.372337456 s
+res2: Long = 100002
+
+scala> s.count()
+0714-071302.732 SS Job finished: count at <console>:15, took 1.253963923 s
+res3: Long = 100002
+
+scala> s.count()
+0714-071304.228 SS Job finished: count at <console>:15, took 1.228050466 s
+res4: Long = 100002
+
+scala> val s = sc.textFile("/mnt/data/hit_data.tsv.1000000")
+scala> s.count()
+0714-071336.337 SS Job finished: count at <console>:15, took 8.705874798 s
+res0: Long = 1000135
+
+scala> s.count()
+0714-071343.628 SS Job finished: count at <console>:15, took 6.916730327 s
+res1: Long = 1000135
+
+scala> s.count()
+0714-071350.622 SS Job finished: count at <console>:15, took 6.73953783 s
+res2: Long = 1000135
+
+scala> s.count()
+0714-071357.557 SS Job finished: count at <console>:15, took 6.626448566 s
+res3: Long = 1000135
+
+scala> s.count()
+0714-071404.514 SS Job finished: count at <console>:15, took 6.723401786 s
+res4: Long = 1000135
+
+scala> val s = sc.textFile("tachyon://localhost:19998/hit_data.tsv.1000000")
+scala> s.count()
+0714-071531.312 SS java.io.IOException: Local tachyon worker does not have enough space or no worker.
+0714-071531.312 SS Will stream from underlayer fs: s3n://2012-05-19-sample/hit_data.tsv.1000000
+0714-071531.504 SS Opening 's3n://2012-05-19-sample/hit_data.tsv.1000000' for reading
+0714-071645.747 SS Job finished: count at <console>:15, took 131.497097701 s
+res0: Long = 1000135
+
+scala> s.count()
+0714-071733.758 SS java.io.IOException: Local tachyon worker does not have enough space or no worker.
+0714-071733.759 SS Will stream from underlayer fs: s3n://2012-05-19-sample/hit_data.tsv.1000000
+0714-071733.842 SS Opening 's3n://2012-05-19-sample/hit_data.tsv.1000000' for reading
+0714-071735.497 SS Attempting to release HttpMethod in finalize() as its response data stream has gone out of scope. This attempt will not always succeed and cannot be relied upon! Please ensure S3 response data streams are always fully consumed or closed to avoid HTTP connection starvation.
+0714-071735.499 SS Successfully released HttpMethod in finalize(). You were lucky this time... Please ensure S3 response data streams are always fully consumed or closed.
+0714-071929.873 SS Job finished: count at <console>:15, took 163.85728191 s
+res1: Long = 1000135
+
+scala> s.count()
+0714-072024.195 SS java.io.IOException: Local tachyon worker does not have enough space or no worker.
+0714-072024.196 SS Will stream from underlayer fs: s3n://2012-05-19-sample/hit_data.tsv.1000000
+0714-072024.323 SS Opening 's3n://2012-05-19-sample/hit_data.tsv.1000000' for reading
+0714-072139.126 SS Job finished: count at <console>:15, took 128.993753984 s
+res2: Long = 1000135
+
+scala> s.count()
+0714-072231.409 SS java.io.IOException: Local tachyon worker does not have enough space or no worker.
+0714-072231.409 SS Will stream from underlayer fs: s3n://2012-05-19-sample/hit_data.tsv.1000000
+0714-072231.559 SS Opening 's3n://2012-05-19-sample/hit_data.tsv.1000000' for reading
+0714-072233.405 SS Attempting to release HttpMethod in finalize() as its response data stream has gone out of scope. This attempt will not always succeed and cannot be relied upon! Please ensure S3 response data streams are always fully consumed or closed to avoid HTTP connection starvation.
+0714-072233.409 SS Successfully released HttpMethod in finalize(). You were lucky this time... Please ensure S3 response data streams are always fully consumed or closed.
+0714-072426.738 SS Job finished: count at <console>:15, took 167.332439218 s
+res3: Long = 1000135
+
+scala> s.count()
+0714-072523.083 SS java.io.IOException: Local tachyon worker does not have enough space or no worker.
+0714-072523.083 SS Will stream from underlayer fs: s3n://2012-05-19-sample/hit_data.tsv.1000000
+0714-072523.159 SS Opening 's3n://2012-05-19-sample/hit_data.tsv.1000000' for reading
+0714-072642.761 SS Job finished: count at <console>:15, took 135.761314492 s
+res4: Long = 1000135
+
+scala> val s = sc.textFile("/mnt/data/hit_data.tsv.2000000")
+scala> s.count()
+0714-072728.330 SS Job finished: count at <console>:15, took 21.189773811 s
+res0: Long = 2000298
+
+scala> s.count()
+0714-072748.296 SS Job finished: count at <console>:15, took 19.343627622 s
+res1: Long = 2000298
+
+scala> s.count()
+0714-072807.912 SS Job finished: count at <console>:15, took 19.353824932 s
+res2: Long = 2000298
+
+scala> s.count()
+0714-072827.979 SS Job finished: count at <console>:15, took 19.774440435 s
+res3: Long = 2000298
+
+scala> s.count()
+0714-072847.578 SS Job finished: count at <console>:15, took 19.345846224 s
+res4: Long = 2000298
+
+scala> val s = sc.textFile("tachyon://localhost:19998/hit_data.tsv.2000000")
+scala> s.count()
+0714-073016.832 SS java.io.IOException: Local tachyon worker does not have enough space or no worker.
+0714-073016.832 SS Will stream from underlayer fs: s3n://2012-05-19-sample/hit_data.tsv.2000000
+0714-073016.943 SS Opening 's3n://2012-05-19-sample/hit_data.tsv.2000000' for reading
+0714-073342.072 SS Opening 's3n://2012-05-19-sample/hit_data.tsv.2000000' for reading
+0714-073447.316 SS java.io.IOException: Local tachyon worker does not have enough space or no worker.
+0714-073447.316 SS Will stream from underlayer fs: s3n://2012-05-19-sample/hit_data.tsv.2000000
+0714-073447.386 SS Opening 's3n://2012-05-19-sample/hit_data.tsv.2000000' for reading
+0714-073447.530 SS Exception in task 1
+java.io.IOException: Not supported to seek to 2147483647 . Current Position is 0
+	at tachyon.hadoop.TFileInputStreamHdfs.seek(TFileInputStreamHdfs.java:110)
+	at org.apache.hadoop.fs.FSDataInputStream.seek(FSDataInputStream.java:37)
+	at org.apache.hadoop.mapred.LineRecordReader.<init>(LineRecordReader.java:104)
+	at org.apache.hadoop.mapred.TextInputFormat.getRecordReader(TextInputFormat.java:55)
+	at spark.rdd.HadoopRDD$$anon$1.<init>(HadoopRDD.scala:71)
+	at spark.rdd.HadoopRDD.compute(HadoopRDD.scala:65)
+	at spark.RDD.computeOrReadCheckpoint(RDD.scala:206)
+	at spark.RDD.iterator(RDD.scala:195)
+	at spark.rdd.MappedRDD.compute(MappedRDD.scala:12)
+	at spark.RDD.computeOrReadCheckpoint(RDD.scala:206)
+	at spark.RDD.iterator(RDD.scala:195)
+	at spark.scheduler.ResultTask.run(ResultTask.scala:76)
+	at spark.scheduler.local.LocalScheduler.runTask$1(LocalScheduler.scala:74)
+	at spark.scheduler.local.LocalScheduler$$anon$1.run(LocalScheduler.scala:50)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:471)
+	at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:334)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:166)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:722)
+0714-073447.594 SS Failed to run count at <console>:15
+spark.SparkException: Job failed: ResultTask(0, 1) failed: ExceptionFailure(java.io.IOException: Not supported to seek to 2147483647 . Current Position is 0)
+	at spark.scheduler.DAGScheduler$$anonfun$abortStage$1.apply(DAGScheduler.scala:629)
+	at spark.scheduler.DAGScheduler$$anonfun$abortStage$1.apply(DAGScheduler.scala:627)
+	at scala.collection.mutable.ResizableArray$class.foreach(ResizableArray.scala:60)
+	at scala.collection.mutable.ArrayBuffer.foreach(ArrayBuffer.scala:47)
+	at spark.scheduler.DAGScheduler.abortStage(DAGScheduler.scala:627)
+	at spark.scheduler.DAGScheduler.handleTaskCompletion(DAGScheduler.scala:588)
+	at spark.scheduler.DAGScheduler.processEvent(DAGScheduler.scala:294)
+	at spark.scheduler.DAGScheduler.spark$scheduler$DAGScheduler$$run(DAGScheduler.scala:358)
+	at spark.scheduler.DAGScheduler$$anon$1.run(DAGScheduler.scala:102)
+
+scala> s.count()
+the same error repeats
+
+scala> s.count()
+the same error repeats

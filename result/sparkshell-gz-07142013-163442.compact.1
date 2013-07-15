@@ -1,0 +1,805 @@
+run #: 0
+
+0714-163504.548 SS MemoryStore started with capacity 326.7 MB.
+0714-163504.698 SS Registering block manager tachyon-ec2-0:51902 with 326.7 MB RAM
+
+scala> val s = sc.textFile("/mnt/data/hit_data.tsv.100.gz")
+
+scala> s.count()
+0714-163510.698 SS Job finished: count at <console>:15, took 0.558389905 s
+res0: Long = 100
+
+scala> s.count()
+0714-163511.456 SS Job finished: count at <console>:15, took 0.096538912 s
+res1: Long = 100
+
+scala> s.count()
+0714-163512.016 SS Job finished: count at <console>:15, took 0.098326665 s
+res2: Long = 100
+
+scala> s.count()
+0714-163512.716 SS Job finished: count at <console>:15, took 0.049376115 s
+res3: Long = 100
+
+scala> s.count()
+0714-163513.053 SS Job finished: count at <console>:15, took 0.051485951 s
+res4: Long = 100
+
+0714-163535.679 SS MemoryStore started with capacity 326.7 MB.
+0714-163535.782 SS Registering block manager tachyon-ec2-0:59501 with 326.7 MB RAM
+
+scala> val s = sc.textFile("tachyon://localhost:19998/hit_data.tsv.100.gz")
+
+scala> s.count()
+0714-163545.954 SS Job finished: count at <console>:15, took 0.790091991 s
+res0: Long = 100
+
+scala> s.count()
+0714-163546.426 SS Job finished: count at <console>:15, took 0.075363334 s
+res1: Long = 100
+
+scala> s.count()
+0714-163546.816 SS Job finished: count at <console>:15, took 0.055988944 s
+res2: Long = 100
+
+scala> s.count()
+0714-163547.367 SS Job finished: count at <console>:15, took 0.043290375 s
+res3: Long = 100
+
+scala> s.count()
+0714-163547.691 SS Job finished: count at <console>:15, took 0.042587682 s
+res4: Long = 100
+
+0714-163610.657 SS MemoryStore started with capacity 326.7 MB.
+0714-163610.749 SS Registering block manager tachyon-ec2-0:45175 with 326.7 MB RAM
+
+scala> val s = sc.textFile("/mnt/data/hit_data.tsv.1000.gz")
+
+scala> s.count()
+0714-163616.171 SS Job finished: count at <console>:15, took 0.533508717 s
+res0: Long = 1000
+
+scala> s.count()
+0714-163616.701 SS Job finished: count at <console>:15, took 0.121470918 s
+res1: Long = 1000
+
+scala> s.count()
+0714-163617.164 SS Job finished: count at <console>:15, took 0.142003923 s
+res2: Long = 1000
+
+scala> s.count()
+0714-163617.918 SS Job finished: count at <console>:15, took 0.053460166 s
+res3: Long = 1000
+
+scala> s.count()
+0714-163618.313 SS Job finished: count at <console>:15, took 0.07813595 s
+res4: Long = 1000
+
+0714-163640.245 SS MemoryStore started with capacity 326.7 MB.
+0714-163640.337 SS Registering block manager tachyon-ec2-0:42128 with 326.7 MB RAM
+
+scala> val s = sc.textFile("tachyon://localhost:19998/hit_data.tsv.1000.gz")
+
+scala> s.count()
+0714-163650.363 SS Job finished: count at <console>:15, took 0.941856359 s
+res0: Long = 1000
+
+scala> s.count()
+0714-163650.898 SS Job finished: count at <console>:15, took 0.124732904 s
+res1: Long = 1000
+
+scala> s.count()
+0714-163651.255 SS Job finished: count at <console>:15, took 0.067968947 s
+res2: Long = 1000
+
+scala> s.count()
+0714-163651.846 SS Job finished: count at <console>:15, took 0.080684888 s
+res3: Long = 1000
+
+scala> s.count()
+0714-163652.276 SS Job finished: count at <console>:15, took 0.054692756 s
+res4: Long = 1000
+
+0714-163751.026 SS MemoryStore started with capacity 326.7 MB.
+0714-163751.118 SS Registering block manager tachyon-ec2-0:42805 with 326.7 MB RAM
+
+scala> val s = sc.textFile("/mnt/data/hit_data.tsv.10000.gz")
+
+scala> s.count()
+0714-163756.842 SS Job finished: count at <console>:15, took 0.877789707 s
+res0: Long = 10000
+
+scala> s.count()
+0714-163757.558 SS Job finished: count at <console>:15, took 0.225890704 s
+res1: Long = 10000
+
+scala> s.count()
+0714-163758.212 SS Job finished: count at <console>:15, took 0.306091971 s
+res2: Long = 10000
+
+scala> s.count()
+0714-163758.925 SS Job finished: count at <console>:15, took 0.162838816 s
+res3: Long = 10000
+
+scala> s.count()
+0714-163759.392 SS Job finished: count at <console>:15, took 0.182385377 s
+res4: Long = 10000
+
+0714-163821.350 SS MemoryStore started with capacity 326.7 MB.
+0714-163821.469 SS Registering block manager tachyon-ec2-0:53708 with 326.7 MB RAM
+
+scala> val s = sc.textFile("tachyon://localhost:19998/hit_data.tsv.10000.gz")
+
+scala> s.count()
+0714-163831.992 SS Job finished: count at <console>:15, took 1.448557549 s
+res0: Long = 10000
+
+scala> s.count()
+0714-163832.674 SS Job finished: count at <console>:15, took 0.259027022 s
+res1: Long = 10000
+
+scala> s.count()
+0714-163833.177 SS Job finished: count at <console>:15, took 0.169754983 s
+res2: Long = 10000
+
+scala> s.count()
+0714-163833.859 SS Job finished: count at <console>:15, took 0.167204731 s
+res3: Long = 10000
+
+scala> s.count()
+0714-163834.406 SS Job finished: count at <console>:15, took 0.190339922 s
+res4: Long = 10000
+
+0714-163855.457 SS MemoryStore started with capacity 326.7 MB.
+0714-163855.582 SS Registering block manager tachyon-ec2-0:60176 with 326.7 MB RAM
+
+scala> val s = sc.textFile("/mnt/data/hit_data.tsv.100000.gz")
+
+scala> s.count()
+0714-163902.378 SS Job finished: count at <console>:15, took 2.118020096 s
+res0: Long = 100002
+
+scala> s.count()
+0714-163904.068 SS Job finished: count at <console>:15, took 1.287172728 s
+res1: Long = 100002
+
+scala> s.count()
+0714-163905.949 SS Job finished: count at <console>:15, took 1.52114737 s
+res2: Long = 100002
+
+scala> s.count()
+0714-163907.572 SS Job finished: count at <console>:15, took 1.194260342 s
+res3: Long = 100002
+
+scala> s.count()
+0714-163909.158 SS Job finished: count at <console>:15, took 1.28098498 s
+res4: Long = 100002
+
+0714-163931.251 SS MemoryStore started with capacity 326.7 MB.
+0714-163931.351 SS Registering block manager tachyon-ec2-0:57891 with 326.7 MB RAM
+
+scala> val s = sc.textFile("tachyon://localhost:19998/hit_data.tsv.100000.gz")
+
+scala> s.count()
+0714-163943.619 SS Job finished: count at <console>:15, took 3.160974447 s
+res0: Long = 100002
+
+scala> s.count()
+0714-163945.550 SS Job finished: count at <console>:15, took 1.514072787 s
+res1: Long = 100002
+
+scala> s.count()
+0714-163947.336 SS Job finished: count at <console>:15, took 1.490905759 s
+res2: Long = 100002
+
+scala> s.count()
+0714-163949.178 SS Job finished: count at <console>:15, took 1.401487355 s
+res3: Long = 100002
+
+scala> s.count()
+0714-163950.927 SS Job finished: count at <console>:15, took 1.487136484 s
+res4: Long = 100002
+
+0714-164013.822 SS MemoryStore started with capacity 326.7 MB.
+0714-164013.913 SS Registering block manager tachyon-ec2-0:48676 with 326.7 MB RAM
+
+scala> val s = sc.textFile("/mnt/data/hit_data.tsv.1000000.gz")
+
+scala> s.count()
+0714-164031.160 SS Job finished: count at <console>:15, took 12.468099609 s
+res0: Long = 1000135
+
+scala> s.count()
+0714-164042.936 SS Job finished: count at <console>:15, took 11.386196428 s
+res1: Long = 1000135
+
+scala> s.count()
+0714-164054.833 SS Job finished: count at <console>:15, took 11.603729561 s
+res2: Long = 1000135
+
+scala> s.count()
+0714-164106.392 SS Job finished: count at <console>:15, took 11.293690668 s
+res3: Long = 1000135
+
+scala> s.count()
+0714-164117.854 SS Job finished: count at <console>:15, took 11.223804073 s
+res4: Long = 1000135
+
+0714-164139.535 SS MemoryStore started with capacity 326.7 MB.
+0714-164139.666 SS Registering block manager tachyon-ec2-0:43323 with 326.7 MB RAM
+
+scala> val s = sc.textFile("tachyon://localhost:19998/hit_data.tsv.1000000.gz")
+
+scala> s.count()
+0714-164210.408 SS Job finished: count at <console>:15, took 21.869062881 s
+res0: Long = 1000135
+
+scala> s.count()
+0714-164224.008 SS Job finished: count at <console>:15, took 13.208718812 s
+res1: Long = 1000135
+
+scala> s.count()
+0714-164236.817 SS Job finished: count at <console>:15, took 12.543493609 s
+res2: Long = 1000135
+
+scala> s.count()
+0714-164249.782 SS Job finished: count at <console>:15, took 12.642804842 s
+res3: Long = 1000135
+
+scala> s.count()
+0714-164302.656 SS Job finished: count at <console>:15, took 12.630880121 s
+res4: Long = 1000135
+
+0714-164325.526 SS MemoryStore started with capacity 326.7 MB.
+0714-164325.627 SS Registering block manager tachyon-ec2-0:42325 with 326.7 MB RAM
+
+scala> val s = sc.textFile("/mnt/data/hit_data.tsv.2000000.gz")
+
+scala> s.count()
+0714-164354.585 SS Job finished: count at <console>:15, took 23.958093279 s
+res0: Long = 2000298
+
+scala> s.count()
+0714-164417.482 SS Job finished: count at <console>:15, took 22.570410533 s
+res1: Long = 2000298
+
+scala> s.count()
+0714-164441.035 SS Job finished: count at <console>:15, took 23.257917978 s
+res2: Long = 2000298
+
+scala> s.count()
+0714-164503.805 SS Job finished: count at <console>:15, took 22.477328417 s
+res3: Long = 2000298
+
+scala> s.count()
+0714-164526.430 SS Job finished: count at <console>:15, took 22.384951981 s
+res4: Long = 2000298
+
+0714-164548.509 SS MemoryStore started with capacity 326.7 MB.
+0714-164548.614 SS Registering block manager tachyon-ec2-0:59660 with 326.7 MB RAM
+
+scala> val s = sc.textFile("tachyon://localhost:19998/hit_data.tsv.2000000.gz")
+
+scala> s.count()
+0714-164637.904 SS Job finished: count at <console>:15, took 39.997567844 s
+res0: Long = 2000298
+
+scala> s.count()
+0714-164704.269 SS Job finished: count at <console>:15, took 26.042202076 s
+res1: Long = 2000298
+
+scala> s.count()
+0714-164730.004 SS Job finished: count at <console>:15, took 25.479223095 s
+res2: Long = 2000298
+
+scala> s.count()
+0714-164755.606 SS Job finished: count at <console>:15, took 25.337942141 s
+res3: Long = 2000298
+
+scala> s.count()
+0714-164821.456 SS Job finished: count at <console>:15, took 25.602245213 s
+res4: Long = 2000298
+
+0714-164842.689 SS MemoryStore started with capacity 326.7 MB.
+0714-164842.787 SS Registering block manager tachyon-ec2-0:58830 with 326.7 MB RAM
+
+scala> val s = sc.textFile("/mnt/data/hit_data.tsv.3000000.gz")
+
+scala> s.count()
+0714-164922.383 SS Job finished: count at <console>:15, took 34.872238833 s
+res0: Long = 3000314
+
+scala> s.count()
+0714-164956.570 SS Job finished: count at <console>:15, took 33.882537662 s
+res1: Long = 3000314
+
+scala> s.count()
+0714-165030.313 SS Job finished: count at <console>:15, took 33.444072324 s
+res2: Long = 3000314
+
+scala> s.count()
+0714-165103.732 SS Job finished: count at <console>:15, took 33.153032036 s
+res3: Long = 3000314
+
+scala> s.count()
+0714-165137.007 SS Job finished: count at <console>:15, took 33.026888253 s
+res4: Long = 3000314
+
+0714-165159.166 SS MemoryStore started with capacity 326.7 MB.
+0714-165159.265 SS Registering block manager tachyon-ec2-0:56939 with 326.7 MB RAM
+
+scala> val s = sc.textFile("tachyon://localhost:19998/hit_data.tsv.3000000.gz")
+
+scala> s.count()
+0714-165307.634 SS Job finished: count at <console>:15, took 58.866807064 s
+res0: Long = 3000314
+
+scala> s.count()
+0714-165346.740 SS Job finished: count at <console>:15, took 38.776225286 s
+res1: Long = 3000314
+
+scala> s.count()
+0714-165425.019 SS Job finished: count at <console>:15, took 37.946948247 s
+res2: Long = 3000314
+
+scala> s.count()
+0714-165503.660 SS Job finished: count at <console>:15, took 38.298592444 s
+res3: Long = 3000314
+
+scala> s.count()
+0714-165541.977 SS Job finished: count at <console>:15, took 38.056706458 s
+res4: Long = 3000314
+
+0714-165603.748 SS MemoryStore started with capacity 326.7 MB.
+0714-165603.865 SS Registering block manager tachyon-ec2-0:47600 with 326.7 MB RAM
+
+scala> val s = sc.textFile("/mnt/data/hit_data.tsv.4000000.gz")
+
+scala> s.count()
+0714-165655.741 SS Exception in task 0
+java.io.IOException: stored gzip size doesn't match decompressed size
+	at org.apache.hadoop.io.compress.zlib.BuiltInGzipDecompressor.executeTrailerState(BuiltInGzipDecompressor.java:389)
+	at org.apache.hadoop.io.compress.zlib.BuiltInGzipDecompressor.decompress(BuiltInGzipDecompressor.java:224)
+	at org.apache.hadoop.io.compress.DecompressorStream.decompress(DecompressorStream.java:83)
+	at org.apache.hadoop.io.compress.DecompressorStream.read(DecompressorStream.java:77)
+	at java.io.InputStream.read(InputStream.java:101)
+	at org.apache.hadoop.util.LineReader.readLine(LineReader.java:134)
+	at org.apache.hadoop.mapred.LineRecordReader.next(LineRecordReader.java:176)
+	at org.apache.hadoop.mapred.LineRecordReader.next(LineRecordReader.java:43)
+	at spark.rdd.HadoopRDD$$anon$1.hasNext(HadoopRDD.scala:84)
+	at scala.collection.Iterator$$anon$19.hasNext(Iterator.scala:400)
+	at spark.RDD$$anonfun$count$1.apply(RDD.scala:492)
+	at spark.RDD$$anonfun$count$1.apply(RDD.scala:490)
+	at spark.SparkContext$$anonfun$runJob$4.apply(SparkContext.scala:610)
+	at spark.SparkContext$$anonfun$runJob$4.apply(SparkContext.scala:610)
+	at spark.scheduler.ResultTask.run(ResultTask.scala:76)
+	at spark.scheduler.local.LocalScheduler.runTask$1(LocalScheduler.scala:74)
+	at spark.scheduler.local.LocalScheduler$$anon$1.run(LocalScheduler.scala:50)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:471)
+	at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:334)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:166)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:722)
+0714-165655.756 SS Failed to run count at <console>:15
+spark.SparkException: Job failed: ResultTask(0, 0) failed: ExceptionFailure(java.io.IOException: stored gzip size doesn't match decompressed size)
+	at spark.scheduler.DAGScheduler$$anonfun$abortStage$1.apply(DAGScheduler.scala:629)
+	at spark.scheduler.DAGScheduler$$anonfun$abortStage$1.apply(DAGScheduler.scala:627)
+	at scala.collection.mutable.ResizableArray$class.foreach(ResizableArray.scala:60)
+	at scala.collection.mutable.ArrayBuffer.foreach(ArrayBuffer.scala:47)
+	at spark.scheduler.DAGScheduler.abortStage(DAGScheduler.scala:627)
+	at spark.scheduler.DAGScheduler.handleTaskCompletion(DAGScheduler.scala:588)
+	at spark.scheduler.DAGScheduler.processEvent(DAGScheduler.scala:294)
+	at spark.scheduler.DAGScheduler.spark$scheduler$DAGScheduler$$run(DAGScheduler.scala:358)
+	at spark.scheduler.DAGScheduler$$anon$1.run(DAGScheduler.scala:102)
+
+scala> s.count()
+	the same error repeats
+
+0714-170020.650 SS MemoryStore started with capacity 326.7 MB.
+0714-170020.748 SS Registering block manager tachyon-ec2-0:49383 with 326.7 MB RAM
+
+scala> val s = sc.textFile("tachyon://localhost:19998/hit_data.tsv.4000000.gz")
+
+scala> s.count()
+0714-170149.253 SS Exception in task 0
+java.io.IOException: stored gzip size doesn't match decompressed size
+	at org.apache.hadoop.io.compress.zlib.BuiltInGzipDecompressor.executeTrailerState(BuiltInGzipDecompressor.java:389)
+	at org.apache.hadoop.io.compress.zlib.BuiltInGzipDecompressor.decompress(BuiltInGzipDecompressor.java:224)
+	at org.apache.hadoop.io.compress.DecompressorStream.decompress(DecompressorStream.java:83)
+	at org.apache.hadoop.io.compress.DecompressorStream.read(DecompressorStream.java:77)
+	at java.io.InputStream.read(InputStream.java:101)
+	at org.apache.hadoop.util.LineReader.readLine(LineReader.java:134)
+	at org.apache.hadoop.mapred.LineRecordReader.next(LineRecordReader.java:176)
+	at org.apache.hadoop.mapred.LineRecordReader.next(LineRecordReader.java:43)
+	at spark.rdd.HadoopRDD$$anon$1.hasNext(HadoopRDD.scala:84)
+	at scala.collection.Iterator$$anon$19.hasNext(Iterator.scala:400)
+	at spark.RDD$$anonfun$count$1.apply(RDD.scala:492)
+	at spark.RDD$$anonfun$count$1.apply(RDD.scala:490)
+	at spark.SparkContext$$anonfun$runJob$4.apply(SparkContext.scala:610)
+	at spark.SparkContext$$anonfun$runJob$4.apply(SparkContext.scala:610)
+	at spark.scheduler.ResultTask.run(ResultTask.scala:76)
+	at spark.scheduler.local.LocalScheduler.runTask$1(LocalScheduler.scala:74)
+	at spark.scheduler.local.LocalScheduler$$anon$1.run(LocalScheduler.scala:50)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:471)
+	at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:334)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:166)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:722)
+0714-170149.286 SS Failed to run count at <console>:15
+spark.SparkException: Job failed: ResultTask(0, 0) failed: ExceptionFailure(java.io.IOException: stored gzip size doesn't match decompressed size)
+	at spark.scheduler.DAGScheduler$$anonfun$abortStage$1.apply(DAGScheduler.scala:629)
+	at spark.scheduler.DAGScheduler$$anonfun$abortStage$1.apply(DAGScheduler.scala:627)
+	at scala.collection.mutable.ResizableArray$class.foreach(ResizableArray.scala:60)
+	at scala.collection.mutable.ArrayBuffer.foreach(ArrayBuffer.scala:47)
+	at spark.scheduler.DAGScheduler.abortStage(DAGScheduler.scala:627)
+	at spark.scheduler.DAGScheduler.handleTaskCompletion(DAGScheduler.scala:588)
+	at spark.scheduler.DAGScheduler.processEvent(DAGScheduler.scala:294)
+	at spark.scheduler.DAGScheduler.spark$scheduler$DAGScheduler$$run(DAGScheduler.scala:358)
+	at spark.scheduler.DAGScheduler$$anon$1.run(DAGScheduler.scala:102)
+
+scala> s.count()
+	the same error repeats
+
+
+run #: 1
+
+0714-170541.457 SS MemoryStore started with capacity 326.7 MB.
+0714-170541.554 SS Registering block manager tachyon-ec2-0:52821 with 326.7 MB RAM
+
+scala> val s = sc.textFile("/mnt/data/hit_data.tsv.100.gz")
+
+scala> s.count()
+0714-170547.022 SS Job finished: count at <console>:15, took 0.510035364 s
+res0: Long = 100
+
+scala> s.count()
+0714-170547.542 SS Job finished: count at <console>:15, took 0.097342007 s
+res1: Long = 100
+
+scala> s.count()
+0714-170547.966 SS Job finished: count at <console>:15, took 0.088503601 s
+res2: Long = 100
+
+scala> s.count()
+0714-170548.692 SS Job finished: count at <console>:15, took 0.042430547 s
+res3: Long = 100
+
+scala> s.count()
+0714-170549.067 SS Job finished: count at <console>:15, took 0.068463923 s
+res4: Long = 100
+
+0714-170611.437 SS MemoryStore started with capacity 326.7 MB.
+0714-170611.537 SS Registering block manager tachyon-ec2-0:38739 with 326.7 MB RAM
+
+scala> val s = sc.textFile("tachyon://localhost:19998/hit_data.tsv.100.gz")
+
+scala> s.count()
+0714-170621.531 SS Job finished: count at <console>:15, took 0.862562064 s
+res0: Long = 100
+
+scala> s.count()
+0714-170622.044 SS Job finished: count at <console>:15, took 0.090622007 s
+res1: Long = 100
+
+scala> s.count()
+0714-170622.413 SS Job finished: count at <console>:15, took 0.048640775 s
+res2: Long = 100
+
+scala> s.count()
+0714-170622.957 SS Job finished: count at <console>:15, took 0.042795036 s
+res3: Long = 100
+
+scala> s.count()
+0714-170623.362 SS Job finished: count at <console>:15, took 0.073645569 s
+res4: Long = 100
+
+0714-170646.425 SS MemoryStore started with capacity 326.7 MB.
+0714-170646.530 SS Registering block manager tachyon-ec2-0:36893 with 326.7 MB RAM
+
+scala> val s = sc.textFile("/mnt/data/hit_data.tsv.1000.gz")
+
+scala> s.count()
+0714-170652.056 SS Job finished: count at <console>:15, took 0.564672003 s
+res0: Long = 1000
+
+scala> s.count()
+0714-170652.552 SS Job finished: count at <console>:15, took 0.120267503 s
+res1: Long = 1000
+
+scala> s.count()
+0714-170652.997 SS Job finished: count at <console>:15, took 0.140322592 s
+res2: Long = 1000
+
+scala> s.count()
+0714-170653.731 SS Job finished: count at <console>:15, took 0.055388588 s
+res3: Long = 1000
+
+scala> s.count()
+0714-170654.080 SS Job finished: count at <console>:15, took 0.068530201 s
+res4: Long = 1000
+
+0714-170716.126 SS MemoryStore started with capacity 326.7 MB.
+0714-170716.225 SS Registering block manager tachyon-ec2-0:34841 with 326.7 MB RAM
+
+scala> val s = sc.textFile("tachyon://localhost:19998/hit_data.tsv.1000.gz")
+
+scala> s.count()
+0714-170726.153 SS Job finished: count at <console>:15, took 0.890023674 s
+res0: Long = 1000
+
+scala> s.count()
+0714-170726.687 SS Job finished: count at <console>:15, took 0.102330332 s
+res1: Long = 1000
+
+scala> s.count()
+0714-170727.085 SS Job finished: count at <console>:15, took 0.064638258 s
+res2: Long = 1000
+
+scala> s.count()
+0714-170727.677 SS Job finished: count at <console>:15, took 0.089038112 s
+res3: Long = 1000
+
+scala> s.count()
+0714-170728.108 SS Job finished: count at <console>:15, took 0.074391331 s
+res4: Long = 1000
+
+0714-170750.749 SS MemoryStore started with capacity 326.7 MB.
+0714-170750.838 SS Registering block manager tachyon-ec2-0:45237 with 326.7 MB RAM
+
+scala> val s = sc.textFile("/mnt/data/hit_data.tsv.10000.gz")
+
+scala> s.count()
+0714-170756.616 SS Job finished: count at <console>:15, took 0.833837387 s
+res0: Long = 10000
+
+scala> s.count()
+0714-170757.324 SS Job finished: count at <console>:15, took 0.261005817 s
+res1: Long = 10000
+
+scala> s.count()
+0714-170757.989 SS Job finished: count at <console>:15, took 0.333941843 s
+res2: Long = 10000
+
+scala> s.count()
+0714-170758.693 SS Job finished: count at <console>:15, took 0.150676407 s
+res3: Long = 10000
+
+scala> s.count()
+0714-170759.172 SS Job finished: count at <console>:15, took 0.181967289 s
+res4: Long = 10000
+
+0714-170821.483 SS MemoryStore started with capacity 326.7 MB.
+0714-170821.582 SS Registering block manager tachyon-ec2-0:43666 with 326.7 MB RAM
+
+scala> val s = sc.textFile("tachyon://localhost:19998/hit_data.tsv.10000.gz")
+
+scala> s.count()
+0714-170832.136 SS Job finished: count at <console>:15, took 1.460710074 s
+res0: Long = 10000
+
+scala> s.count()
+0714-170832.909 SS Job finished: count at <console>:15, took 0.310142787 s
+res1: Long = 10000
+
+scala> s.count()
+0714-170833.413 SS Job finished: count at <console>:15, took 0.210130745 s
+res2: Long = 10000
+
+scala> s.count()
+0714-170834.088 SS Job finished: count at <console>:15, took 0.207827839 s
+res3: Long = 10000
+
+scala> s.count()
+0714-170834.624 SS Job finished: count at <console>:15, took 0.228483949 s
+res4: Long = 10000
+
+0714-170857.808 SS MemoryStore started with capacity 326.7 MB.
+0714-170857.910 SS Registering block manager tachyon-ec2-0:34012 with 326.7 MB RAM
+
+scala> val s = sc.textFile("/mnt/data/hit_data.tsv.100000.gz")
+
+scala> s.count()
+0714-170904.674 SS Job finished: count at <console>:15, took 1.942998858 s
+res0: Long = 100002
+
+scala> s.count()
+0714-170906.398 SS Job finished: count at <console>:15, took 1.307529748 s
+res1: Long = 100002
+
+scala> s.count()
+0714-170908.353 SS Job finished: count at <console>:15, took 1.566789864 s
+res2: Long = 100002
+
+scala> s.count()
+0714-170910.019 SS Job finished: count at <console>:15, took 1.199395361 s
+res3: Long = 100002
+
+scala> s.count()
+0714-170911.614 SS Job finished: count at <console>:15, took 1.324449242 s
+res4: Long = 100002
+
+0714-170933.692 SS MemoryStore started with capacity 326.7 MB.
+0714-170933.779 SS Registering block manager tachyon-ec2-0:56733 with 326.7 MB RAM
+
+scala> val s = sc.textFile("tachyon://localhost:19998/hit_data.tsv.100000.gz")
+
+scala> s.count()
+0714-170946.502 SS Job finished: count at <console>:15, took 3.582836348 s
+res0: Long = 100002
+
+scala> s.count()
+0714-170948.364 SS Job finished: count at <console>:15, took 1.471594803 s
+res1: Long = 100002
+
+scala> s.count()
+0714-170950.236 SS Job finished: count at <console>:15, took 1.577712453 s
+res2: Long = 100002
+
+scala> s.count()
+0714-170952.085 SS Job finished: count at <console>:15, took 1.381143356 s
+res3: Long = 100002
+
+scala> s.count()
+0714-170953.931 SS Job finished: count at <console>:15, took 1.515801576 s
+res4: Long = 100002
+
+0714-171014.963 SS MemoryStore started with capacity 326.7 MB.
+0714-171015.053 SS Registering block manager tachyon-ec2-0:43876 with 326.7 MB RAM
+
+scala> val s = sc.textFile("/mnt/data/hit_data.tsv.1000000.gz")
+
+scala> s.count()
+0714-171032.312 SS Job finished: count at <console>:15, took 12.301496949 s
+res0: Long = 1000135
+
+scala> s.count()
+0714-171044.088 SS Job finished: count at <console>:15, took 11.380978717 s
+res1: Long = 1000135
+
+scala> s.count()
+0714-171055.902 SS Job finished: count at <console>:15, took 11.525426093 s
+res2: Long = 1000135
+
+scala> s.count()
+0714-171107.547 SS Job finished: count at <console>:15, took 11.383341463 s
+res3: Long = 1000135
+
+scala> s.count()
+0714-171119.055 SS Job finished: count at <console>:15, took 11.270119906 s
+res4: Long = 1000135
+
+0714-171140.822 SS MemoryStore started with capacity 326.7 MB.
+0714-171140.932 SS Registering block manager tachyon-ec2-0:34220 with 326.7 MB RAM
+
+scala> val s = sc.textFile("tachyon://localhost:19998/hit_data.tsv.1000000.gz")
+
+scala> s.count()
+0714-171211.312 SS Job finished: count at <console>:15, took 21.551988952 s
+res0: Long = 1000135
+
+scala> s.count()
+0714-171224.968 SS Job finished: count at <console>:15, took 13.255422861 s
+res1: Long = 1000135
+
+scala> s.count()
+0714-171237.770 SS Job finished: count at <console>:15, took 12.543041673 s
+res2: Long = 1000135
+
+scala> s.count()
+0714-171250.708 SS Job finished: count at <console>:15, took 12.627049592 s
+res3: Long = 1000135
+
+scala> s.count()
+0714-171303.668 SS Job finished: count at <console>:15, took 12.713511448 s
+res4: Long = 1000135
+
+0714-171324.697 SS MemoryStore started with capacity 326.7 MB.
+0714-171324.790 SS Registering block manager tachyon-ec2-0:54982 with 326.7 MB RAM
+
+scala> val s = sc.textFile("/mnt/data/hit_data.tsv.2000000.gz")
+
+scala> s.count()
+0714-171352.950 SS Job finished: count at <console>:15, took 23.423265799 s
+res0: Long = 2000298
+
+scala> s.count()
+0714-171416.296 SS Job finished: count at <console>:15, took 22.789536202 s
+res1: Long = 2000298
+
+scala> s.count()
+0714-171439.768 SS Job finished: count at <console>:15, took 23.203579346 s
+res2: Long = 2000298
+
+scala> s.count()
+0714-171502.574 SS Job finished: count at <console>:15, took 22.509463796 s
+res3: Long = 2000298
+
+scala> s.count()
+0714-171525.112 SS Job finished: count at <console>:15, took 22.296551864 s
+res4: Long = 2000298
+
+0714-171547.202 SS MemoryStore started with capacity 326.7 MB.
+0714-171547.305 SS Registering block manager tachyon-ec2-0:53151 with 326.7 MB RAM
+
+scala> val s = sc.textFile("tachyon://localhost:19998/hit_data.tsv.2000000.gz")
+
+scala> s.count()
+0714-171640.779 SS Job finished: count at <console>:15, took 44.36795163 s
+res0: Long = 2000298
+
+scala> s.count()
+0714-171707.192 SS Job finished: count at <console>:15, took 26.058748141 s
+res1: Long = 2000298
+
+scala> s.count()
+0714-171732.760 SS Job finished: count at <console>:15, took 25.312913664 s
+res2: Long = 2000298
+
+scala> s.count()
+0714-171758.480 SS Job finished: count at <console>:15, took 25.387517044 s
+res3: Long = 2000298
+
+scala> s.count()
+0714-171824.202 SS Job finished: count at <console>:15, took 25.469988047 s
+res4: Long = 2000298
+
+0714-171846.918 SS MemoryStore started with capacity 326.7 MB.
+0714-171847.015 SS Registering block manager tachyon-ec2-0:38346 with 326.7 MB RAM
+
+scala> val s = sc.textFile("/mnt/data/hit_data.tsv.3000000.gz")
+
+scala> s.count()
+0714-171926.728 SS Job finished: count at <console>:15, took 34.814947402 s
+res0: Long = 3000314
+
+scala> s.count()
+0714-172001.404 SS Job finished: count at <console>:15, took 34.392718184 s
+res1: Long = 3000314
+
+scala> s.count()
+0714-172035.529 SS Job finished: count at <console>:15, took 33.837816713 s
+res2: Long = 3000314
+
+scala> s.count()
+0714-172109.296 SS Job finished: count at <console>:15, took 33.494017305 s
+res3: Long = 3000314
+
+scala> s.count()
+0714-172143.140 SS Job finished: count at <console>:15, took 33.571131263 s
+res4: Long = 3000314
+
+0714-172205.302 SS MemoryStore started with capacity 326.7 MB.
+0714-172205.399 SS Registering block manager tachyon-ec2-0:57880 with 326.7 MB RAM
+
+scala> val s = sc.textFile("tachyon://localhost:19998/hit_data.tsv.3000000.gz")
+
+scala> s.count()
+0714-172312.907 SS Job finished: count at <console>:15, took 58.439730307 s
+res0: Long = 3000314
+
+scala> s.count()
+0714-172351.885 SS Job finished: count at <console>:15, took 38.709739433 s
+res1: Long = 3000314
+
+scala> s.count()
+0714-172430.296 SS Job finished: count at <console>:15, took 38.081196599 s
+res2: Long = 3000314
+
+scala> s.count()
+0714-172508.776 SS Job finished: count at <console>:15, took 38.199014813 s
+res3: Long = 3000314
+
+scala> s.count()
+0714-172546.873 SS Job finished: count at <console>:15, took 37.805864673 s
+res4: Long = 3000314
+
+0714-172609.796 SS MemoryStore started with capacity 326.7 MB.
+0714-172609.913 SS Registering block manager tachyon-ec2-0:46828 with 326.7 MB RAM
+
+scala> val s = sc.textFile("/mnt/data/hit_data.tsv.4000000.gz")
+
+scala> s.count()
+0714-172700.966 SS Exception in task 0
+java.io.IOException: stored gzip size doesn't match decompressed size
