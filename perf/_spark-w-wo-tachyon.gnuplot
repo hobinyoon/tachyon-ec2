@@ -20,6 +20,8 @@ set output OUTFILE
 
 set pointsize 0.5
 
-plot INFILE_SO using 0:(0):xticlabel(1) with points pointsize 0.01 notitle, \
-     INFILE_SO using ($0-0.05):2:3:4 with errorbars pointtype 7 title "Spark processing local files", \
-     INFILE_ST using ($0+0.05):2:3:4 with errorbars pointtype 7 title "Spark processing S3 files with Tachyon cache"
+plot INFILE_SO using ($0-0.15):2:3:4 with errorbars pointtype 7 title "Spark processing local files", \
+     INFILE_SO using ($0-0.05):5:6:7 with errorbars pointtype 7 title "S3 get + Spark", \
+     INFILE_ST using ($0+0.05):2:3:4 with errorbars pointtype 7 title "Spark processing S3 files with Tachyon cache", \
+     INFILE_ST using ($0+0.15):2:3:4 with errorbars pointtype 7 title "TODO Spark with Tachyon remote fetch", \
+     INFILE_SO using 0:(0):xticlabel(1) with points pointsize 0.01 lc rgb "#E0E0E0" notitle
