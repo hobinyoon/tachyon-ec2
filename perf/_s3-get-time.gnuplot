@@ -10,10 +10,8 @@ set xlabel "File name"
 
 set grid back lt 0 lc rgb "#E0E0E0"
 
-NUM_INFILES = system("echo $NUM_INFILES")
 INFILE = system("echo $INFILE")
 OUTFILE = system("echo $OUTFILE")
-REGIONS = system("echo $REGIONS")
 set output OUTFILE
 
 set pointsize 0.5
