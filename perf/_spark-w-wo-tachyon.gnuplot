@@ -6,7 +6,7 @@ set key under nobox
 
 set border back lc rgb "#808080"
 set ylabel "Time (sec)"
-set xlabel "File name"
+set xlabel "File name\nsize" offset 0,-1
 
 set grid y back lt 0 lc rgb "#E0E0E0"
 
