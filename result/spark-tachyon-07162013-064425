@@ -1,0 +1,2417 @@
+run #: 0
+
+restaring tachyon
+Killed 0 processes
+Killed 0 processes
+localhost: Killed 0 processes
+Mounting ramfs on Linux...
+TACHYON_RAM_FOLDER was not set. Using the default one: /mnt/ramdisk
+Formatting RamFS: /mnt/ramdisk
+umount2: No such file or directory
+umount: /mnt/ramdisk: not found
+Starting master @ localhost
+Starting worker @ tachyon-ec2-0
+
+spark-shell count
+5765 tachyon.Master
+5778 tachyon.Worker
+
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/home/ubuntu/work/tachyon/target/tachyon-0.2.1-jar-with-dependencies.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/home/ubuntu/work/spark-0.7.0/lib_managed/jars/slf4j-log4j12-1.6.1.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+Welcome to
+      ____              __  
+     / __/__  ___ _____/ /__
+    _\ \/ _ \/ _ `/ __/  '_/
+   /___/ .__/\_,_/_/ /_/\_\   version 0.7.0
+      /_/                  
+
+Using Scala version 2.9.3 (OpenJDK 64-Bit Server VM, Java 1.7.0_21)
+Initializing interpreter...
+Creating SparkContext...
+0716-064450.163 SS Slf4jEventHandler started
+0716-064450.809 SS Registered BlockManagerMaster Actor
+0716-064450.906 SS MemoryStore started with capacity 326.7 MB.
+0716-064450.920 SS Created local directory at /tmp/spark-local-20130716064450-1314
+0716-064451.063 SS Bound socket to port 54206 with id = ConnectionManagerId(tachyon-ec2-0,54206)
+0716-064451.093 SS Trying to register BlockManager
+0716-064451.102 SS Registering block manager tachyon-ec2-0:54206 with 326.7 MB RAM
+0716-064451.104 SS Registered BlockManager
+0716-064451.155 SS Broadcast server started at http://10.10.185.156:39456
+0716-064451.169 SS Registered MapOutputTrackerActor actor
+0716-064451.199 SS HTTP File server directory is /tmp/spark-6d6bf49d-dcca-4696-8452-9c7c1bd8c460
+0716-064451.607 SS IoWorker thread 'spray-io-worker-0' started
+0716-064452.799 SS akka://spark/user/BlockManagerHTTPServer started on /0.0.0.0:41083
+0716-064452.802 SS Started BlockManager web UI at http://tachyon-ec2-0:41083
+Spark context available as sc.
+Type in expressions to have them evaluated.
+Type :help for more information.
+
+scala> val s = sc.textFile("tachyon://localhost:19998/hit_data.tsv.100.gz")
+0716-064455.297 SS ensureFreeSpace(58439) called with curMem=0, maxMem=342526525
+0716-064455.301 SS Block broadcast_0 stored as values to memory (estimated size 57.1 KB, free 326.6 MB)
+s: spark.RDD[String] = MappedRDD[1] at textFile at <console>:12
+
+scala> s.count()
+0716-064455.956 SS Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+0716-064455.960 SS Snappy native library not loaded
+0716-064457.706 SS Total input paths to process : 1
+0716-064459.865 SS Starting job: count at <console>:15
+0716-064459.882 SS Got job 0 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-064459.883 SS Final stage: Stage 0 (textFile at <console>:12)
+0716-064459.885 SS Parents of final stage: List()
+0716-064459.901 SS Missing parents: List()
+0716-064459.906 SS Submitting Stage 0 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-064459.920 SS Submitting 1 missing tasks from Stage 0 (MappedRDD[1] at textFile at <console>:12)
+0716-064459.952 SS Running ResultTask(0, 0)
+0716-064500.091 SS Size of task 0 is 1438 bytes
+0716-064500.500 SS Opening 's3n://2012-05-19-sample/hit_data.tsv.100.gz' for reading
+0716-064500.668 SS Got brand-new decompressor
+0716-064500.744 SS Finished ResultTask(0, 0)
+0716-064500.751 SS Completed ResultTask(0, 0)
+0716-064500.757 SS Stage 0 (textFile at <console>:12) finished in 0.804 s
+0716-064500.762 SS Job finished: count at <console>:15, took 0.89625947 s
+res0: Long = 100
+
+scala> s.count()
+0716-064501.156 SS Starting job: count at <console>:15
+0716-064501.157 SS Got job 1 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-064501.157 SS Final stage: Stage 1 (textFile at <console>:12)
+0716-064501.157 SS Parents of final stage: List()
+0716-064501.159 SS Missing parents: List()
+0716-064501.160 SS Submitting Stage 1 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-064501.160 SS Submitting 1 missing tasks from Stage 1 (MappedRDD[1] at textFile at <console>:12)
+0716-064501.161 SS Running ResultTask(1, 0)
+0716-064501.162 SS Size of task 0 is 1441 bytes
+0716-064501.229 SS Got brand-new decompressor
+0716-064501.233 SS Finished ResultTask(1, 0)
+0716-064501.233 SS Completed ResultTask(1, 0)
+0716-064501.234 SS Stage 1 (textFile at <console>:12) finished in 0.069 s
+0716-064501.234 SS Job finished: count at <console>:15, took 0.076999663 s
+res1: Long = 100
+
+scala> s.count()
+0716-064501.550 SS Starting job: count at <console>:15
+0716-064501.551 SS Got job 2 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-064501.551 SS Final stage: Stage 2 (textFile at <console>:12)
+0716-064501.551 SS Parents of final stage: List()
+0716-064501.554 SS Missing parents: List()
+0716-064501.554 SS Submitting Stage 2 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-064501.555 SS Submitting 1 missing tasks from Stage 2 (MappedRDD[1] at textFile at <console>:12)
+0716-064501.555 SS Running ResultTask(2, 0)
+0716-064501.557 SS Size of task 0 is 1441 bytes
+0716-064501.594 SS Got brand-new decompressor
+0716-064501.597 SS Finished ResultTask(2, 0)
+0716-064501.598 SS Completed ResultTask(2, 0)
+0716-064501.598 SS Stage 2 (textFile at <console>:12) finished in 0.038 s
+0716-064501.599 SS Job finished: count at <console>:15, took 0.047482259 s
+res2: Long = 100
+
+scala> s.count()
+0716-064501.987 SS Starting job: count at <console>:15
+0716-064501.988 SS Got job 3 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-064501.988 SS Final stage: Stage 3 (textFile at <console>:12)
+0716-064501.988 SS Parents of final stage: List()
+0716-064501.990 SS Missing parents: List()
+0716-064501.991 SS Submitting Stage 3 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-064501.991 SS Submitting 1 missing tasks from Stage 3 (MappedRDD[1] at textFile at <console>:12)
+0716-064501.992 SS Running ResultTask(3, 0)
+0716-064501.994 SS Size of task 0 is 1441 bytes
+0716-064502.022 SS Got brand-new decompressor
+0716-064502.026 SS Finished ResultTask(3, 0)
+0716-064502.026 SS Completed ResultTask(3, 0)
+0716-064502.026 SS Stage 3 (textFile at <console>:12) finished in 0.030 s
+0716-064502.027 SS Job finished: count at <console>:15, took 0.038701473 s
+res3: Long = 100
+
+scala> s.count()
+0716-064502.353 SS Starting job: count at <console>:15
+0716-064502.354 SS Got job 4 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-064502.354 SS Final stage: Stage 4 (textFile at <console>:12)
+0716-064502.354 SS Parents of final stage: List()
+0716-064502.356 SS Missing parents: List()
+0716-064502.356 SS Submitting Stage 4 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-064502.357 SS Submitting 1 missing tasks from Stage 4 (MappedRDD[1] at textFile at <console>:12)
+0716-064502.357 SS Running ResultTask(4, 0)
+0716-064502.359 SS Size of task 0 is 1441 bytes
+0716-064502.387 SS Got brand-new decompressor
+0716-064502.391 SS Finished ResultTask(4, 0)
+0716-064502.392 SS Completed ResultTask(4, 0)
+0716-064502.392 SS Stage 4 (textFile at <console>:12) finished in 0.032 s
+0716-064502.392 SS Job finished: count at <console>:15, took 0.038795355 s
+res4: Long = 100
+
+scala> s.count()
+0716-064502.642 SS Starting job: count at <console>:15
+0716-064502.642 SS Got job 5 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-064502.642 SS Final stage: Stage 5 (textFile at <console>:12)
+0716-064502.642 SS Parents of final stage: List()
+0716-064502.644 SS Missing parents: List()
+0716-064502.645 SS Submitting Stage 5 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-064502.645 SS Submitting 1 missing tasks from Stage 5 (MappedRDD[1] at textFile at <console>:12)
+0716-064502.646 SS Running ResultTask(5, 0)
+0716-064502.648 SS Size of task 0 is 1441 bytes
+0716-064502.685 SS Got brand-new decompressor
+0716-064502.688 SS Finished ResultTask(5, 0)
+0716-064502.689 SS Completed ResultTask(5, 0)
+0716-064502.689 SS Stage 5 (textFile at <console>:12) finished in 0.040 s
+0716-064502.692 SS Job finished: count at <console>:15, took 0.050178891 s
+res5: Long = 100
+
+scala> s.count()
+0716-064502.915 SS Starting job: count at <console>:15
+0716-064502.916 SS Got job 6 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-064502.916 SS Final stage: Stage 6 (textFile at <console>:12)
+0716-064502.916 SS Parents of final stage: List()
+0716-064502.918 SS Missing parents: List()
+0716-064502.918 SS Submitting Stage 6 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-064502.919 SS Submitting 1 missing tasks from Stage 6 (MappedRDD[1] at textFile at <console>:12)
+0716-064502.919 SS Running ResultTask(6, 0)
+0716-064502.929 SS Size of task 0 is 1441 bytes
+0716-064502.967 SS Got brand-new decompressor
+0716-064502.971 SS Finished ResultTask(6, 0)
+0716-064502.971 SS Completed ResultTask(6, 0)
+0716-064502.972 SS Stage 6 (textFile at <console>:12) finished in 0.042 s
+0716-064502.972 SS Job finished: count at <console>:15, took 0.056300254 s
+res6: Long = 100
+
+scala> s.count()
+0716-064503.346 SS Starting job: count at <console>:15
+0716-064503.346 SS Got job 7 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-064503.346 SS Final stage: Stage 7 (textFile at <console>:12)
+0716-064503.347 SS Parents of final stage: List()
+0716-064503.348 SS Missing parents: List()
+0716-064503.349 SS Submitting Stage 7 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-064503.350 SS Submitting 1 missing tasks from Stage 7 (MappedRDD[1] at textFile at <console>:12)
+0716-064503.350 SS Running ResultTask(7, 0)
+0716-064503.352 SS Size of task 0 is 1441 bytes
+0716-064503.450 SS Got brand-new decompressor
+0716-064503.455 SS Finished ResultTask(7, 0)
+0716-064503.455 SS Completed ResultTask(7, 0)
+0716-064503.455 SS Stage 7 (textFile at <console>:12) finished in 0.103 s
+0716-064503.456 SS Job finished: count at <console>:15, took 0.109314879 s
+res7: Long = 100
+
+scala> s.count()
+0716-064503.842 SS Starting job: count at <console>:15
+0716-064503.843 SS Got job 8 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-064503.843 SS Final stage: Stage 8 (textFile at <console>:12)
+0716-064503.843 SS Parents of final stage: List()
+0716-064503.845 SS Missing parents: List()
+0716-064503.845 SS Submitting Stage 8 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-064503.846 SS Submitting 1 missing tasks from Stage 8 (MappedRDD[1] at textFile at <console>:12)
+0716-064503.847 SS Running ResultTask(8, 0)
+0716-064503.849 SS Size of task 0 is 1441 bytes
+0716-064503.881 SS Got brand-new decompressor
+0716-064503.886 SS Finished ResultTask(8, 0)
+0716-064503.886 SS Completed ResultTask(8, 0)
+0716-064503.886 SS Stage 8 (textFile at <console>:12) finished in 0.034 s
+0716-064503.887 SS Job finished: count at <console>:15, took 0.044159335 s
+res8: Long = 100
+
+scala> s.count()
+0716-064504.271 SS Starting job: count at <console>:15
+0716-064504.272 SS Got job 9 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-064504.272 SS Final stage: Stage 9 (textFile at <console>:12)
+0716-064504.272 SS Parents of final stage: List()
+0716-064504.274 SS Missing parents: List()
+0716-064504.275 SS Submitting Stage 9 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-064504.275 SS Submitting 1 missing tasks from Stage 9 (MappedRDD[1] at textFile at <console>:12)
+0716-064504.276 SS Running ResultTask(9, 0)
+0716-064504.278 SS Size of task 0 is 1441 bytes
+0716-064504.309 SS Got brand-new decompressor
+0716-064504.313 SS Finished ResultTask(9, 0)
+0716-064504.313 SS Completed ResultTask(9, 0)
+0716-064504.314 SS Stage 9 (textFile at <console>:12) finished in 0.034 s
+0716-064504.314 SS Job finished: count at <console>:15, took 0.042065694 s
+res9: Long = 100
+
+scala> Killed 1 processes
+Killed 1 processes
+localhost: Killed 0 processes
+Formatting Tachyon @ localhost
+0716-064505.967 TU Deleting /mnt/tachyon/tachyon/tachyon_checkpoint.data
+0716-064505.969 TU Deleting /mnt/tachyon/tachyon/tachyon_log.data
+0716-064506.958 TU Formatting s3n://2012-05-19-sample/tachyon/data
+0716-064508.190 TU Response '/tachyon%2Fdata' - Unexpected response code 404, expected 200
+0716-064508.233 TU Response '/tachyon%2Fdata_%24folder%24' - Unexpected response code 404, expected 200
+0716-064508.310 TU Response '/tachyon%2Fdata' - Unexpected response code 404, expected 200
+0716-064508.336 TU Response '/tachyon%2Fdata_%24folder%24' - Unexpected response code 404, expected 200
+0716-064508.405 TU Response '/tachyon' - Unexpected response code 404, expected 200
+0716-064508.540 TU Response '/tachyon_%24folder%24' - Unexpected response code 404, expected 200
+0716-064508.834 TU Response '/tachyon%2Fdata' - Unexpected response code 404, expected 200
+0716-064508.861 TU Response '/tachyon%2Fdata_%24folder%24' - Unexpected response code 404, expected 200
+0716-064508.943 TU Formatting s3n://2012-05-19-sample/tachyon/workers
+0716-064508.970 TU Response '/tachyon%2Fworkers' - Unexpected response code 404, expected 200
+0716-064508.998 TU Response '/tachyon%2Fworkers_%24folder%24' - Unexpected response code 404, expected 200
+0716-064509.066 TU Response '/tachyon%2Fworkers' - Unexpected response code 404, expected 200
+0716-064509.175 TU Response '/tachyon%2Fworkers_%24folder%24' - Unexpected response code 404, expected 200
+0716-064509.268 TU Response '/tachyon' - Unexpected response code 404, expected 200
+0716-064509.323 TU Response '/tachyon%2Fworkers' - Unexpected response code 404, expected 200
+0716-064509.344 TU Response '/tachyon%2Fworkers_%24folder%24' - Unexpected response code 404, expected 200
+
+restaring tachyon
+Killed 0 processes
+Killed 0 processes
+localhost: Killed 0 processes
+Mounting ramfs on Linux...
+TACHYON_RAM_FOLDER was not set. Using the default one: /mnt/ramdisk
+Formatting RamFS: /mnt/ramdisk
+Starting master @ localhost
+Starting worker @ tachyon-ec2-0
+
+spark-shell count
+6343 tachyon.Master
+6357 tachyon.Worker
+
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/home/ubuntu/work/tachyon/target/tachyon-0.2.1-jar-with-dependencies.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/home/ubuntu/work/spark-0.7.0/lib_managed/jars/slf4j-log4j12-1.6.1.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+Welcome to
+      ____              __  
+     / __/__  ___ _____/ /__
+    _\ \/ _ \/ _ `/ __/  '_/
+   /___/ .__/\_,_/_/ /_/\_\   version 0.7.0
+      /_/                  
+
+Using Scala version 2.9.3 (OpenJDK 64-Bit Server VM, Java 1.7.0_21)
+Initializing interpreter...
+Creating SparkContext...
+0716-064528.626 SS Slf4jEventHandler started
+0716-064529.281 SS Registered BlockManagerMaster Actor
+0716-064529.345 SS MemoryStore started with capacity 326.7 MB.
+0716-064529.354 SS Created local directory at /tmp/spark-local-20130716064529-1d19
+0716-064529.407 SS Bound socket to port 50898 with id = ConnectionManagerId(tachyon-ec2-0,50898)
+0716-064529.433 SS Trying to register BlockManager
+0716-064529.436 SS Registering block manager tachyon-ec2-0:50898 with 326.7 MB RAM
+0716-064529.437 SS Registered BlockManager
+0716-064529.485 SS Broadcast server started at http://10.10.185.156:33052
+0716-064529.496 SS Registered MapOutputTrackerActor actor
+0716-064529.504 SS HTTP File server directory is /tmp/spark-d5f73c19-8373-4360-9c6a-01990ae8e9d7
+0716-064529.943 SS IoWorker thread 'spray-io-worker-0' started
+0716-064531.039 SS akka://spark/user/BlockManagerHTTPServer started on /0.0.0.0:44893
+0716-064531.041 SS Started BlockManager web UI at http://tachyon-ec2-0:44893
+Spark context available as sc.
+Type in expressions to have them evaluated.
+Type :help for more information.
+
+scala> val s = sc.textFile("tachyon://localhost:19998/hit_data.tsv.1000.gz")
+0716-064533.346 SS ensureFreeSpace(58439) called with curMem=0, maxMem=342526525
+0716-064533.349 SS Block broadcast_0 stored as values to memory (estimated size 57.1 KB, free 326.6 MB)
+s: spark.RDD[String] = MappedRDD[1] at textFile at <console>:12
+
+scala> s.count()
+0716-064533.879 SS Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+0716-064533.879 SS Snappy native library not loaded
+0716-064535.494 SS Total input paths to process : 1
+0716-064537.677 SS Starting job: count at <console>:15
+0716-064537.694 SS Got job 0 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-064537.698 SS Final stage: Stage 0 (textFile at <console>:12)
+0716-064537.699 SS Parents of final stage: List()
+0716-064537.712 SS Missing parents: List()
+0716-064537.715 SS Submitting Stage 0 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-064537.736 SS Submitting 1 missing tasks from Stage 0 (MappedRDD[1] at textFile at <console>:12)
+0716-064537.742 SS Running ResultTask(0, 0)
+0716-064537.801 SS Size of task 0 is 1439 bytes
+0716-064538.138 SS Opening 's3n://2012-05-19-sample/hit_data.tsv.1000.gz' for reading
+0716-064538.360 SS Got brand-new decompressor
+0716-064538.466 SS Finished ResultTask(0, 0)
+0716-064538.475 SS Completed ResultTask(0, 0)
+0716-064538.477 SS Stage 0 (textFile at <console>:12) finished in 0.735 s
+0716-064538.479 SS Job finished: count at <console>:15, took 0.794630197 s
+res0: Long = 1000
+
+scala> s.count()
+0716-064539.215 SS Starting job: count at <console>:15
+0716-064539.216 SS Got job 1 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-064539.216 SS Final stage: Stage 1 (textFile at <console>:12)
+0716-064539.217 SS Parents of final stage: List()
+0716-064539.218 SS Missing parents: List()
+0716-064539.219 SS Submitting Stage 1 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-064539.219 SS Submitting 1 missing tasks from Stage 1 (MappedRDD[1] at textFile at <console>:12)
+0716-064539.220 SS Running ResultTask(1, 0)
+0716-064539.222 SS Size of task 0 is 1442 bytes
+0716-064539.285 SS Got brand-new decompressor
+0716-064539.305 SS Finished ResultTask(1, 0)
+0716-064539.306 SS Completed ResultTask(1, 0)
+0716-064539.306 SS Stage 1 (textFile at <console>:12) finished in 0.081 s
+0716-064539.307 SS Job finished: count at <console>:15, took 0.090745422 s
+res1: Long = 1000
+
+scala> s.count()
+0716-064539.841 SS Starting job: count at <console>:15
+0716-064539.841 SS Got job 2 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-064539.841 SS Final stage: Stage 2 (textFile at <console>:12)
+0716-064539.841 SS Parents of final stage: List()
+0716-064539.844 SS Missing parents: List()
+0716-064539.845 SS Submitting Stage 2 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-064539.845 SS Submitting 1 missing tasks from Stage 2 (MappedRDD[1] at textFile at <console>:12)
+0716-064539.846 SS Running ResultTask(2, 0)
+0716-064539.848 SS Size of task 0 is 1442 bytes
+0716-064539.885 SS Got brand-new decompressor
+0716-064539.909 SS Finished ResultTask(2, 0)
+0716-064539.909 SS Completed ResultTask(2, 0)
+0716-064539.910 SS Stage 2 (textFile at <console>:12) finished in 0.060 s
+0716-064539.910 SS Job finished: count at <console>:15, took 0.06896528 s
+res2: Long = 1000
+
+scala> s.count()
+0716-064540.270 SS Starting job: count at <console>:15
+0716-064540.270 SS Got job 3 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-064540.270 SS Final stage: Stage 3 (textFile at <console>:12)
+0716-064540.270 SS Parents of final stage: List()
+0716-064540.272 SS Missing parents: List()
+0716-064540.273 SS Submitting Stage 3 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-064540.273 SS Submitting 1 missing tasks from Stage 3 (MappedRDD[1] at textFile at <console>:12)
+0716-064540.274 SS Running ResultTask(3, 0)
+0716-064540.276 SS Size of task 0 is 1442 bytes
+0716-064540.308 SS Got brand-new decompressor
+0716-064540.349 SS Finished ResultTask(3, 0)
+0716-064540.349 SS Completed ResultTask(3, 0)
+0716-064540.350 SS Stage 3 (textFile at <console>:12) finished in 0.073 s
+0716-064540.350 SS Job finished: count at <console>:15, took 0.079988256 s
+res3: Long = 1000
+
+scala> s.count()
+0716-064540.682 SS Starting job: count at <console>:15
+0716-064540.683 SS Got job 4 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-064540.683 SS Final stage: Stage 4 (textFile at <console>:12)
+0716-064540.683 SS Parents of final stage: List()
+0716-064540.685 SS Missing parents: List()
+0716-064540.685 SS Submitting Stage 4 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-064540.686 SS Submitting 1 missing tasks from Stage 4 (MappedRDD[1] at textFile at <console>:12)
+0716-064540.686 SS Running ResultTask(4, 0)
+0716-064540.688 SS Size of task 0 is 1442 bytes
+0716-064540.742 SS Got brand-new decompressor
+0716-064540.772 SS Finished ResultTask(4, 0)
+0716-064540.772 SS Completed ResultTask(4, 0)
+0716-064540.773 SS Stage 4 (textFile at <console>:12) finished in 0.084 s
+0716-064540.773 SS Job finished: count at <console>:15, took 0.09047559 s
+res4: Long = 1000
+
+scala> s.count()
+0716-064541.150 SS Starting job: count at <console>:15
+0716-064541.150 SS Got job 5 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-064541.150 SS Final stage: Stage 5 (textFile at <console>:12)
+0716-064541.150 SS Parents of final stage: List()
+0716-064541.152 SS Missing parents: List()
+0716-064541.153 SS Submitting Stage 5 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-064541.153 SS Submitting 1 missing tasks from Stage 5 (MappedRDD[1] at textFile at <console>:12)
+0716-064541.154 SS Running ResultTask(5, 0)
+0716-064541.156 SS Size of task 0 is 1442 bytes
+0716-064541.183 SS Got brand-new decompressor
+0716-064541.202 SS Finished ResultTask(5, 0)
+0716-064541.203 SS Completed ResultTask(5, 0)
+0716-064541.203 SS Stage 5 (textFile at <console>:12) finished in 0.047 s
+0716-064541.203 SS Job finished: count at <console>:15, took 0.053296128 s
+res5: Long = 1000
+
+scala> s.count()
+0716-064541.468 SS Starting job: count at <console>:15
+0716-064541.469 SS Got job 6 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-064541.469 SS Final stage: Stage 6 (textFile at <console>:12)
+0716-064541.469 SS Parents of final stage: List()
+0716-064541.471 SS Missing parents: List()
+0716-064541.471 SS Submitting Stage 6 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-064541.472 SS Submitting 1 missing tasks from Stage 6 (MappedRDD[1] at textFile at <console>:12)
+0716-064541.472 SS Running ResultTask(6, 0)
+0716-064541.477 SS Size of task 0 is 1442 bytes
+0716-064541.526 SS Got brand-new decompressor
+0716-064541.548 SS Finished ResultTask(6, 0)
+0716-064541.549 SS Completed ResultTask(6, 0)
+0716-064541.549 SS Stage 6 (textFile at <console>:12) finished in 0.072 s
+0716-064541.549 SS Job finished: count at <console>:15, took 0.08054673 s
+res6: Long = 1000
+
+scala> s.count()
+0716-064541.793 SS Starting job: count at <console>:15
+0716-064541.793 SS Got job 7 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-064541.793 SS Final stage: Stage 7 (textFile at <console>:12)
+0716-064541.793 SS Parents of final stage: List()
+0716-064541.795 SS Missing parents: List()
+0716-064541.796 SS Submitting Stage 7 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-064541.796 SS Submitting 1 missing tasks from Stage 7 (MappedRDD[1] at textFile at <console>:12)
+0716-064541.797 SS Running ResultTask(7, 0)
+0716-064541.799 SS Size of task 0 is 1442 bytes
+0716-064541.909 SS Got brand-new decompressor
+0716-064541.958 SS Finished ResultTask(7, 0)
+0716-064541.958 SS Completed ResultTask(7, 0)
+0716-064541.959 SS Stage 7 (textFile at <console>:12) finished in 0.159 s
+0716-064541.959 SS Job finished: count at <console>:15, took 0.165770374 s
+res7: Long = 1000
+
+scala> s.count()
+0716-064542.432 SS Starting job: count at <console>:15
+0716-064542.433 SS Got job 8 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-064542.433 SS Final stage: Stage 8 (textFile at <console>:12)
+0716-064542.433 SS Parents of final stage: List()
+0716-064542.435 SS Missing parents: List()
+0716-064542.435 SS Submitting Stage 8 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-064542.436 SS Submitting 1 missing tasks from Stage 8 (MappedRDD[1] at textFile at <console>:12)
+0716-064542.436 SS Running ResultTask(8, 0)
+0716-064542.438 SS Size of task 0 is 1442 bytes
+0716-064542.489 SS Got brand-new decompressor
+0716-064542.503 SS Finished ResultTask(8, 0)
+0716-064542.504 SS Completed ResultTask(8, 0)
+0716-064542.504 SS Stage 8 (textFile at <console>:12) finished in 0.063 s
+0716-064542.504 SS Job finished: count at <console>:15, took 0.071668866 s
+res8: Long = 1000
+
+scala> s.count()
+0716-064542.892 SS Starting job: count at <console>:15
+0716-064542.893 SS Got job 9 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-064542.893 SS Final stage: Stage 9 (textFile at <console>:12)
+0716-064542.893 SS Parents of final stage: List()
+0716-064542.895 SS Missing parents: List()
+0716-064542.895 SS Submitting Stage 9 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-064542.896 SS Submitting 1 missing tasks from Stage 9 (MappedRDD[1] at textFile at <console>:12)
+0716-064542.896 SS Running ResultTask(9, 0)
+0716-064542.898 SS Size of task 0 is 1442 bytes
+0716-064542.920 SS Got brand-new decompressor
+0716-064542.953 SS Finished ResultTask(9, 0)
+0716-064542.954 SS Completed ResultTask(9, 0)
+0716-064542.954 SS Stage 9 (textFile at <console>:12) finished in 0.053 s
+0716-064542.954 SS Job finished: count at <console>:15, took 0.06158713 s
+res9: Long = 1000
+
+scala> Killed 1 processes
+Killed 1 processes
+localhost: Killed 0 processes
+Formatting Tachyon @ localhost
+0716-064544.390 TU Deleting /mnt/tachyon/tachyon/tachyon_checkpoint.data
+0716-064544.392 TU Deleting /mnt/tachyon/tachyon/tachyon_log.data
+0716-064545.379 TU Formatting s3n://2012-05-19-sample/tachyon/data
+0716-064546.602 TU Response '/tachyon%2Fdata' - Unexpected response code 404, expected 200
+0716-064546.909 TU Response '/tachyon%2Fdata' - Unexpected response code 404, expected 200
+0716-064546.938 TU Response '/tachyon%2Fdata_%24folder%24' - Unexpected response code 404, expected 200
+0716-064546.988 TU Response '/tachyon' - Unexpected response code 404, expected 200
+0716-064547.025 TU Response '/tachyon%2Fdata' - Unexpected response code 404, expected 200
+0716-064547.052 TU Response '/tachyon%2Fdata_%24folder%24' - Unexpected response code 404, expected 200
+0716-064547.105 TU Formatting s3n://2012-05-19-sample/tachyon/workers
+0716-064547.133 TU Response '/tachyon%2Fworkers' - Unexpected response code 404, expected 200
+0716-064547.312 TU Response '/tachyon%2Fworkers' - Unexpected response code 404, expected 200
+0716-064547.337 TU Response '/tachyon%2Fworkers_%24folder%24' - Unexpected response code 404, expected 200
+0716-064547.387 TU Response '/tachyon' - Unexpected response code 404, expected 200
+0716-064547.429 TU Response '/tachyon%2Fworkers' - Unexpected response code 404, expected 200
+0716-064547.445 TU Response '/tachyon%2Fworkers_%24folder%24' - Unexpected response code 404, expected 200
+
+restaring tachyon
+Killed 0 processes
+Killed 0 processes
+localhost: Killed 0 processes
+Mounting ramfs on Linux...
+TACHYON_RAM_FOLDER was not set. Using the default one: /mnt/ramdisk
+Formatting RamFS: /mnt/ramdisk
+Starting master @ localhost
+Starting worker @ tachyon-ec2-0
+
+spark-shell count
+6915 tachyon.Master
+6929 tachyon.Worker
+
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/home/ubuntu/work/tachyon/target/tachyon-0.2.1-jar-with-dependencies.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/home/ubuntu/work/spark-0.7.0/lib_managed/jars/slf4j-log4j12-1.6.1.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+Welcome to
+      ____              __  
+     / __/__  ___ _____/ /__
+    _\ \/ _ \/ _ `/ __/  '_/
+   /___/ .__/\_,_/_/ /_/\_\   version 0.7.0
+      /_/                  
+
+Using Scala version 2.9.3 (OpenJDK 64-Bit Server VM, Java 1.7.0_21)
+Initializing interpreter...
+Creating SparkContext...
+0716-064607.174 SS Slf4jEventHandler started
+0716-064607.813 SS Registered BlockManagerMaster Actor
+0716-064607.859 SS MemoryStore started with capacity 326.7 MB.
+0716-064607.877 SS Created local directory at /tmp/spark-local-20130716064607-5024
+0716-064607.932 SS Bound socket to port 37075 with id = ConnectionManagerId(tachyon-ec2-0,37075)
+0716-064607.955 SS Trying to register BlockManager
+0716-064607.962 SS Registering block manager tachyon-ec2-0:37075 with 326.7 MB RAM
+0716-064607.963 SS Registered BlockManager
+0716-064608.010 SS Broadcast server started at http://10.10.185.156:54168
+0716-064608.020 SS Registered MapOutputTrackerActor actor
+0716-064608.029 SS HTTP File server directory is /tmp/spark-8fb19e4b-dd87-428e-9a69-f16fa6eaf3aa
+0716-064608.471 SS IoWorker thread 'spray-io-worker-0' started
+0716-064609.551 SS akka://spark/user/BlockManagerHTTPServer started on /0.0.0.0:60680
+0716-064609.553 SS Started BlockManager web UI at http://tachyon-ec2-0:60680
+Spark context available as sc.
+Type in expressions to have them evaluated.
+Type :help for more information.
+
+scala> val s = sc.textFile("tachyon://localhost:19998/hit_data.tsv.10000.gz")
+0716-064612.026 SS ensureFreeSpace(58439) called with curMem=0, maxMem=342526525
+0716-064612.029 SS Block broadcast_0 stored as values to memory (estimated size 57.1 KB, free 326.6 MB)
+s: spark.RDD[String] = MappedRDD[1] at textFile at <console>:12
+
+scala> s.count()
+0716-064612.560 SS Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+0716-064612.560 SS Snappy native library not loaded
+0716-064614.100 SS Total input paths to process : 1
+0716-064616.245 SS Starting job: count at <console>:15
+0716-064616.257 SS Got job 0 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-064616.261 SS Final stage: Stage 0 (textFile at <console>:12)
+0716-064616.262 SS Parents of final stage: List()
+0716-064616.273 SS Missing parents: List()
+0716-064616.278 SS Submitting Stage 0 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-064616.297 SS Submitting 1 missing tasks from Stage 0 (MappedRDD[1] at textFile at <console>:12)
+0716-064616.303 SS Running ResultTask(0, 0)
+0716-064616.362 SS Size of task 0 is 1440 bytes
+0716-064616.714 SS Opening 's3n://2012-05-19-sample/hit_data.tsv.10000.gz' for reading
+0716-064617.202 SS Got brand-new decompressor
+0716-064617.522 SS Finished ResultTask(0, 0)
+0716-064617.526 SS Completed ResultTask(0, 0)
+0716-064617.529 SS Stage 0 (textFile at <console>:12) finished in 1.226 s
+0716-064617.537 SS Job finished: count at <console>:15, took 1.291246616 s
+res0: Long = 10000
+
+scala> s.count()
+0716-064618.231 SS Starting job: count at <console>:15
+0716-064618.232 SS Got job 1 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-064618.232 SS Final stage: Stage 1 (textFile at <console>:12)
+0716-064618.233 SS Parents of final stage: List()
+0716-064618.235 SS Missing parents: List()
+0716-064618.235 SS Submitting Stage 1 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-064618.236 SS Submitting 1 missing tasks from Stage 1 (MappedRDD[1] at textFile at <console>:12)
+0716-064618.236 SS Running ResultTask(1, 0)
+0716-064618.239 SS Size of task 0 is 1443 bytes
+0716-064618.334 SS Got brand-new decompressor
+0716-064618.656 SS Finished ResultTask(1, 0)
+0716-064618.657 SS Completed ResultTask(1, 0)
+0716-064618.657 SS Stage 1 (textFile at <console>:12) finished in 0.417 s
+0716-064618.657 SS Job finished: count at <console>:15, took 0.425266744 s
+res1: Long = 10000
+
+scala> s.count()
+0716-064618.992 SS Starting job: count at <console>:15
+0716-064618.993 SS Got job 2 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-064618.993 SS Final stage: Stage 2 (textFile at <console>:12)
+0716-064618.993 SS Parents of final stage: List()
+0716-064618.995 SS Missing parents: List()
+0716-064618.996 SS Submitting Stage 2 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-064618.996 SS Submitting 1 missing tasks from Stage 2 (MappedRDD[1] at textFile at <console>:12)
+0716-064618.997 SS Running ResultTask(2, 0)
+0716-064618.999 SS Size of task 0 is 1443 bytes
+0716-064619.033 SS Got brand-new decompressor
+0716-064619.147 SS Finished ResultTask(2, 0)
+0716-064619.147 SS Completed ResultTask(2, 0)
+0716-064619.148 SS Stage 2 (textFile at <console>:12) finished in 0.146 s
+0716-064619.148 SS Job finished: count at <console>:15, took 0.155145205 s
+res2: Long = 10000
+
+scala> s.count()
+0716-064619.602 SS Starting job: count at <console>:15
+0716-064619.603 SS Got job 3 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-064619.603 SS Final stage: Stage 3 (textFile at <console>:12)
+0716-064619.603 SS Parents of final stage: List()
+0716-064619.605 SS Missing parents: List()
+0716-064619.605 SS Submitting Stage 3 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-064619.606 SS Submitting 1 missing tasks from Stage 3 (MappedRDD[1] at textFile at <console>:12)
+0716-064619.606 SS Running ResultTask(3, 0)
+0716-064619.608 SS Size of task 0 is 1443 bytes
+0716-064619.638 SS Got brand-new decompressor
+0716-064619.755 SS Finished ResultTask(3, 0)
+0716-064619.756 SS Completed ResultTask(3, 0)
+0716-064619.756 SS Stage 3 (textFile at <console>:12) finished in 0.144 s
+0716-064619.756 SS Job finished: count at <console>:15, took 0.153707458 s
+res3: Long = 10000
+
+scala> s.count()
+0716-064620.098 SS Starting job: count at <console>:15
+0716-064620.098 SS Got job 4 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-064620.099 SS Final stage: Stage 4 (textFile at <console>:12)
+0716-064620.099 SS Parents of final stage: List()
+0716-064620.100 SS Missing parents: List()
+0716-064620.101 SS Submitting Stage 4 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-064620.102 SS Submitting 1 missing tasks from Stage 4 (MappedRDD[1] at textFile at <console>:12)
+0716-064620.102 SS Running ResultTask(4, 0)
+0716-064620.104 SS Size of task 0 is 1443 bytes
+0716-064620.171 SS Got brand-new decompressor
+0716-064620.295 SS Finished ResultTask(4, 0)
+0716-064620.296 SS Completed ResultTask(4, 0)
+0716-064620.296 SS Stage 4 (textFile at <console>:12) finished in 0.192 s
+0716-064620.296 SS Job finished: count at <console>:15, took 0.198145098 s
+res4: Long = 10000
+
+scala> s.count()
+0716-064620.572 SS Starting job: count at <console>:15
+0716-064620.572 SS Got job 5 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-064620.573 SS Final stage: Stage 5 (textFile at <console>:12)
+0716-064620.573 SS Parents of final stage: List()
+0716-064620.575 SS Missing parents: List()
+0716-064620.575 SS Submitting Stage 5 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-064620.576 SS Submitting 1 missing tasks from Stage 5 (MappedRDD[1] at textFile at <console>:12)
+0716-064620.576 SS Running ResultTask(5, 0)
+0716-064620.578 SS Size of task 0 is 1443 bytes
+0716-064620.605 SS Got brand-new decompressor
+0716-064620.721 SS Finished ResultTask(5, 0)
+0716-064620.722 SS Completed ResultTask(5, 0)
+0716-064620.722 SS Stage 5 (textFile at <console>:12) finished in 0.142 s
+0716-064620.723 SS Job finished: count at <console>:15, took 0.150371775 s
+res5: Long = 10000
+
+scala> s.count()
+0716-064620.985 SS Starting job: count at <console>:15
+0716-064620.986 SS Got job 6 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-064620.986 SS Final stage: Stage 6 (textFile at <console>:12)
+0716-064620.986 SS Parents of final stage: List()
+0716-064620.988 SS Missing parents: List()
+0716-064620.989 SS Submitting Stage 6 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-064620.989 SS Submitting 1 missing tasks from Stage 6 (MappedRDD[1] at textFile at <console>:12)
+0716-064620.990 SS Running ResultTask(6, 0)
+0716-064621.001 SS Size of task 0 is 1443 bytes
+0716-064621.043 SS Got brand-new decompressor
+0716-064621.170 SS Finished ResultTask(6, 0)
+0716-064621.171 SS Completed ResultTask(6, 0)
+0716-064621.171 SS Stage 6 (textFile at <console>:12) finished in 0.170 s
+0716-064621.171 SS Job finished: count at <console>:15, took 0.185514158 s
+res6: Long = 10000
+
+scala> s.count()
+0716-064621.413 SS Starting job: count at <console>:15
+0716-064621.414 SS Got job 7 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-064621.414 SS Final stage: Stage 7 (textFile at <console>:12)
+0716-064621.414 SS Parents of final stage: List()
+0716-064621.416 SS Missing parents: List()
+0716-064621.417 SS Submitting Stage 7 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-064621.417 SS Submitting 1 missing tasks from Stage 7 (MappedRDD[1] at textFile at <console>:12)
+0716-064621.418 SS Running ResultTask(7, 0)
+0716-064621.420 SS Size of task 0 is 1443 bytes
+0716-064621.510 SS Got brand-new decompressor
+0716-064621.841 SS Finished ResultTask(7, 0)
+0716-064621.842 SS Completed ResultTask(7, 0)
+0716-064621.842 SS Stage 7 (textFile at <console>:12) finished in 0.422 s
+0716-064621.843 SS Job finished: count at <console>:15, took 0.428685242 s
+res7: Long = 10000
+
+scala> s.count()
+0716-064622.163 SS Starting job: count at <console>:15
+0716-064622.164 SS Got job 8 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-064622.164 SS Final stage: Stage 8 (textFile at <console>:12)
+0716-064622.164 SS Parents of final stage: List()
+0716-064622.166 SS Missing parents: List()
+0716-064622.166 SS Submitting Stage 8 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-064622.167 SS Submitting 1 missing tasks from Stage 8 (MappedRDD[1] at textFile at <console>:12)
+0716-064622.168 SS Running ResultTask(8, 0)
+0716-064622.169 SS Size of task 0 is 1443 bytes
+0716-064622.197 SS Got brand-new decompressor
+0716-064622.332 SS Finished ResultTask(8, 0)
+0716-064622.332 SS Completed ResultTask(8, 0)
+0716-064622.333 SS Stage 8 (textFile at <console>:12) finished in 0.161 s
+0716-064622.333 SS Job finished: count at <console>:15, took 0.169175743 s
+res8: Long = 10000
+
+scala> s.count()
+0716-064622.743 SS Starting job: count at <console>:15
+0716-064622.743 SS Got job 9 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-064622.743 SS Final stage: Stage 9 (textFile at <console>:12)
+0716-064622.743 SS Parents of final stage: List()
+0716-064622.745 SS Missing parents: List()
+0716-064622.746 SS Submitting Stage 9 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-064622.747 SS Submitting 1 missing tasks from Stage 9 (MappedRDD[1] at textFile at <console>:12)
+0716-064622.747 SS Running ResultTask(9, 0)
+0716-064622.749 SS Size of task 0 is 1443 bytes
+0716-064622.773 SS Got brand-new decompressor
+0716-064622.886 SS Finished ResultTask(9, 0)
+0716-064622.886 SS Completed ResultTask(9, 0)
+0716-064622.887 SS Stage 9 (textFile at <console>:12) finished in 0.135 s
+0716-064622.887 SS Job finished: count at <console>:15, took 0.143916137 s
+res9: Long = 10000
+
+scala> Killed 1 processes
+Killed 1 processes
+localhost: Killed 0 processes
+Formatting Tachyon @ localhost
+0716-064624.305 TU Deleting /mnt/tachyon/tachyon/tachyon_checkpoint.data
+0716-064624.306 TU Deleting /mnt/tachyon/tachyon/tachyon_log.data
+0716-064625.298 TU Formatting s3n://2012-05-19-sample/tachyon/data
+0716-064626.530 TU Response '/tachyon%2Fdata' - Unexpected response code 404, expected 200
+0716-064626.722 TU Response '/tachyon%2Fdata' - Unexpected response code 404, expected 200
+0716-064626.748 TU Response '/tachyon%2Fdata_%24folder%24' - Unexpected response code 404, expected 200
+0716-064626.790 TU Response '/tachyon' - Unexpected response code 404, expected 200
+0716-064626.853 TU Response '/tachyon%2Fdata' - Unexpected response code 404, expected 200
+0716-064626.878 TU Response '/tachyon%2Fdata_%24folder%24' - Unexpected response code 404, expected 200
+0716-064627.138 TU Formatting s3n://2012-05-19-sample/tachyon/workers
+0716-064627.153 TU Response '/tachyon%2Fworkers' - Unexpected response code 404, expected 200
+0716-064627.295 TU Response '/tachyon%2Fworkers' - Unexpected response code 404, expected 200
+0716-064627.330 TU Response '/tachyon%2Fworkers_%24folder%24' - Unexpected response code 404, expected 200
+0716-064627.390 TU Response '/tachyon' - Unexpected response code 404, expected 200
+0716-064627.452 TU Response '/tachyon%2Fworkers' - Unexpected response code 404, expected 200
+0716-064627.468 TU Response '/tachyon%2Fworkers_%24folder%24' - Unexpected response code 404, expected 200
+
+restaring tachyon
+Killed 0 processes
+Killed 0 processes
+localhost: Killed 0 processes
+Mounting ramfs on Linux...
+TACHYON_RAM_FOLDER was not set. Using the default one: /mnt/ramdisk
+Formatting RamFS: /mnt/ramdisk
+Starting master @ localhost
+Starting worker @ tachyon-ec2-0
+
+spark-shell count
+7496 tachyon.Master
+7510 tachyon.Worker
+
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/home/ubuntu/work/tachyon/target/tachyon-0.2.1-jar-with-dependencies.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/home/ubuntu/work/spark-0.7.0/lib_managed/jars/slf4j-log4j12-1.6.1.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+Welcome to
+      ____              __  
+     / __/__  ___ _____/ /__
+    _\ \/ _ \/ _ `/ __/  '_/
+   /___/ .__/\_,_/_/ /_/\_\   version 0.7.0
+      /_/                  
+
+Using Scala version 2.9.3 (OpenJDK 64-Bit Server VM, Java 1.7.0_21)
+Initializing interpreter...
+Creating SparkContext...
+0716-064648.267 SS Slf4jEventHandler started
+0716-064648.913 SS Registered BlockManagerMaster Actor
+0716-064648.969 SS MemoryStore started with capacity 326.7 MB.
+0716-064648.978 SS Created local directory at /tmp/spark-local-20130716064648-a9da
+0716-064649.028 SS Bound socket to port 33362 with id = ConnectionManagerId(tachyon-ec2-0,33362)
+0716-064649.053 SS Trying to register BlockManager
+0716-064649.059 SS Registering block manager tachyon-ec2-0:33362 with 326.7 MB RAM
+0716-064649.061 SS Registered BlockManager
+0716-064649.109 SS Broadcast server started at http://10.10.185.156:46162
+0716-064649.120 SS Registered MapOutputTrackerActor actor
+0716-064649.126 SS HTTP File server directory is /tmp/spark-53fdbab0-50a5-4b00-828e-cfafc832ac91
+0716-064649.610 SS IoWorker thread 'spray-io-worker-0' started
+0716-064650.667 SS akka://spark/user/BlockManagerHTTPServer started on /0.0.0.0:58881
+0716-064650.669 SS Started BlockManager web UI at http://tachyon-ec2-0:58881
+Spark context available as sc.
+Type in expressions to have them evaluated.
+Type :help for more information.
+
+scala> val s = sc.textFile("tachyon://localhost:19998/hit_data.tsv.100000.gz")
+0716-064653.543 SS ensureFreeSpace(58439) called with curMem=0, maxMem=342526525
+0716-064653.546 SS Block broadcast_0 stored as values to memory (estimated size 57.1 KB, free 326.6 MB)
+s: spark.RDD[String] = MappedRDD[1] at textFile at <console>:12
+
+scala> s.count()
+0716-064654.086 SS Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+0716-064654.087 SS Snappy native library not loaded
+0716-064656.951 SS Total input paths to process : 1
+0716-064659.070 SS Starting job: count at <console>:15
+0716-064659.085 SS Got job 0 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-064659.086 SS Final stage: Stage 0 (textFile at <console>:12)
+0716-064659.087 SS Parents of final stage: List()
+0716-064659.109 SS Missing parents: List()
+0716-064659.111 SS Submitting Stage 0 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-064659.137 SS Submitting 1 missing tasks from Stage 0 (MappedRDD[1] at textFile at <console>:12)
+0716-064659.142 SS Running ResultTask(0, 0)
+0716-064659.201 SS Size of task 0 is 1441 bytes
+0716-064659.651 SS Opening 's3n://2012-05-19-sample/hit_data.tsv.100000.gz' for reading
+0716-064702.382 SS Got brand-new decompressor
+0716-064703.846 SS Finished ResultTask(0, 0)
+0716-064703.851 SS Completed ResultTask(0, 0)
+0716-064703.854 SS Stage 0 (textFile at <console>:12) finished in 4.712 s
+0716-064703.855 SS Job finished: count at <console>:15, took 4.784375996 s
+res0: Long = 100002
+
+scala> s.count()
+0716-064704.253 SS Starting job: count at <console>:15
+0716-064704.254 SS Got job 1 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-064704.254 SS Final stage: Stage 1 (textFile at <console>:12)
+0716-064704.254 SS Parents of final stage: List()
+0716-064704.256 SS Missing parents: List()
+0716-064704.256 SS Submitting Stage 1 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-064704.257 SS Submitting 1 missing tasks from Stage 1 (MappedRDD[1] at textFile at <console>:12)
+0716-064704.257 SS Running ResultTask(1, 0)
+0716-064704.259 SS Size of task 0 is 1444 bytes
+0716-064704.343 SS Got brand-new decompressor
+0716-064705.535 SS Finished ResultTask(1, 0)
+0716-064705.536 SS Completed ResultTask(1, 0)
+0716-064705.536 SS Stage 1 (textFile at <console>:12) finished in 1.275 s
+0716-064705.536 SS Job finished: count at <console>:15, took 1.282806162 s
+res1: Long = 100002
+
+scala> s.count()
+0716-064705.896 SS Starting job: count at <console>:15
+0716-064705.897 SS Got job 2 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-064705.897 SS Final stage: Stage 2 (textFile at <console>:12)
+0716-064705.897 SS Parents of final stage: List()
+0716-064705.899 SS Missing parents: List()
+0716-064705.899 SS Submitting Stage 2 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-064705.900 SS Submitting 1 missing tasks from Stage 2 (MappedRDD[1] at textFile at <console>:12)
+0716-064705.901 SS Running ResultTask(2, 0)
+0716-064705.902 SS Size of task 0 is 1444 bytes
+0716-064705.946 SS Got brand-new decompressor
+0716-064707.186 SS Finished ResultTask(2, 0)
+0716-064707.186 SS Completed ResultTask(2, 0)
+0716-064707.187 SS Stage 2 (textFile at <console>:12) finished in 1.282 s
+0716-064707.187 SS Job finished: count at <console>:15, took 1.290827548 s
+res2: Long = 100002
+
+scala> s.count()
+0716-064707.663 SS Starting job: count at <console>:15
+0716-064707.664 SS Got job 3 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-064707.664 SS Final stage: Stage 3 (textFile at <console>:12)
+0716-064707.664 SS Parents of final stage: List()
+0716-064707.666 SS Missing parents: List()
+0716-064707.666 SS Submitting Stage 3 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-064707.667 SS Submitting 1 missing tasks from Stage 3 (MappedRDD[1] at textFile at <console>:12)
+0716-064707.667 SS Running ResultTask(3, 0)
+0716-064707.670 SS Size of task 0 is 1444 bytes
+0716-064707.701 SS Got brand-new decompressor
+0716-064708.881 SS Finished ResultTask(3, 0)
+0716-064708.882 SS Completed ResultTask(3, 0)
+0716-064708.882 SS Stage 3 (textFile at <console>:12) finished in 1.210 s
+0716-064708.882 SS Job finished: count at <console>:15, took 1.218720314 s
+res3: Long = 100002
+
+scala> s.count()
+0716-064709.187 SS Starting job: count at <console>:15
+0716-064709.188 SS Got job 4 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-064709.188 SS Final stage: Stage 4 (textFile at <console>:12)
+0716-064709.188 SS Parents of final stage: List()
+0716-064709.190 SS Missing parents: List()
+0716-064709.191 SS Submitting Stage 4 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-064709.191 SS Submitting 1 missing tasks from Stage 4 (MappedRDD[1] at textFile at <console>:12)
+0716-064709.192 SS Running ResultTask(4, 0)
+0716-064709.194 SS Size of task 0 is 1444 bytes
+0716-064709.221 SS Got brand-new decompressor
+0716-064710.375 SS Finished ResultTask(4, 0)
+0716-064710.376 SS Completed ResultTask(4, 0)
+0716-064710.376 SS Stage 4 (textFile at <console>:12) finished in 1.180 s
+0716-064710.377 SS Job finished: count at <console>:15, took 1.188730316 s
+res4: Long = 100002
+
+scala> s.count()
+0716-064710.688 SS Starting job: count at <console>:15
+0716-064710.689 SS Got job 5 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-064710.689 SS Final stage: Stage 5 (textFile at <console>:12)
+0716-064710.689 SS Parents of final stage: List()
+0716-064710.691 SS Missing parents: List()
+0716-064710.691 SS Submitting Stage 5 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-064710.692 SS Submitting 1 missing tasks from Stage 5 (MappedRDD[1] at textFile at <console>:12)
+0716-064710.692 SS Running ResultTask(5, 0)
+0716-064710.694 SS Size of task 0 is 1444 bytes
+0716-064710.725 SS Got brand-new decompressor
+0716-064711.863 SS Finished ResultTask(5, 0)
+0716-064711.863 SS Completed ResultTask(5, 0)
+0716-064711.864 SS Stage 5 (textFile at <console>:12) finished in 1.166 s
+0716-064711.864 SS Job finished: count at <console>:15, took 1.175253309 s
+res5: Long = 100002
+
+scala> s.count()
+0716-064712.109 SS Starting job: count at <console>:15
+0716-064712.110 SS Got job 6 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-064712.110 SS Final stage: Stage 6 (textFile at <console>:12)
+0716-064712.111 SS Parents of final stage: List()
+0716-064712.113 SS Missing parents: List()
+0716-064712.113 SS Submitting Stage 6 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-064712.114 SS Submitting 1 missing tasks from Stage 6 (MappedRDD[1] at textFile at <console>:12)
+0716-064712.115 SS Running ResultTask(6, 0)
+0716-064712.121 SS Size of task 0 is 1444 bytes
+0716-064712.162 SS Got brand-new decompressor
+0716-064713.303 SS Finished ResultTask(6, 0)
+0716-064713.303 SS Completed ResultTask(6, 0)
+0716-064713.304 SS Stage 6 (textFile at <console>:12) finished in 1.179 s
+0716-064713.304 SS Job finished: count at <console>:15, took 1.193712562 s
+res6: Long = 100002
+
+scala> s.count()
+0716-064713.559 SS Starting job: count at <console>:15
+0716-064713.559 SS Got job 7 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-064713.559 SS Final stage: Stage 7 (textFile at <console>:12)
+0716-064713.559 SS Parents of final stage: List()
+0716-064713.561 SS Missing parents: List()
+0716-064713.562 SS Submitting Stage 7 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-064713.562 SS Submitting 1 missing tasks from Stage 7 (MappedRDD[1] at textFile at <console>:12)
+0716-064713.563 SS Running ResultTask(7, 0)
+0716-064713.569 SS Size of task 0 is 1444 bytes
+0716-064713.657 SS Got brand-new decompressor
+0716-064714.894 SS Finished ResultTask(7, 0)
+0716-064714.894 SS Completed ResultTask(7, 0)
+0716-064714.895 SS Stage 7 (textFile at <console>:12) finished in 1.325 s
+0716-064714.895 SS Job finished: count at <console>:15, took 1.335647557 s
+res7: Long = 100002
+
+scala> s.count()
+0716-064715.213 SS Starting job: count at <console>:15
+0716-064715.213 SS Got job 8 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-064715.213 SS Final stage: Stage 8 (textFile at <console>:12)
+0716-064715.214 SS Parents of final stage: List()
+0716-064715.215 SS Missing parents: List()
+0716-064715.216 SS Submitting Stage 8 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-064715.216 SS Submitting 1 missing tasks from Stage 8 (MappedRDD[1] at textFile at <console>:12)
+0716-064715.217 SS Running ResultTask(8, 0)
+0716-064715.218 SS Size of task 0 is 1444 bytes
+0716-064715.257 SS Got brand-new decompressor
+0716-064716.385 SS Finished ResultTask(8, 0)
+0716-064716.386 SS Completed ResultTask(8, 0)
+0716-064716.386 SS Stage 8 (textFile at <console>:12) finished in 1.165 s
+0716-064716.386 SS Job finished: count at <console>:15, took 1.173224381 s
+res8: Long = 100002
+
+scala> s.count()
+0716-064716.810 SS Starting job: count at <console>:15
+0716-064716.810 SS Got job 9 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-064716.810 SS Final stage: Stage 9 (textFile at <console>:12)
+0716-064716.810 SS Parents of final stage: List()
+0716-064716.812 SS Missing parents: List()
+0716-064716.813 SS Submitting Stage 9 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-064716.813 SS Submitting 1 missing tasks from Stage 9 (MappedRDD[1] at textFile at <console>:12)
+0716-064716.814 SS Running ResultTask(9, 0)
+0716-064716.815 SS Size of task 0 is 1444 bytes
+0716-064716.837 SS Got brand-new decompressor
+0716-064717.979 SS Finished ResultTask(9, 0)
+0716-064717.980 SS Completed ResultTask(9, 0)
+0716-064717.980 SS Stage 9 (textFile at <console>:12) finished in 1.163 s
+0716-064717.980 SS Job finished: count at <console>:15, took 1.170130317 s
+res9: Long = 100002
+
+scala> Killed 1 processes
+Killed 1 processes
+localhost: Killed 0 processes
+Formatting Tachyon @ localhost
+0716-064719.416 TU Deleting /mnt/tachyon/tachyon/tachyon_checkpoint.data
+0716-064719.418 TU Deleting /mnt/tachyon/tachyon/tachyon_log.data
+0716-064720.410 TU Formatting s3n://2012-05-19-sample/tachyon/data
+0716-064721.704 TU Response '/tachyon%2Fdata' - Unexpected response code 404, expected 200
+0716-064721.920 TU Response '/tachyon%2Fdata' - Unexpected response code 404, expected 200
+0716-064721.941 TU Response '/tachyon%2Fdata_%24folder%24' - Unexpected response code 404, expected 200
+0716-064721.999 TU Response '/tachyon' - Unexpected response code 404, expected 200
+0716-064722.034 TU Response '/tachyon%2Fdata' - Unexpected response code 404, expected 200
+0716-064722.049 TU Response '/tachyon%2Fdata_%24folder%24' - Unexpected response code 404, expected 200
+0716-064722.106 TU Formatting s3n://2012-05-19-sample/tachyon/workers
+0716-064722.129 TU Response '/tachyon%2Fworkers' - Unexpected response code 404, expected 200
+0716-064722.338 TU Response '/tachyon%2Fworkers' - Unexpected response code 404, expected 200
+0716-064722.359 TU Response '/tachyon%2Fworkers_%24folder%24' - Unexpected response code 404, expected 200
+0716-064722.405 TU Response '/tachyon' - Unexpected response code 404, expected 200
+0716-064722.446 TU Response '/tachyon%2Fworkers' - Unexpected response code 404, expected 200
+0716-064722.474 TU Response '/tachyon%2Fworkers_%24folder%24' - Unexpected response code 404, expected 200
+
+restaring tachyon
+Killed 0 processes
+Killed 0 processes
+localhost: Killed 0 processes
+Mounting ramfs on Linux...
+TACHYON_RAM_FOLDER was not set. Using the default one: /mnt/ramdisk
+Formatting RamFS: /mnt/ramdisk
+Starting master @ localhost
+Starting worker @ tachyon-ec2-0
+
+spark-shell count
+8112 tachyon.Master
+8126 tachyon.Worker
+
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/home/ubuntu/work/tachyon/target/tachyon-0.2.1-jar-with-dependencies.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/home/ubuntu/work/spark-0.7.0/lib_managed/jars/slf4j-log4j12-1.6.1.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+Welcome to
+      ____              __  
+     / __/__  ___ _____/ /__
+    _\ \/ _ \/ _ `/ __/  '_/
+   /___/ .__/\_,_/_/ /_/\_\   version 0.7.0
+      /_/                  
+
+Using Scala version 2.9.3 (OpenJDK 64-Bit Server VM, Java 1.7.0_21)
+Initializing interpreter...
+Creating SparkContext...
+0716-064741.626 SS Slf4jEventHandler started
+0716-064742.269 SS Registered BlockManagerMaster Actor
+0716-064742.330 SS MemoryStore started with capacity 326.7 MB.
+0716-064742.339 SS Created local directory at /tmp/spark-local-20130716064742-ee15
+0716-064742.393 SS Bound socket to port 50562 with id = ConnectionManagerId(tachyon-ec2-0,50562)
+0716-064742.414 SS Trying to register BlockManager
+0716-064742.422 SS Registering block manager tachyon-ec2-0:50562 with 326.7 MB RAM
+0716-064742.423 SS Registered BlockManager
+0716-064742.469 SS Broadcast server started at http://10.10.185.156:49200
+0716-064742.484 SS Registered MapOutputTrackerActor actor
+0716-064742.492 SS HTTP File server directory is /tmp/spark-cc968ccc-4902-45ff-942c-b6815cddc422
+0716-064742.914 SS IoWorker thread 'spray-io-worker-0' started
+0716-064744.005 SS akka://spark/user/BlockManagerHTTPServer started on /0.0.0.0:40428
+0716-064744.007 SS Started BlockManager web UI at http://tachyon-ec2-0:40428
+Spark context available as sc.
+Type in expressions to have them evaluated.
+Type :help for more information.
+
+scala> val s = sc.textFile("tachyon://localhost:19998/hit_data.tsv.500000.gz")
+0716-064746.453 SS ensureFreeSpace(58439) called with curMem=0, maxMem=342526525
+0716-064746.456 SS Block broadcast_0 stored as values to memory (estimated size 57.1 KB, free 326.6 MB)
+s: spark.RDD[String] = MappedRDD[1] at textFile at <console>:12
+
+scala> s.count()
+0716-064747.034 SS Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+0716-064747.034 SS Snappy native library not loaded
+0716-064748.542 SS Total input paths to process : 1
+0716-064750.694 SS Starting job: count at <console>:15
+0716-064750.707 SS Got job 0 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-064750.712 SS Final stage: Stage 0 (textFile at <console>:12)
+0716-064750.713 SS Parents of final stage: List()
+0716-064750.720 SS Missing parents: List()
+0716-064750.723 SS Submitting Stage 0 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-064750.738 SS Submitting 1 missing tasks from Stage 0 (MappedRDD[1] at textFile at <console>:12)
+0716-064750.743 SS Running ResultTask(0, 0)
+0716-064750.803 SS Size of task 0 is 1441 bytes
+0716-064751.150 SS Opening 's3n://2012-05-19-sample/hit_data.tsv.500000.gz' for reading
+0716-064807.247 SS Got brand-new decompressor
+0716-064813.326 SS Finished ResultTask(0, 0)
+0716-064813.330 SS Completed ResultTask(0, 0)
+0716-064813.332 SS Stage 0 (textFile at <console>:12) finished in 22.589 s
+0716-064813.334 SS Job finished: count at <console>:15, took 22.637622125 s
+res0: Long = 500094
+
+scala> s.count()
+0716-064813.983 SS Starting job: count at <console>:15
+0716-064813.989 SS Got job 1 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-064813.989 SS Final stage: Stage 1 (textFile at <console>:12)
+0716-064813.989 SS Parents of final stage: List()
+0716-064813.991 SS Missing parents: List()
+0716-064813.992 SS Submitting Stage 1 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-064813.992 SS Submitting 1 missing tasks from Stage 1 (MappedRDD[1] at textFile at <console>:12)
+0716-064813.993 SS Running ResultTask(1, 0)
+0716-064813.994 SS Size of task 0 is 1444 bytes
+0716-064814.087 SS Got brand-new decompressor
+0716-064819.780 SS Finished ResultTask(1, 0)
+0716-064819.781 SS Completed ResultTask(1, 0)
+0716-064819.781 SS Stage 1 (textFile at <console>:12) finished in 5.785 s
+0716-064819.782 SS Job finished: count at <console>:15, took 5.79278393 s
+res1: Long = 500094
+
+scala> s.count()
+0716-064820.063 SS Starting job: count at <console>:15
+0716-064820.064 SS Got job 2 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-064820.064 SS Final stage: Stage 2 (textFile at <console>:12)
+0716-064820.064 SS Parents of final stage: List()
+0716-064820.066 SS Missing parents: List()
+0716-064820.066 SS Submitting Stage 2 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-064820.067 SS Submitting 1 missing tasks from Stage 2 (MappedRDD[1] at textFile at <console>:12)
+0716-064820.067 SS Running ResultTask(2, 0)
+0716-064820.069 SS Size of task 0 is 1444 bytes
+0716-064820.103 SS Got brand-new decompressor
+0716-064825.566 SS Finished ResultTask(2, 0)
+0716-064825.567 SS Completed ResultTask(2, 0)
+0716-064825.567 SS Stage 2 (textFile at <console>:12) finished in 5.495 s
+0716-064825.567 SS Job finished: count at <console>:15, took 5.50365484 s
+res2: Long = 500094
+
+scala> s.count()
+0716-064825.851 SS Starting job: count at <console>:15
+0716-064825.851 SS Got job 3 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-064825.852 SS Final stage: Stage 3 (textFile at <console>:12)
+0716-064825.852 SS Parents of final stage: List()
+0716-064825.854 SS Missing parents: List()
+0716-064825.854 SS Submitting Stage 3 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-064825.855 SS Submitting 1 missing tasks from Stage 3 (MappedRDD[1] at textFile at <console>:12)
+0716-064825.855 SS Running ResultTask(3, 0)
+0716-064825.857 SS Size of task 0 is 1444 bytes
+0716-064825.887 SS Got brand-new decompressor
+0716-064831.336 SS Finished ResultTask(3, 0)
+0716-064831.337 SS Completed ResultTask(3, 0)
+0716-064831.337 SS Stage 3 (textFile at <console>:12) finished in 5.480 s
+0716-064831.337 SS Job finished: count at <console>:15, took 5.486051594 s
+res3: Long = 500094
+
+scala> s.count()
+0716-064831.617 SS Starting job: count at <console>:15
+0716-064831.618 SS Got job 4 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-064831.618 SS Final stage: Stage 4 (textFile at <console>:12)
+0716-064831.618 SS Parents of final stage: List()
+0716-064831.620 SS Missing parents: List()
+0716-064831.620 SS Submitting Stage 4 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-064831.621 SS Submitting 1 missing tasks from Stage 4 (MappedRDD[1] at textFile at <console>:12)
+0716-064831.622 SS Running ResultTask(4, 0)
+0716-064831.623 SS Size of task 0 is 1444 bytes
+0716-064831.651 SS Got brand-new decompressor
+0716-064837.104 SS Finished ResultTask(4, 0)
+0716-064837.105 SS Completed ResultTask(4, 0)
+0716-064837.105 SS Stage 4 (textFile at <console>:12) finished in 5.481 s
+0716-064837.105 SS Job finished: count at <console>:15, took 5.487731108 s
+res4: Long = 500094
+
+scala> s.count()
+0716-064837.422 SS Starting job: count at <console>:15
+0716-064837.423 SS Got job 5 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-064837.423 SS Final stage: Stage 5 (textFile at <console>:12)
+0716-064837.423 SS Parents of final stage: List()
+0716-064837.425 SS Missing parents: List()
+0716-064837.425 SS Submitting Stage 5 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-064837.426 SS Submitting 1 missing tasks from Stage 5 (MappedRDD[1] at textFile at <console>:12)
+0716-064837.426 SS Running ResultTask(5, 0)
+0716-064837.428 SS Size of task 0 is 1444 bytes
+0716-064837.455 SS Got brand-new decompressor
+0716-064842.912 SS Finished ResultTask(5, 0)
+0716-064842.912 SS Completed ResultTask(5, 0)
+0716-064842.913 SS Stage 5 (textFile at <console>:12) finished in 5.484 s
+0716-064842.913 SS Job finished: count at <console>:15, took 5.490418997 s
+res5: Long = 500094
+
+scala> s.count()
+0716-064843.153 SS Starting job: count at <console>:15
+0716-064843.153 SS Got job 6 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-064843.154 SS Final stage: Stage 6 (textFile at <console>:12)
+0716-064843.154 SS Parents of final stage: List()
+0716-064843.155 SS Missing parents: List()
+0716-064843.156 SS Submitting Stage 6 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-064843.157 SS Submitting 1 missing tasks from Stage 6 (MappedRDD[1] at textFile at <console>:12)
+0716-064843.157 SS Running ResultTask(6, 0)
+0716-064843.168 SS Size of task 0 is 1444 bytes
+0716-064843.200 SS Got brand-new decompressor
+0716-064848.658 SS Finished ResultTask(6, 0)
+0716-064848.659 SS Completed ResultTask(6, 0)
+0716-064848.659 SS Stage 6 (textFile at <console>:12) finished in 5.490 s
+0716-064848.659 SS Job finished: count at <console>:15, took 5.505872916 s
+res6: Long = 500094
+
+scala> s.count()
+0716-064848.890 SS Starting job: count at <console>:15
+0716-064848.891 SS Got job 7 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-064848.891 SS Final stage: Stage 7 (textFile at <console>:12)
+0716-064848.891 SS Parents of final stage: List()
+0716-064848.893 SS Missing parents: List()
+0716-064848.894 SS Submitting Stage 7 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-064848.894 SS Submitting 1 missing tasks from Stage 7 (MappedRDD[1] at textFile at <console>:12)
+0716-064848.895 SS Running ResultTask(7, 0)
+0716-064848.897 SS Size of task 0 is 1444 bytes
+0716-064848.933 SS Got brand-new decompressor
+0716-064854.422 SS Finished ResultTask(7, 0)
+0716-064854.428 SS Completed ResultTask(7, 0)
+0716-064854.429 SS Stage 7 (textFile at <console>:12) finished in 5.531 s
+0716-064854.429 SS Job finished: count at <console>:15, took 5.53806447 s
+res7: Long = 500094
+
+scala> s.count()
+0716-064854.694 SS Starting job: count at <console>:15
+0716-064854.694 SS Got job 8 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-064854.694 SS Final stage: Stage 8 (textFile at <console>:12)
+0716-064854.694 SS Parents of final stage: List()
+0716-064854.696 SS Missing parents: List()
+0716-064854.697 SS Submitting Stage 8 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-064854.697 SS Submitting 1 missing tasks from Stage 8 (MappedRDD[1] at textFile at <console>:12)
+0716-064854.698 SS Running ResultTask(8, 0)
+0716-064854.699 SS Size of task 0 is 1444 bytes
+0716-064854.727 SS Got brand-new decompressor
+0716-064900.159 SS Finished ResultTask(8, 0)
+0716-064900.159 SS Completed ResultTask(8, 0)
+0716-064900.160 SS Stage 8 (textFile at <console>:12) finished in 5.458 s
+0716-064900.160 SS Job finished: count at <console>:15, took 5.465696814 s
+res8: Long = 500094
+
+scala> s.count()
+0716-064900.451 SS Starting job: count at <console>:15
+0716-064900.452 SS Got job 9 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-064900.452 SS Final stage: Stage 9 (textFile at <console>:12)
+0716-064900.452 SS Parents of final stage: List()
+0716-064900.454 SS Missing parents: List()
+0716-064900.455 SS Submitting Stage 9 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-064900.455 SS Submitting 1 missing tasks from Stage 9 (MappedRDD[1] at textFile at <console>:12)
+0716-064900.456 SS Running ResultTask(9, 0)
+0716-064900.457 SS Size of task 0 is 1444 bytes
+0716-064900.484 SS Got brand-new decompressor
+0716-064905.947 SS Finished ResultTask(9, 0)
+0716-064905.948 SS Completed ResultTask(9, 0)
+0716-064905.948 SS Stage 9 (textFile at <console>:12) finished in 5.488 s
+0716-064905.948 SS Job finished: count at <console>:15, took 5.496602454 s
+res9: Long = 500094
+
+scala> Killed 1 processes
+Killed 1 processes
+localhost: Killed 0 processes
+Formatting Tachyon @ localhost
+0716-064907.401 TU Deleting /mnt/tachyon/tachyon/tachyon_checkpoint.data
+0716-064907.402 TU Deleting /mnt/tachyon/tachyon/tachyon_log.data
+0716-064908.388 TU Formatting s3n://2012-05-19-sample/tachyon/data
+0716-064909.627 TU Response '/tachyon%2Fdata' - Unexpected response code 404, expected 200
+0716-064909.783 TU Response '/tachyon%2Fdata' - Unexpected response code 404, expected 200
+0716-064909.800 TU Response '/tachyon%2Fdata_%24folder%24' - Unexpected response code 404, expected 200
+0716-064909.833 TU Response '/tachyon' - Unexpected response code 404, expected 200
+0716-064909.889 TU Response '/tachyon%2Fdata' - Unexpected response code 404, expected 200
+0716-064909.902 TU Response '/tachyon%2Fdata_%24folder%24' - Unexpected response code 404, expected 200
+0716-064909.953 TU Formatting s3n://2012-05-19-sample/tachyon/workers
+0716-064909.966 TU Response '/tachyon%2Fworkers' - Unexpected response code 404, expected 200
+0716-064910.084 TU Response '/tachyon%2Fworkers' - Unexpected response code 404, expected 200
+0716-064910.101 TU Response '/tachyon%2Fworkers_%24folder%24' - Unexpected response code 404, expected 200
+0716-064910.145 TU Response '/tachyon' - Unexpected response code 404, expected 200
+0716-064910.185 TU Response '/tachyon%2Fworkers' - Unexpected response code 404, expected 200
+0716-064910.201 TU Response '/tachyon%2Fworkers_%24folder%24' - Unexpected response code 404, expected 200
+
+restaring tachyon
+Killed 0 processes
+Killed 0 processes
+localhost: Killed 0 processes
+Mounting ramfs on Linux...
+TACHYON_RAM_FOLDER was not set. Using the default one: /mnt/ramdisk
+Formatting RamFS: /mnt/ramdisk
+Starting master @ localhost
+Starting worker @ tachyon-ec2-0
+
+spark-shell count
+8845 tachyon.Master
+8859 tachyon.Worker
+
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/home/ubuntu/work/tachyon/target/tachyon-0.2.1-jar-with-dependencies.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/home/ubuntu/work/spark-0.7.0/lib_managed/jars/slf4j-log4j12-1.6.1.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+Welcome to
+      ____              __  
+     / __/__  ___ _____/ /__
+    _\ \/ _ \/ _ `/ __/  '_/
+   /___/ .__/\_,_/_/ /_/\_\   version 0.7.0
+      /_/                  
+
+Using Scala version 2.9.3 (OpenJDK 64-Bit Server VM, Java 1.7.0_21)
+Initializing interpreter...
+Creating SparkContext...
+0716-064929.439 SS Slf4jEventHandler started
+0716-064930.081 SS Registered BlockManagerMaster Actor
+0716-064930.123 SS MemoryStore started with capacity 326.7 MB.
+0716-064930.143 SS Created local directory at /tmp/spark-local-20130716064930-7c17
+0716-064930.201 SS Bound socket to port 59333 with id = ConnectionManagerId(tachyon-ec2-0,59333)
+0716-064930.225 SS Trying to register BlockManager
+0716-064930.228 SS Registering block manager tachyon-ec2-0:59333 with 326.7 MB RAM
+0716-064930.229 SS Registered BlockManager
+0716-064930.274 SS Broadcast server started at http://10.10.185.156:60744
+0716-064930.289 SS Registered MapOutputTrackerActor actor
+0716-064930.298 SS HTTP File server directory is /tmp/spark-c37ee871-cbe9-4e26-9f64-47a387434098
+0716-064930.742 SS IoWorker thread 'spray-io-worker-0' started
+0716-064931.813 SS akka://spark/user/BlockManagerHTTPServer started on /0.0.0.0:34066
+0716-064931.816 SS Started BlockManager web UI at http://tachyon-ec2-0:34066
+Spark context available as sc.
+Type in expressions to have them evaluated.
+Type :help for more information.
+
+scala> val s = sc.textFile("tachyon://localhost:19998/hit_data.tsv.100")
+0716-064934.265 SS ensureFreeSpace(58431) called with curMem=0, maxMem=342526525
+0716-064934.268 SS Block broadcast_0 stored as values to memory (estimated size 57.1 KB, free 326.6 MB)
+s: spark.RDD[String] = MappedRDD[1] at textFile at <console>:12
+
+scala> s.count()
+0716-064934.837 SS Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+0716-064934.837 SS Snappy native library not loaded
+0716-064936.347 SS Total input paths to process : 1
+0716-064938.491 SS Starting job: count at <console>:15
+0716-064938.507 SS Got job 0 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-064938.508 SS Final stage: Stage 0 (textFile at <console>:12)
+0716-064938.513 SS Parents of final stage: List()
+0716-064938.529 SS Missing parents: List()
+0716-064938.533 SS Submitting Stage 0 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-064938.547 SS Submitting 1 missing tasks from Stage 0 (MappedRDD[1] at textFile at <console>:12)
+0716-064938.556 SS Running ResultTask(0, 0)
+0716-064938.616 SS Size of task 0 is 1435 bytes
+0716-064938.960 SS Opening 's3n://2012-05-19-sample/hit_data.tsv.100' for reading
+0716-064939.198 SS Finished ResultTask(0, 0)
+0716-064939.209 SS Completed ResultTask(0, 0)
+0716-064939.214 SS Stage 0 (textFile at <console>:12) finished in 0.658 s
+0716-064939.216 SS Job finished: count at <console>:15, took 0.723827924 s
+res0: Long = 100
+
+scala> s.count()
+0716-064939.873 SS Starting job: count at <console>:15
+0716-064939.876 SS Got job 1 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-064939.876 SS Final stage: Stage 1 (textFile at <console>:12)
+0716-064939.877 SS Parents of final stage: List()
+0716-064939.878 SS Missing parents: List()
+0716-064939.879 SS Submitting Stage 1 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-064939.880 SS Submitting 1 missing tasks from Stage 1 (MappedRDD[1] at textFile at <console>:12)
+0716-064939.880 SS Running ResultTask(1, 0)
+0716-064939.882 SS Size of task 0 is 1438 bytes
+0716-064939.988 SS Finished ResultTask(1, 0)
+0716-064939.988 SS Completed ResultTask(1, 0)
+0716-064939.989 SS Stage 1 (textFile at <console>:12) finished in 0.106 s
+0716-064939.989 SS Job finished: count at <console>:15, took 0.112509683 s
+res1: Long = 100
+
+scala> s.count()
+0716-064940.424 SS Starting job: count at <console>:15
+0716-064940.425 SS Got job 2 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-064940.425 SS Final stage: Stage 2 (textFile at <console>:12)
+0716-064940.425 SS Parents of final stage: List()
+0716-064940.427 SS Missing parents: List()
+0716-064940.427 SS Submitting Stage 2 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-064940.428 SS Submitting 1 missing tasks from Stage 2 (MappedRDD[1] at textFile at <console>:12)
+0716-064940.429 SS Running ResultTask(2, 0)
+0716-064940.431 SS Size of task 0 is 1438 bytes
+0716-064940.470 SS Finished ResultTask(2, 0)
+0716-064940.471 SS Completed ResultTask(2, 0)
+0716-064940.471 SS Stage 2 (textFile at <console>:12) finished in 0.037 s
+0716-064940.471 SS Job finished: count at <console>:15, took 0.046553792 s
+res2: Long = 100
+
+scala> s.count()
+0716-064940.764 SS Starting job: count at <console>:15
+0716-064940.765 SS Got job 3 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-064940.765 SS Final stage: Stage 3 (textFile at <console>:12)
+0716-064940.765 SS Parents of final stage: List()
+0716-064940.767 SS Missing parents: List()
+0716-064940.767 SS Submitting Stage 3 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-064940.768 SS Submitting 1 missing tasks from Stage 3 (MappedRDD[1] at textFile at <console>:12)
+0716-064940.768 SS Running ResultTask(3, 0)
+0716-064940.770 SS Size of task 0 is 1438 bytes
+0716-064940.803 SS Finished ResultTask(3, 0)
+0716-064940.803 SS Completed ResultTask(3, 0)
+0716-064940.804 SS Stage 3 (textFile at <console>:12) finished in 0.030 s
+0716-064940.808 SS Job finished: count at <console>:15, took 0.04342566 s
+res3: Long = 100
+
+scala> s.count()
+0716-064941.117 SS Starting job: count at <console>:15
+0716-064941.118 SS Got job 4 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-064941.118 SS Final stage: Stage 4 (textFile at <console>:12)
+0716-064941.118 SS Parents of final stage: List()
+0716-064941.119 SS Missing parents: List()
+0716-064941.120 SS Submitting Stage 4 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-064941.121 SS Submitting 1 missing tasks from Stage 4 (MappedRDD[1] at textFile at <console>:12)
+0716-064941.121 SS Running ResultTask(4, 0)
+0716-064941.123 SS Size of task 0 is 1438 bytes
+0716-064941.153 SS Finished ResultTask(4, 0)
+0716-064941.153 SS Completed ResultTask(4, 0)
+0716-064941.154 SS Stage 4 (textFile at <console>:12) finished in 0.029 s
+0716-064941.154 SS Job finished: count at <console>:15, took 0.03675039 s
+res4: Long = 100
+
+scala> s.count()
+0716-064941.608 SS Starting job: count at <console>:15
+0716-064941.609 SS Got job 5 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-064941.609 SS Final stage: Stage 5 (textFile at <console>:12)
+0716-064941.609 SS Parents of final stage: List()
+0716-064941.611 SS Missing parents: List()
+0716-064941.611 SS Submitting Stage 5 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-064941.612 SS Submitting 1 missing tasks from Stage 5 (MappedRDD[1] at textFile at <console>:12)
+0716-064941.612 SS Running ResultTask(5, 0)
+0716-064941.614 SS Size of task 0 is 1438 bytes
+0716-064941.648 SS Finished ResultTask(5, 0)
+0716-064941.649 SS Completed ResultTask(5, 0)
+0716-064941.649 SS Stage 5 (textFile at <console>:12) finished in 0.034 s
+0716-064941.649 SS Job finished: count at <console>:15, took 0.040938295 s
+res5: Long = 100
+
+scala> s.count()
+0716-064941.915 SS Starting job: count at <console>:15
+0716-064941.916 SS Got job 6 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-064941.916 SS Final stage: Stage 6 (textFile at <console>:12)
+0716-064941.916 SS Parents of final stage: List()
+0716-064941.918 SS Missing parents: List()
+0716-064941.919 SS Submitting Stage 6 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-064941.919 SS Submitting 1 missing tasks from Stage 6 (MappedRDD[1] at textFile at <console>:12)
+0716-064941.920 SS Running ResultTask(6, 0)
+0716-064941.925 SS Size of task 0 is 1438 bytes
+0716-064941.969 SS Finished ResultTask(6, 0)
+0716-064941.969 SS Completed ResultTask(6, 0)
+0716-064941.969 SS Stage 6 (textFile at <console>:12) finished in 0.044 s
+0716-064941.970 SS Job finished: count at <console>:15, took 0.053385381 s
+res6: Long = 100
+
+scala> s.count()
+0716-064942.199 SS Starting job: count at <console>:15
+0716-064942.200 SS Got job 7 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-064942.200 SS Final stage: Stage 7 (textFile at <console>:12)
+0716-064942.200 SS Parents of final stage: List()
+0716-064942.202 SS Missing parents: List()
+0716-064942.202 SS Submitting Stage 7 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-064942.203 SS Submitting 1 missing tasks from Stage 7 (MappedRDD[1] at textFile at <console>:12)
+0716-064942.203 SS Running ResultTask(7, 0)
+0716-064942.206 SS Size of task 0 is 1438 bytes
+0716-064942.292 SS Finished ResultTask(7, 0)
+0716-064942.292 SS Completed ResultTask(7, 0)
+0716-064942.293 SS Stage 7 (textFile at <console>:12) finished in 0.086 s
+0716-064942.293 SS Job finished: count at <console>:15, took 0.093259402 s
+res7: Long = 100
+
+scala> s.count()
+0716-064942.815 SS Starting job: count at <console>:15
+0716-064942.815 SS Got job 8 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-064942.815 SS Final stage: Stage 8 (textFile at <console>:12)
+0716-064942.815 SS Parents of final stage: List()
+0716-064942.817 SS Missing parents: List()
+0716-064942.818 SS Submitting Stage 8 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-064942.818 SS Submitting 1 missing tasks from Stage 8 (MappedRDD[1] at textFile at <console>:12)
+0716-064942.819 SS Running ResultTask(8, 0)
+0716-064942.821 SS Size of task 0 is 1438 bytes
+0716-064942.855 SS Finished ResultTask(8, 0)
+0716-064942.855 SS Completed ResultTask(8, 0)
+0716-064942.855 SS Stage 8 (textFile at <console>:12) finished in 0.034 s
+0716-064942.856 SS Job finished: count at <console>:15, took 0.040569762 s
+res8: Long = 100
+
+scala> s.count()
+0716-064943.256 SS Starting job: count at <console>:15
+0716-064943.256 SS Got job 9 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-064943.256 SS Final stage: Stage 9 (textFile at <console>:12)
+0716-064943.256 SS Parents of final stage: List()
+0716-064943.258 SS Missing parents: List()
+0716-064943.259 SS Submitting Stage 9 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-064943.259 SS Submitting 1 missing tasks from Stage 9 (MappedRDD[1] at textFile at <console>:12)
+0716-064943.260 SS Running ResultTask(9, 0)
+0716-064943.262 SS Size of task 0 is 1438 bytes
+0716-064943.307 SS Finished ResultTask(9, 0)
+0716-064943.307 SS Completed ResultTask(9, 0)
+0716-064943.308 SS Stage 9 (textFile at <console>:12) finished in 0.046 s
+0716-064943.308 SS Job finished: count at <console>:15, took 0.051941212 s
+res9: Long = 100
+
+scala> Killed 1 processes
+Killed 1 processes
+localhost: Killed 0 processes
+Formatting Tachyon @ localhost
+0716-064944.727 TU Deleting /mnt/tachyon/tachyon/tachyon_checkpoint.data
+0716-064944.729 TU Deleting /mnt/tachyon/tachyon/tachyon_log.data
+0716-064945.716 TU Formatting s3n://2012-05-19-sample/tachyon/data
+0716-064946.956 TU Response '/tachyon%2Fdata' - Unexpected response code 404, expected 200
+0716-064947.105 TU Response '/tachyon%2Fdata' - Unexpected response code 404, expected 200
+0716-064947.119 TU Response '/tachyon%2Fdata_%24folder%24' - Unexpected response code 404, expected 200
+0716-064947.156 TU Response '/tachyon' - Unexpected response code 404, expected 200
+0716-064947.187 TU Response '/tachyon%2Fdata' - Unexpected response code 404, expected 200
+0716-064947.202 TU Response '/tachyon%2Fdata_%24folder%24' - Unexpected response code 404, expected 200
+0716-064947.252 TU Formatting s3n://2012-05-19-sample/tachyon/workers
+0716-064947.265 TU Response '/tachyon%2Fworkers' - Unexpected response code 404, expected 200
+0716-064947.373 TU Response '/tachyon%2Fworkers' - Unexpected response code 404, expected 200
+0716-064947.389 TU Response '/tachyon%2Fworkers_%24folder%24' - Unexpected response code 404, expected 200
+0716-064947.428 TU Response '/tachyon' - Unexpected response code 404, expected 200
+0716-064947.466 TU Response '/tachyon%2Fworkers' - Unexpected response code 404, expected 200
+0716-064947.482 TU Response '/tachyon%2Fworkers_%24folder%24' - Unexpected response code 404, expected 200
+
+restaring tachyon
+Killed 0 processes
+Killed 0 processes
+localhost: Killed 0 processes
+Mounting ramfs on Linux...
+TACHYON_RAM_FOLDER was not set. Using the default one: /mnt/ramdisk
+Formatting RamFS: /mnt/ramdisk
+Starting master @ localhost
+Starting worker @ tachyon-ec2-0
+
+spark-shell count
+9418 tachyon.Master
+9434 tachyon.Worker
+
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/home/ubuntu/work/tachyon/target/tachyon-0.2.1-jar-with-dependencies.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/home/ubuntu/work/spark-0.7.0/lib_managed/jars/slf4j-log4j12-1.6.1.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+Welcome to
+      ____              __  
+     / __/__  ___ _____/ /__
+    _\ \/ _ \/ _ `/ __/  '_/
+   /___/ .__/\_,_/_/ /_/\_\   version 0.7.0
+      /_/                  
+
+Using Scala version 2.9.3 (OpenJDK 64-Bit Server VM, Java 1.7.0_21)
+Initializing interpreter...
+Creating SparkContext...
+0716-065006.826 SS Slf4jEventHandler started
+0716-065007.469 SS Registered BlockManagerMaster Actor
+0716-065007.536 SS MemoryStore started with capacity 326.7 MB.
+0716-065007.545 SS Created local directory at /tmp/spark-local-20130716065007-8e33
+0716-065007.601 SS Bound socket to port 47820 with id = ConnectionManagerId(tachyon-ec2-0,47820)
+0716-065007.621 SS Trying to register BlockManager
+0716-065007.624 SS Registering block manager tachyon-ec2-0:47820 with 326.7 MB RAM
+0716-065007.625 SS Registered BlockManager
+0716-065007.670 SS Broadcast server started at http://10.10.185.156:38661
+0716-065007.683 SS Registered MapOutputTrackerActor actor
+0716-065007.693 SS HTTP File server directory is /tmp/spark-ed1aa489-0b94-47a4-8de4-7b6297780369
+0716-065008.112 SS IoWorker thread 'spray-io-worker-0' started
+0716-065009.199 SS akka://spark/user/BlockManagerHTTPServer started on /0.0.0.0:60033
+0716-065009.201 SS Started BlockManager web UI at http://tachyon-ec2-0:60033
+Spark context available as sc.
+Type in expressions to have them evaluated.
+Type :help for more information.
+
+scala> val s = sc.textFile("tachyon://localhost:19998/hit_data.tsv.1000")
+0716-065011.501 SS ensureFreeSpace(58431) called with curMem=0, maxMem=342526525
+0716-065011.504 SS Block broadcast_0 stored as values to memory (estimated size 57.1 KB, free 326.6 MB)
+s: spark.RDD[String] = MappedRDD[1] at textFile at <console>:12
+
+scala> s.count()
+0716-065012.027 SS Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+0716-065012.027 SS Snappy native library not loaded
+0716-065013.569 SS Total input paths to process : 1
+0716-065015.704 SS Starting job: count at <console>:15
+0716-065015.721 SS Got job 0 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-065015.722 SS Final stage: Stage 0 (textFile at <console>:12)
+0716-065015.723 SS Parents of final stage: List()
+0716-065015.736 SS Missing parents: List()
+0716-065015.738 SS Submitting Stage 0 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-065015.744 SS Submitting 1 missing tasks from Stage 0 (MappedRDD[1] at textFile at <console>:12)
+0716-065015.749 SS Running ResultTask(0, 0)
+0716-065015.810 SS Size of task 0 is 1436 bytes
+0716-065016.156 SS Opening 's3n://2012-05-19-sample/hit_data.tsv.1000' for reading
+0716-065016.630 SS Finished ResultTask(0, 0)
+0716-065016.634 SS Completed ResultTask(0, 0)
+0716-065016.637 SS Stage 0 (textFile at <console>:12) finished in 0.888 s
+0716-065016.638 SS Job finished: count at <console>:15, took 0.933479501 s
+res0: Long = 1000
+
+scala> s.count()
+0716-065017.257 SS Starting job: count at <console>:15
+0716-065017.257 SS Got job 1 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-065017.258 SS Final stage: Stage 1 (textFile at <console>:12)
+0716-065017.258 SS Parents of final stage: List()
+0716-065017.261 SS Missing parents: List()
+0716-065017.262 SS Submitting Stage 1 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-065017.263 SS Submitting 1 missing tasks from Stage 1 (MappedRDD[1] at textFile at <console>:12)
+0716-065017.264 SS Running ResultTask(1, 0)
+0716-065017.266 SS Size of task 0 is 1439 bytes
+0716-065017.398 SS Finished ResultTask(1, 0)
+0716-065017.399 SS Completed ResultTask(1, 0)
+0716-065017.399 SS Stage 1 (textFile at <console>:12) finished in 0.131 s
+0716-065017.399 SS Job finished: count at <console>:15, took 0.142137589 s
+res1: Long = 1000
+
+scala> s.count()
+0716-065017.829 SS Starting job: count at <console>:15
+0716-065017.830 SS Got job 2 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-065017.830 SS Final stage: Stage 2 (textFile at <console>:12)
+0716-065017.830 SS Parents of final stage: List()
+0716-065017.832 SS Missing parents: List()
+0716-065017.833 SS Submitting Stage 2 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-065017.833 SS Submitting 1 missing tasks from Stage 2 (MappedRDD[1] at textFile at <console>:12)
+0716-065017.834 SS Running ResultTask(2, 0)
+0716-065017.836 SS Size of task 0 is 1439 bytes
+0716-065017.888 SS Finished ResultTask(2, 0)
+0716-065017.889 SS Completed ResultTask(2, 0)
+0716-065017.889 SS Stage 2 (textFile at <console>:12) finished in 0.053 s
+0716-065017.889 SS Job finished: count at <console>:15, took 0.059710847 s
+res2: Long = 1000
+
+scala> s.count()
+0716-065018.222 SS Starting job: count at <console>:15
+0716-065018.222 SS Got job 3 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-065018.222 SS Final stage: Stage 3 (textFile at <console>:12)
+0716-065018.222 SS Parents of final stage: List()
+0716-065018.224 SS Missing parents: List()
+0716-065018.225 SS Submitting Stage 3 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-065018.225 SS Submitting 1 missing tasks from Stage 3 (MappedRDD[1] at textFile at <console>:12)
+0716-065018.226 SS Running ResultTask(3, 0)
+0716-065018.228 SS Size of task 0 is 1439 bytes
+0716-065018.294 SS Finished ResultTask(3, 0)
+0716-065018.294 SS Completed ResultTask(3, 0)
+0716-065018.295 SS Stage 3 (textFile at <console>:12) finished in 0.066 s
+0716-065018.295 SS Job finished: count at <console>:15, took 0.072851271 s
+res3: Long = 1000
+
+scala> s.count()
+0716-065018.650 SS Starting job: count at <console>:15
+0716-065018.656 SS Got job 4 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-065018.656 SS Final stage: Stage 4 (textFile at <console>:12)
+0716-065018.657 SS Parents of final stage: List()
+0716-065018.658 SS Missing parents: List()
+0716-065018.659 SS Submitting Stage 4 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-065018.659 SS Submitting 1 missing tasks from Stage 4 (MappedRDD[1] at textFile at <console>:12)
+0716-065018.660 SS Running ResultTask(4, 0)
+0716-065018.662 SS Size of task 0 is 1439 bytes
+0716-065018.776 SS Finished ResultTask(4, 0)
+0716-065018.777 SS Completed ResultTask(4, 0)
+0716-065018.777 SS Stage 4 (textFile at <console>:12) finished in 0.113 s
+0716-065018.778 SS Job finished: count at <console>:15, took 0.125469805 s
+res4: Long = 1000
+
+scala> s.count()
+0716-065019.069 SS Starting job: count at <console>:15
+0716-065019.070 SS Got job 5 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-065019.070 SS Final stage: Stage 5 (textFile at <console>:12)
+0716-065019.070 SS Parents of final stage: List()
+0716-065019.072 SS Missing parents: List()
+0716-065019.072 SS Submitting Stage 5 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-065019.073 SS Submitting 1 missing tasks from Stage 5 (MappedRDD[1] at textFile at <console>:12)
+0716-065019.073 SS Running ResultTask(5, 0)
+0716-065019.075 SS Size of task 0 is 1439 bytes
+0716-065019.121 SS Finished ResultTask(5, 0)
+0716-065019.122 SS Completed ResultTask(5, 0)
+0716-065019.122 SS Stage 5 (textFile at <console>:12) finished in 0.046 s
+0716-065019.123 SS Job finished: count at <console>:15, took 0.053095442 s
+res5: Long = 1000
+
+scala> s.count()
+0716-065019.393 SS Starting job: count at <console>:15
+0716-065019.394 SS Got job 6 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-065019.394 SS Final stage: Stage 6 (textFile at <console>:12)
+0716-065019.394 SS Parents of final stage: List()
+0716-065019.396 SS Missing parents: List()
+0716-065019.397 SS Submitting Stage 6 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-065019.397 SS Submitting 1 missing tasks from Stage 6 (MappedRDD[1] at textFile at <console>:12)
+0716-065019.398 SS Running ResultTask(6, 0)
+0716-065019.403 SS Size of task 0 is 1439 bytes
+0716-065019.468 SS Finished ResultTask(6, 0)
+0716-065019.468 SS Completed ResultTask(6, 0)
+0716-065019.469 SS Stage 6 (textFile at <console>:12) finished in 0.064 s
+0716-065019.469 SS Job finished: count at <console>:15, took 0.074797075 s
+res6: Long = 1000
+
+scala> s.count()
+0716-065019.715 SS Starting job: count at <console>:15
+0716-065019.716 SS Got job 7 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-065019.716 SS Final stage: Stage 7 (textFile at <console>:12)
+0716-065019.716 SS Parents of final stage: List()
+0716-065019.718 SS Missing parents: List()
+0716-065019.718 SS Submitting Stage 7 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-065019.719 SS Submitting 1 missing tasks from Stage 7 (MappedRDD[1] at textFile at <console>:12)
+0716-065019.719 SS Running ResultTask(7, 0)
+0716-065019.722 SS Size of task 0 is 1439 bytes
+0716-065019.861 SS Finished ResultTask(7, 0)
+0716-065019.862 SS Completed ResultTask(7, 0)
+0716-065019.862 SS Stage 7 (textFile at <console>:12) finished in 0.140 s
+0716-065019.863 SS Job finished: count at <console>:15, took 0.146899529 s
+res7: Long = 1000
+
+scala> s.count()
+0716-065020.376 SS Starting job: count at <console>:15
+0716-065020.377 SS Got job 8 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-065020.377 SS Final stage: Stage 8 (textFile at <console>:12)
+0716-065020.377 SS Parents of final stage: List()
+0716-065020.379 SS Missing parents: List()
+0716-065020.379 SS Submitting Stage 8 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-065020.380 SS Submitting 1 missing tasks from Stage 8 (MappedRDD[1] at textFile at <console>:12)
+0716-065020.380 SS Running ResultTask(8, 0)
+0716-065020.382 SS Size of task 0 is 1439 bytes
+0716-065020.447 SS Finished ResultTask(8, 0)
+0716-065020.448 SS Completed ResultTask(8, 0)
+0716-065020.448 SS Stage 8 (textFile at <console>:12) finished in 0.064 s
+0716-065020.449 SS Job finished: count at <console>:15, took 0.07228008 s
+res8: Long = 1000
+
+scala> s.count()
+0716-065020.812 SS Starting job: count at <console>:15
+0716-065020.816 SS Got job 9 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-065020.816 SS Final stage: Stage 9 (textFile at <console>:12)
+0716-065020.816 SS Parents of final stage: List()
+0716-065020.818 SS Missing parents: List()
+0716-065020.818 SS Submitting Stage 9 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-065020.819 SS Submitting 1 missing tasks from Stage 9 (MappedRDD[1] at textFile at <console>:12)
+0716-065020.819 SS Running ResultTask(9, 0)
+0716-065020.821 SS Size of task 0 is 1439 bytes
+0716-065020.890 SS Finished ResultTask(9, 0)
+0716-065020.890 SS Completed ResultTask(9, 0)
+0716-065020.890 SS Stage 9 (textFile at <console>:12) finished in 0.066 s
+0716-065020.891 SS Job finished: count at <console>:15, took 0.075111389 s
+res9: Long = 1000
+
+scala> Killed 1 processes
+Killed 1 processes
+localhost: Killed 0 processes
+Formatting Tachyon @ localhost
+0716-065022.307 TU Deleting /mnt/tachyon/tachyon/tachyon_checkpoint.data
+0716-065022.308 TU Deleting /mnt/tachyon/tachyon/tachyon_log.data
+0716-065023.298 TU Formatting s3n://2012-05-19-sample/tachyon/data
+0716-065024.538 TU Response '/tachyon%2Fdata' - Unexpected response code 404, expected 200
+0716-065024.787 TU Response '/tachyon%2Fdata' - Unexpected response code 404, expected 200
+0716-065024.802 TU Response '/tachyon%2Fdata_%24folder%24' - Unexpected response code 404, expected 200
+0716-065024.844 TU Response '/tachyon' - Unexpected response code 404, expected 200
+0716-065024.874 TU Response '/tachyon%2Fdata' - Unexpected response code 404, expected 200
+0716-065024.887 TU Response '/tachyon%2Fdata_%24folder%24' - Unexpected response code 404, expected 200
+0716-065024.940 TU Formatting s3n://2012-05-19-sample/tachyon/workers
+0716-065024.954 TU Response '/tachyon%2Fworkers' - Unexpected response code 404, expected 200
+0716-065025.060 TU Response '/tachyon%2Fworkers' - Unexpected response code 404, expected 200
+0716-065025.075 TU Response '/tachyon%2Fworkers_%24folder%24' - Unexpected response code 404, expected 200
+0716-065025.111 TU Response '/tachyon' - Unexpected response code 404, expected 200
+0716-065025.254 TU Response '/tachyon%2Fworkers' - Unexpected response code 404, expected 200
+0716-065025.268 TU Response '/tachyon%2Fworkers_%24folder%24' - Unexpected response code 404, expected 200
+
+restaring tachyon
+Killed 0 processes
+Killed 0 processes
+localhost: Killed 0 processes
+Mounting ramfs on Linux...
+TACHYON_RAM_FOLDER was not set. Using the default one: /mnt/ramdisk
+Formatting RamFS: /mnt/ramdisk
+Starting master @ localhost
+Starting worker @ tachyon-ec2-0
+
+spark-shell count
+9989 tachyon.Master
+10005 tachyon.Worker
+
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/home/ubuntu/work/tachyon/target/tachyon-0.2.1-jar-with-dependencies.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/home/ubuntu/work/spark-0.7.0/lib_managed/jars/slf4j-log4j12-1.6.1.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+Welcome to
+      ____              __  
+     / __/__  ___ _____/ /__
+    _\ \/ _ \/ _ `/ __/  '_/
+   /___/ .__/\_,_/_/ /_/\_\   version 0.7.0
+      /_/                  
+
+Using Scala version 2.9.3 (OpenJDK 64-Bit Server VM, Java 1.7.0_21)
+Initializing interpreter...
+Creating SparkContext...
+0716-065045.795 SS Slf4jEventHandler started
+0716-065046.441 SS Registered BlockManagerMaster Actor
+0716-065046.498 SS MemoryStore started with capacity 326.7 MB.
+0716-065046.509 SS Created local directory at /tmp/spark-local-20130716065046-8547
+0716-065046.564 SS Bound socket to port 36956 with id = ConnectionManagerId(tachyon-ec2-0,36956)
+0716-065046.586 SS Trying to register BlockManager
+0716-065046.590 SS Registering block manager tachyon-ec2-0:36956 with 326.7 MB RAM
+0716-065046.591 SS Registered BlockManager
+0716-065046.638 SS Broadcast server started at http://10.10.185.156:56100
+0716-065046.652 SS Registered MapOutputTrackerActor actor
+0716-065046.660 SS HTTP File server directory is /tmp/spark-8ad6be3a-82e2-4cef-aaa7-164984bb6262
+0716-065047.098 SS IoWorker thread 'spray-io-worker-0' started
+0716-065048.182 SS akka://spark/user/BlockManagerHTTPServer started on /0.0.0.0:44028
+0716-065048.184 SS Started BlockManager web UI at http://tachyon-ec2-0:44028
+Spark context available as sc.
+Type in expressions to have them evaluated.
+Type :help for more information.
+
+scala> val s = sc.textFile("tachyon://localhost:19998/hit_data.tsv.10000")
+0716-065050.829 SS ensureFreeSpace(58431) called with curMem=0, maxMem=342526525
+0716-065050.832 SS Block broadcast_0 stored as values to memory (estimated size 57.1 KB, free 326.6 MB)
+s: spark.RDD[String] = MappedRDD[1] at textFile at <console>:12
+
+scala> s.count()
+0716-065051.394 SS Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+0716-065051.395 SS Snappy native library not loaded
+0716-065053.153 SS Total input paths to process : 1
+0716-065055.311 SS Starting job: count at <console>:15
+0716-065055.333 SS Got job 0 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-065055.334 SS Final stage: Stage 0 (textFile at <console>:12)
+0716-065055.335 SS Parents of final stage: List()
+0716-065055.348 SS Missing parents: List()
+0716-065055.351 SS Submitting Stage 0 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-065055.373 SS Submitting 1 missing tasks from Stage 0 (MappedRDD[1] at textFile at <console>:12)
+0716-065055.383 SS Running ResultTask(0, 0)
+0716-065055.443 SS Size of task 0 is 1437 bytes
+0716-065056.006 SS Opening 's3n://2012-05-19-sample/hit_data.tsv.10000' for reading
+0716-065057.307 SS Finished ResultTask(0, 0)
+0716-065057.321 SS Completed ResultTask(0, 0)
+0716-065057.326 SS Stage 0 (textFile at <console>:12) finished in 1.943 s
+0716-065057.328 SS Job finished: count at <console>:15, took 2.011350102 s
+res0: Long = 10000
+
+scala> s.count()
+0716-065058.053 SS Starting job: count at <console>:15
+0716-065058.053 SS Got job 1 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-065058.053 SS Final stage: Stage 1 (textFile at <console>:12)
+0716-065058.053 SS Parents of final stage: List()
+0716-065058.055 SS Missing parents: List()
+0716-065058.056 SS Submitting Stage 1 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-065058.056 SS Submitting 1 missing tasks from Stage 1 (MappedRDD[1] at textFile at <console>:12)
+0716-065058.057 SS Running ResultTask(1, 0)
+0716-065058.059 SS Size of task 0 is 1440 bytes
+0716-065058.427 SS Finished ResultTask(1, 0)
+0716-065058.427 SS Completed ResultTask(1, 0)
+0716-065058.428 SS Stage 1 (textFile at <console>:12) finished in 0.368 s
+0716-065058.428 SS Job finished: count at <console>:15, took 0.374893011 s
+res1: Long = 10000
+
+scala> s.count()
+0716-065058.783 SS Starting job: count at <console>:15
+0716-065058.783 SS Got job 2 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-065058.783 SS Final stage: Stage 2 (textFile at <console>:12)
+0716-065058.784 SS Parents of final stage: List()
+0716-065058.786 SS Missing parents: List()
+0716-065058.786 SS Submitting Stage 2 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-065058.787 SS Submitting 1 missing tasks from Stage 2 (MappedRDD[1] at textFile at <console>:12)
+0716-065058.787 SS Running ResultTask(2, 0)
+0716-065058.789 SS Size of task 0 is 1440 bytes
+0716-065058.909 SS Finished ResultTask(2, 0)
+0716-065058.909 SS Completed ResultTask(2, 0)
+0716-065058.910 SS Stage 2 (textFile at <console>:12) finished in 0.117 s
+0716-065058.910 SS Job finished: count at <console>:15, took 0.126677811 s
+res2: Long = 10000
+
+scala> s.count()
+0716-065059.355 SS Starting job: count at <console>:15
+0716-065059.356 SS Got job 3 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-065059.356 SS Final stage: Stage 3 (textFile at <console>:12)
+0716-065059.356 SS Parents of final stage: List()
+0716-065059.358 SS Missing parents: List()
+0716-065059.358 SS Submitting Stage 3 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-065059.359 SS Submitting 1 missing tasks from Stage 3 (MappedRDD[1] at textFile at <console>:12)
+0716-065059.359 SS Running ResultTask(3, 0)
+0716-065059.361 SS Size of task 0 is 1440 bytes
+0716-065059.511 SS Finished ResultTask(3, 0)
+0716-065059.512 SS Completed ResultTask(3, 0)
+0716-065059.512 SS Stage 3 (textFile at <console>:12) finished in 0.148 s
+0716-065059.512 SS Job finished: count at <console>:15, took 0.156938732 s
+res3: Long = 10000
+
+scala> s.count()
+0716-065059.883 SS Starting job: count at <console>:15
+0716-065059.883 SS Got job 4 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-065059.883 SS Final stage: Stage 4 (textFile at <console>:12)
+0716-065059.883 SS Parents of final stage: List()
+0716-065059.885 SS Missing parents: List()
+0716-065059.886 SS Submitting Stage 4 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-065059.886 SS Submitting 1 missing tasks from Stage 4 (MappedRDD[1] at textFile at <console>:12)
+0716-065059.887 SS Running ResultTask(4, 0)
+0716-065059.889 SS Size of task 0 is 1440 bytes
+0716-065059.991 SS Finished ResultTask(4, 0)
+0716-065059.992 SS Completed ResultTask(4, 0)
+0716-065059.992 SS Stage 4 (textFile at <console>:12) finished in 0.103 s
+0716-065059.992 SS Job finished: count at <console>:15, took 0.109136993 s
+res4: Long = 10000
+
+scala> s.count()
+0716-065100.230 SS Starting job: count at <console>:15
+0716-065100.230 SS Got job 5 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-065100.230 SS Final stage: Stage 5 (textFile at <console>:12)
+0716-065100.230 SS Parents of final stage: List()
+0716-065100.232 SS Missing parents: List()
+0716-065100.233 SS Submitting Stage 5 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-065100.233 SS Submitting 1 missing tasks from Stage 5 (MappedRDD[1] at textFile at <console>:12)
+0716-065100.234 SS Running ResultTask(5, 0)
+0716-065100.236 SS Size of task 0 is 1440 bytes
+0716-065100.343 SS Finished ResultTask(5, 0)
+0716-065100.343 SS Completed ResultTask(5, 0)
+0716-065100.344 SS Stage 5 (textFile at <console>:12) finished in 0.108 s
+0716-065100.344 SS Job finished: count at <console>:15, took 0.113992139 s
+res5: Long = 10000
+
+scala> s.count()
+0716-065100.605 SS Starting job: count at <console>:15
+0716-065100.606 SS Got job 6 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-065100.606 SS Final stage: Stage 6 (textFile at <console>:12)
+0716-065100.606 SS Parents of final stage: List()
+0716-065100.608 SS Missing parents: List()
+0716-065100.609 SS Submitting Stage 6 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-065100.609 SS Submitting 1 missing tasks from Stage 6 (MappedRDD[1] at textFile at <console>:12)
+0716-065100.610 SS Running ResultTask(6, 0)
+0716-065100.611 SS Size of task 0 is 1440 bytes
+0716-065100.762 SS Finished ResultTask(6, 0)
+0716-065100.762 SS Completed ResultTask(6, 0)
+0716-065100.763 SS Stage 6 (textFile at <console>:12) finished in 0.151 s
+0716-065100.763 SS Job finished: count at <console>:15, took 0.157269127 s
+res6: Long = 10000
+
+scala> s.count()
+0716-065101.003 SS Starting job: count at <console>:15
+0716-065101.004 SS Got job 7 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-065101.004 SS Final stage: Stage 7 (textFile at <console>:12)
+0716-065101.004 SS Parents of final stage: List()
+0716-065101.006 SS Missing parents: List()
+0716-065101.007 SS Submitting Stage 7 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-065101.007 SS Submitting 1 missing tasks from Stage 7 (MappedRDD[1] at textFile at <console>:12)
+0716-065101.008 SS Running ResultTask(7, 0)
+0716-065101.010 SS Size of task 0 is 1440 bytes
+0716-065101.307 SS Finished ResultTask(7, 0)
+0716-065101.307 SS Completed ResultTask(7, 0)
+0716-065101.308 SS Stage 7 (textFile at <console>:12) finished in 0.297 s
+0716-065101.308 SS Job finished: count at <console>:15, took 0.304028649 s
+res7: Long = 10000
+
+scala> s.count()
+0716-065101.713 SS Starting job: count at <console>:15
+0716-065101.716 SS Got job 8 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-065101.716 SS Final stage: Stage 8 (textFile at <console>:12)
+0716-065101.717 SS Parents of final stage: List()
+0716-065101.719 SS Missing parents: List()
+0716-065101.719 SS Submitting Stage 8 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-065101.720 SS Submitting 1 missing tasks from Stage 8 (MappedRDD[1] at textFile at <console>:12)
+0716-065101.720 SS Running ResultTask(8, 0)
+0716-065101.722 SS Size of task 0 is 1440 bytes
+0716-065101.851 SS Finished ResultTask(8, 0)
+0716-065101.851 SS Completed ResultTask(8, 0)
+0716-065101.852 SS Stage 8 (textFile at <console>:12) finished in 0.127 s
+0716-065101.852 SS Job finished: count at <console>:15, took 0.135669911 s
+res8: Long = 10000
+
+scala> s.count()
+0716-065102.260 SS Starting job: count at <console>:15
+0716-065102.260 SS Got job 9 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-065102.261 SS Final stage: Stage 9 (textFile at <console>:12)
+0716-065102.261 SS Parents of final stage: List()
+0716-065102.262 SS Missing parents: List()
+0716-065102.263 SS Submitting Stage 9 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-065102.263 SS Submitting 1 missing tasks from Stage 9 (MappedRDD[1] at textFile at <console>:12)
+0716-065102.264 SS Running ResultTask(9, 0)
+0716-065102.266 SS Size of task 0 is 1440 bytes
+0716-065102.367 SS Finished ResultTask(9, 0)
+0716-065102.367 SS Completed ResultTask(9, 0)
+0716-065102.368 SS Stage 9 (textFile at <console>:12) finished in 0.099 s
+0716-065102.368 SS Job finished: count at <console>:15, took 0.107557269 s
+res9: Long = 10000
+
+scala> Killed 1 processes
+Killed 1 processes
+localhost: Killed 0 processes
+Formatting Tachyon @ localhost
+0716-065103.780 TU Deleting /mnt/tachyon/tachyon/tachyon_checkpoint.data
+0716-065103.782 TU Deleting /mnt/tachyon/tachyon/tachyon_log.data
+0716-065104.768 TU Formatting s3n://2012-05-19-sample/tachyon/data
+0716-065106.009 TU Response '/tachyon%2Fdata' - Unexpected response code 404, expected 200
+0716-065106.173 TU Response '/tachyon%2Fdata' - Unexpected response code 404, expected 200
+0716-065106.189 TU Response '/tachyon%2Fdata_%24folder%24' - Unexpected response code 404, expected 200
+0716-065106.221 TU Response '/tachyon' - Unexpected response code 404, expected 200
+0716-065106.248 TU Response '/tachyon%2Fdata' - Unexpected response code 404, expected 200
+0716-065106.339 TU Response '/tachyon%2Fdata_%24folder%24' - Unexpected response code 404, expected 200
+0716-065106.398 TU Formatting s3n://2012-05-19-sample/tachyon/workers
+0716-065106.413 TU Response '/tachyon%2Fworkers' - Unexpected response code 404, expected 200
+0716-065106.521 TU Response '/tachyon%2Fworkers' - Unexpected response code 404, expected 200
+0716-065106.534 TU Response '/tachyon%2Fworkers_%24folder%24' - Unexpected response code 404, expected 200
+0716-065106.576 TU Response '/tachyon' - Unexpected response code 404, expected 200
+0716-065106.622 TU Response '/tachyon%2Fworkers' - Unexpected response code 404, expected 200
+0716-065106.634 TU Response '/tachyon%2Fworkers_%24folder%24' - Unexpected response code 404, expected 200
+
+restaring tachyon
+Killed 0 processes
+Killed 0 processes
+localhost: Killed 0 processes
+Mounting ramfs on Linux...
+TACHYON_RAM_FOLDER was not set. Using the default one: /mnt/ramdisk
+Formatting RamFS: /mnt/ramdisk
+Starting master @ localhost
+Starting worker @ tachyon-ec2-0
+
+spark-shell count
+10569 tachyon.Master
+10583 tachyon.Worker
+
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/home/ubuntu/work/tachyon/target/tachyon-0.2.1-jar-with-dependencies.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/home/ubuntu/work/spark-0.7.0/lib_managed/jars/slf4j-log4j12-1.6.1.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+Welcome to
+      ____              __  
+     / __/__  ___ _____/ /__
+    _\ \/ _ \/ _ `/ __/  '_/
+   /___/ .__/\_,_/_/ /_/\_\   version 0.7.0
+      /_/                  
+
+Using Scala version 2.9.3 (OpenJDK 64-Bit Server VM, Java 1.7.0_21)
+Initializing interpreter...
+Creating SparkContext...
+0716-065125.925 SS Slf4jEventHandler started
+0716-065126.569 SS Registered BlockManagerMaster Actor
+0716-065126.616 SS MemoryStore started with capacity 326.7 MB.
+0716-065126.637 SS Created local directory at /tmp/spark-local-20130716065126-2244
+0716-065126.688 SS Bound socket to port 33478 with id = ConnectionManagerId(tachyon-ec2-0,33478)
+0716-065126.717 SS Trying to register BlockManager
+0716-065126.720 SS Registering block manager tachyon-ec2-0:33478 with 326.7 MB RAM
+0716-065126.721 SS Registered BlockManager
+0716-065126.766 SS Broadcast server started at http://10.10.185.156:49933
+0716-065126.781 SS Registered MapOutputTrackerActor actor
+0716-065126.788 SS HTTP File server directory is /tmp/spark-054ba919-cfeb-4fef-9533-01d8e9d2e6bc
+0716-065127.224 SS IoWorker thread 'spray-io-worker-0' started
+0716-065128.299 SS akka://spark/user/BlockManagerHTTPServer started on /0.0.0.0:58444
+0716-065128.301 SS Started BlockManager web UI at http://tachyon-ec2-0:58444
+Spark context available as sc.
+Type in expressions to have them evaluated.
+Type :help for more information.
+
+scala> val s = sc.textFile("tachyon://localhost:19998/hit_data.tsv.100000")
+0716-065130.728 SS ensureFreeSpace(58439) called with curMem=0, maxMem=342526525
+0716-065130.731 SS Block broadcast_0 stored as values to memory (estimated size 57.1 KB, free 326.6 MB)
+s: spark.RDD[String] = MappedRDD[1] at textFile at <console>:12
+
+scala> s.count()
+0716-065131.321 SS Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+0716-065131.321 SS Snappy native library not loaded
+0716-065132.858 SS Total input paths to process : 1
+0716-065134.981 SS Starting job: count at <console>:15
+0716-065134.991 SS Got job 0 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-065134.997 SS Final stage: Stage 0 (textFile at <console>:12)
+0716-065135.001 SS Parents of final stage: List()
+0716-065135.013 SS Missing parents: List()
+0716-065135.015 SS Submitting Stage 0 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-065135.029 SS Submitting 1 missing tasks from Stage 0 (MappedRDD[1] at textFile at <console>:12)
+0716-065135.033 SS Running ResultTask(0, 0)
+0716-065135.094 SS Size of task 0 is 1438 bytes
+0716-065135.476 SS Opening 's3n://2012-05-19-sample/hit_data.tsv.100000' for reading
+0716-065143.222 SS Finished ResultTask(0, 0)
+0716-065143.226 SS Completed ResultTask(0, 0)
+0716-065143.228 SS Stage 0 (textFile at <console>:12) finished in 8.194 s
+0716-065143.230 SS Job finished: count at <console>:15, took 8.247660764 s
+res0: Long = 100002
+
+scala> s.count()
+0716-065143.850 SS Starting job: count at <console>:15
+0716-065143.852 SS Got job 1 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-065143.852 SS Final stage: Stage 1 (textFile at <console>:12)
+0716-065143.853 SS Parents of final stage: List()
+0716-065143.854 SS Missing parents: List()
+0716-065143.855 SS Submitting Stage 1 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-065143.855 SS Submitting 1 missing tasks from Stage 1 (MappedRDD[1] at textFile at <console>:12)
+0716-065143.856 SS Running ResultTask(1, 0)
+0716-065143.858 SS Size of task 0 is 1441 bytes
+0716-065144.900 SS Finished ResultTask(1, 0)
+0716-065144.900 SS Completed ResultTask(1, 0)
+0716-065144.901 SS Stage 1 (textFile at <console>:12) finished in 1.042 s
+0716-065144.901 SS Job finished: count at <console>:15, took 1.048945305 s
+res1: Long = 100002
+
+scala> s.count()
+0716-065145.207 SS Starting job: count at <console>:15
+0716-065145.207 SS Got job 2 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-065145.207 SS Final stage: Stage 2 (textFile at <console>:12)
+0716-065145.207 SS Parents of final stage: List()
+0716-065145.210 SS Missing parents: List()
+0716-065145.210 SS Submitting Stage 2 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-065145.211 SS Submitting 1 missing tasks from Stage 2 (MappedRDD[1] at textFile at <console>:12)
+0716-065145.211 SS Running ResultTask(2, 0)
+0716-065145.213 SS Size of task 0 is 1441 bytes
+0716-065146.136 SS Finished ResultTask(2, 0)
+0716-065146.136 SS Completed ResultTask(2, 0)
+0716-065146.137 SS Stage 2 (textFile at <console>:12) finished in 0.921 s
+0716-065146.137 SS Job finished: count at <console>:15, took 0.929983795 s
+res2: Long = 100002
+
+scala> s.count()
+0716-065146.489 SS Starting job: count at <console>:15
+0716-065146.490 SS Got job 3 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-065146.490 SS Final stage: Stage 3 (textFile at <console>:12)
+0716-065146.490 SS Parents of final stage: List()
+0716-065146.492 SS Missing parents: List()
+0716-065146.493 SS Submitting Stage 3 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-065146.494 SS Submitting 1 missing tasks from Stage 3 (MappedRDD[1] at textFile at <console>:12)
+0716-065146.494 SS Running ResultTask(3, 0)
+0716-065146.496 SS Size of task 0 is 1441 bytes
+0716-065147.298 SS Finished ResultTask(3, 0)
+0716-065147.298 SS Completed ResultTask(3, 0)
+0716-065147.299 SS Stage 3 (textFile at <console>:12) finished in 0.798 s
+0716-065147.299 SS Job finished: count at <console>:15, took 0.809649435 s
+res3: Long = 100002
+
+scala> s.count()
+0716-065147.608 SS Starting job: count at <console>:15
+0716-065147.609 SS Got job 4 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-065147.609 SS Final stage: Stage 4 (textFile at <console>:12)
+0716-065147.609 SS Parents of final stage: List()
+0716-065147.611 SS Missing parents: List()
+0716-065147.611 SS Submitting Stage 4 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-065147.612 SS Submitting 1 missing tasks from Stage 4 (MappedRDD[1] at textFile at <console>:12)
+0716-065147.612 SS Running ResultTask(4, 0)
+0716-065147.614 SS Size of task 0 is 1441 bytes
+0716-065148.410 SS Finished ResultTask(4, 0)
+0716-065148.410 SS Completed ResultTask(4, 0)
+0716-065148.411 SS Stage 4 (textFile at <console>:12) finished in 0.795 s
+0716-065148.411 SS Job finished: count at <console>:15, took 0.802407374 s
+res4: Long = 100002
+
+scala> s.count()
+0716-065148.831 SS Starting job: count at <console>:15
+0716-065148.832 SS Got job 5 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-065148.832 SS Final stage: Stage 5 (textFile at <console>:12)
+0716-065148.832 SS Parents of final stage: List()
+0716-065148.834 SS Missing parents: List()
+0716-065148.835 SS Submitting Stage 5 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-065148.835 SS Submitting 1 missing tasks from Stage 5 (MappedRDD[1] at textFile at <console>:12)
+0716-065148.836 SS Running ResultTask(5, 0)
+0716-065148.838 SS Size of task 0 is 1441 bytes
+0716-065149.865 SS Finished ResultTask(5, 0)
+0716-065149.866 SS Completed ResultTask(5, 0)
+0716-065149.866 SS Stage 5 (textFile at <console>:12) finished in 1.026 s
+0716-065149.867 SS Job finished: count at <console>:15, took 1.034832642 s
+res5: Long = 100002
+
+scala> s.count()
+0716-065150.126 SS Starting job: count at <console>:15
+0716-065150.128 SS Got job 6 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-065150.128 SS Final stage: Stage 6 (textFile at <console>:12)
+0716-065150.128 SS Parents of final stage: List()
+0716-065150.130 SS Missing parents: List()
+0716-065150.131 SS Submitting Stage 6 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-065150.131 SS Submitting 1 missing tasks from Stage 6 (MappedRDD[1] at textFile at <console>:12)
+0716-065150.132 SS Running ResultTask(6, 0)
+0716-065150.137 SS Size of task 0 is 1441 bytes
+0716-065150.917 SS Finished ResultTask(6, 0)
+0716-065150.918 SS Completed ResultTask(6, 0)
+0716-065150.918 SS Stage 6 (textFile at <console>:12) finished in 0.778 s
+0716-065150.918 SS Job finished: count at <console>:15, took 0.790772282 s
+res6: Long = 100002
+
+scala> s.count()
+0716-065151.174 SS Starting job: count at <console>:15
+0716-065151.175 SS Got job 7 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-065151.175 SS Final stage: Stage 7 (textFile at <console>:12)
+0716-065151.175 SS Parents of final stage: List()
+0716-065151.177 SS Missing parents: List()
+0716-065151.177 SS Submitting Stage 7 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-065151.178 SS Submitting 1 missing tasks from Stage 7 (MappedRDD[1] at textFile at <console>:12)
+0716-065151.178 SS Running ResultTask(7, 0)
+0716-065151.181 SS Size of task 0 is 1441 bytes
+0716-065152.059 SS Finished ResultTask(7, 0)
+0716-065152.060 SS Completed ResultTask(7, 0)
+0716-065152.060 SS Stage 7 (textFile at <console>:12) finished in 0.879 s
+0716-065152.060 SS Job finished: count at <console>:15, took 0.88569929 s
+res7: Long = 100002
+
+scala> s.count()
+0716-065152.401 SS Starting job: count at <console>:15
+0716-065152.402 SS Got job 8 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-065152.402 SS Final stage: Stage 8 (textFile at <console>:12)
+0716-065152.402 SS Parents of final stage: List()
+0716-065152.404 SS Missing parents: List()
+0716-065152.404 SS Submitting Stage 8 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-065152.405 SS Submitting 1 missing tasks from Stage 8 (MappedRDD[1] at textFile at <console>:12)
+0716-065152.405 SS Running ResultTask(8, 0)
+0716-065152.407 SS Size of task 0 is 1441 bytes
+0716-065153.167 SS Finished ResultTask(8, 0)
+0716-065153.167 SS Completed ResultTask(8, 0)
+0716-065153.168 SS Stage 8 (textFile at <console>:12) finished in 0.759 s
+0716-065153.168 SS Job finished: count at <console>:15, took 0.766119299 s
+res8: Long = 100002
+
+scala> s.count()
+0716-065153.557 SS Starting job: count at <console>:15
+0716-065153.558 SS Got job 9 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-065153.558 SS Final stage: Stage 9 (textFile at <console>:12)
+0716-065153.558 SS Parents of final stage: List()
+0716-065153.560 SS Missing parents: List()
+0716-065153.560 SS Submitting Stage 9 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-065153.561 SS Submitting 1 missing tasks from Stage 9 (MappedRDD[1] at textFile at <console>:12)
+0716-065153.561 SS Running ResultTask(9, 0)
+0716-065153.563 SS Size of task 0 is 1441 bytes
+0716-065154.337 SS Finished ResultTask(9, 0)
+0716-065154.337 SS Completed ResultTask(9, 0)
+0716-065154.338 SS Stage 9 (textFile at <console>:12) finished in 0.772 s
+0716-065154.338 SS Job finished: count at <console>:15, took 0.78015938 s
+res9: Long = 100002
+
+scala> Killed 1 processes
+Killed 1 processes
+localhost: Killed 0 processes
+Formatting Tachyon @ localhost
+0716-065156.087 TU Deleting /mnt/tachyon/tachyon/tachyon_checkpoint.data
+0716-065156.089 TU Deleting /mnt/tachyon/tachyon/tachyon_log.data
+0716-065157.078 TU Formatting s3n://2012-05-19-sample/tachyon/data
+0716-065158.310 TU Response '/tachyon%2Fdata' - Unexpected response code 404, expected 200
+0716-065158.475 TU Response '/tachyon%2Fdata' - Unexpected response code 404, expected 200
+0716-065158.493 TU Response '/tachyon%2Fdata_%24folder%24' - Unexpected response code 404, expected 200
+0716-065158.525 TU Response '/tachyon' - Unexpected response code 404, expected 200
+0716-065158.552 TU Response '/tachyon%2Fdata' - Unexpected response code 404, expected 200
+0716-065158.567 TU Response '/tachyon%2Fdata_%24folder%24' - Unexpected response code 404, expected 200
+0716-065158.630 TU Formatting s3n://2012-05-19-sample/tachyon/workers
+0716-065158.646 TU Response '/tachyon%2Fworkers' - Unexpected response code 404, expected 200
+0716-065158.751 TU Response '/tachyon%2Fworkers' - Unexpected response code 404, expected 200
+0716-065158.764 TU Response '/tachyon%2Fworkers_%24folder%24' - Unexpected response code 404, expected 200
+0716-065158.804 TU Response '/tachyon' - Unexpected response code 404, expected 200
+0716-065158.848 TU Response '/tachyon%2Fworkers' - Unexpected response code 404, expected 200
+0716-065158.865 TU Response '/tachyon%2Fworkers_%24folder%24' - Unexpected response code 404, expected 200
+
+restaring tachyon
+Killed 0 processes
+Killed 0 processes
+localhost: Killed 0 processes
+Mounting ramfs on Linux...
+TACHYON_RAM_FOLDER was not set. Using the default one: /mnt/ramdisk
+Formatting RamFS: /mnt/ramdisk
+Starting master @ localhost
+Starting worker @ tachyon-ec2-0
+
+spark-shell count
+11193 tachyon.Master
+11207 tachyon.Worker
+
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/home/ubuntu/work/tachyon/target/tachyon-0.2.1-jar-with-dependencies.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/home/ubuntu/work/spark-0.7.0/lib_managed/jars/slf4j-log4j12-1.6.1.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+Welcome to
+      ____              __  
+     / __/__  ___ _____/ /__
+    _\ \/ _ \/ _ `/ __/  '_/
+   /___/ .__/\_,_/_/ /_/\_\   version 0.7.0
+      /_/                  
+
+Using Scala version 2.9.3 (OpenJDK 64-Bit Server VM, Java 1.7.0_21)
+Initializing interpreter...
+Creating SparkContext...
+0716-065219.360 SS Slf4jEventHandler started
+0716-065220.009 SS Registered BlockManagerMaster Actor
+0716-065220.064 SS MemoryStore started with capacity 326.7 MB.
+0716-065220.079 SS Created local directory at /tmp/spark-local-20130716065220-6dfe
+0716-065220.131 SS Bound socket to port 57003 with id = ConnectionManagerId(tachyon-ec2-0,57003)
+0716-065220.157 SS Trying to register BlockManager
+0716-065220.161 SS Registering block manager tachyon-ec2-0:57003 with 326.7 MB RAM
+0716-065220.162 SS Registered BlockManager
+0716-065220.209 SS Broadcast server started at http://10.10.185.156:51803
+0716-065220.220 SS Registered MapOutputTrackerActor actor
+0716-065220.228 SS HTTP File server directory is /tmp/spark-801c5b73-dff0-48bb-8980-a025f750e724
+0716-065220.660 SS IoWorker thread 'spray-io-worker-0' started
+0716-065221.753 SS akka://spark/user/BlockManagerHTTPServer started on /0.0.0.0:34372
+0716-065221.756 SS Started BlockManager web UI at http://tachyon-ec2-0:34372
+Spark context available as sc.
+Type in expressions to have them evaluated.
+Type :help for more information.
+
+scala> val s = sc.textFile("tachyon://localhost:19998/hit_data.tsv.500000")
+0716-065224.236 SS ensureFreeSpace(58439) called with curMem=0, maxMem=342526525
+0716-065224.239 SS Block broadcast_0 stored as values to memory (estimated size 57.1 KB, free 326.6 MB)
+s: spark.RDD[String] = MappedRDD[1] at textFile at <console>:12
+
+scala> s.count()
+0716-065224.814 SS Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+0716-065224.815 SS Snappy native library not loaded
+0716-065226.453 SS Total input paths to process : 1
+0716-065228.595 SS Starting job: count at <console>:15
+0716-065228.617 SS Got job 0 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-065228.618 SS Final stage: Stage 0 (textFile at <console>:12)
+0716-065228.619 SS Parents of final stage: List()
+0716-065228.631 SS Missing parents: List()
+0716-065228.638 SS Submitting Stage 0 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-065228.656 SS Submitting 1 missing tasks from Stage 0 (MappedRDD[1] at textFile at <console>:12)
+0716-065228.662 SS Running ResultTask(0, 0)
+0716-065228.721 SS Size of task 0 is 1438 bytes
+0716-065229.122 SS Opening 's3n://2012-05-19-sample/hit_data.tsv.500000' for reading
+0716-065303.574 SS Finished ResultTask(0, 0)
+0716-065303.578 SS Completed ResultTask(0, 0)
+0716-065303.581 SS Stage 0 (textFile at <console>:12) finished in 34.919 s
+0716-065303.582 SS Job finished: count at <console>:15, took 34.980021241 s
+res0: Long = 500094
+
+scala> s.count()
+0716-065303.955 SS Starting job: count at <console>:15
+0716-065303.960 SS Got job 1 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-065303.961 SS Final stage: Stage 1 (textFile at <console>:12)
+0716-065303.961 SS Parents of final stage: List()
+0716-065303.962 SS Missing parents: List()
+0716-065303.963 SS Submitting Stage 1 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-065303.964 SS Submitting 1 missing tasks from Stage 1 (MappedRDD[1] at textFile at <console>:12)
+0716-065303.964 SS Running ResultTask(1, 0)
+0716-065303.966 SS Size of task 0 is 1441 bytes
+0716-065307.729 SS Finished ResultTask(1, 0)
+0716-065307.730 SS Completed ResultTask(1, 0)
+0716-065307.730 SS Stage 1 (textFile at <console>:12) finished in 3.762 s
+0716-065307.731 SS Job finished: count at <console>:15, took 3.770487649 s
+res1: Long = 500094
+
+scala> s.count()
+0716-065307.990 SS Starting job: count at <console>:15
+0716-065307.991 SS Got job 2 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-065307.991 SS Final stage: Stage 2 (textFile at <console>:12)
+0716-065307.991 SS Parents of final stage: List()
+0716-065307.993 SS Missing parents: List()
+0716-065307.993 SS Submitting Stage 2 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-065307.994 SS Submitting 1 missing tasks from Stage 2 (MappedRDD[1] at textFile at <console>:12)
+0716-065307.994 SS Running ResultTask(2, 0)
+0716-065307.996 SS Size of task 0 is 1441 bytes
+0716-065311.498 SS Finished ResultTask(2, 0)
+0716-065311.499 SS Completed ResultTask(2, 0)
+0716-065311.499 SS Stage 2 (textFile at <console>:12) finished in 3.502 s
+0716-065311.499 SS Job finished: count at <console>:15, took 3.508635006 s
+res2: Long = 500094
+
+scala> s.count()
+0716-065311.942 SS Starting job: count at <console>:15
+0716-065311.943 SS Got job 3 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-065311.943 SS Final stage: Stage 3 (textFile at <console>:12)
+0716-065311.943 SS Parents of final stage: List()
+0716-065311.945 SS Missing parents: List()
+0716-065311.945 SS Submitting Stage 3 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-065311.946 SS Submitting 1 missing tasks from Stage 3 (MappedRDD[1] at textFile at <console>:12)
+0716-065311.946 SS Running ResultTask(3, 0)
+0716-065311.949 SS Size of task 0 is 1441 bytes
+0716-065315.390 SS Finished ResultTask(3, 0)
+0716-065315.390 SS Completed ResultTask(3, 0)
+0716-065315.391 SS Stage 3 (textFile at <console>:12) finished in 3.441 s
+0716-065315.391 SS Job finished: count at <console>:15, took 3.448045669 s
+res3: Long = 500094
+
+scala> s.count()
+0716-065315.649 SS Starting job: count at <console>:15
+0716-065315.650 SS Got job 4 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-065315.650 SS Final stage: Stage 4 (textFile at <console>:12)
+0716-065315.650 SS Parents of final stage: List()
+0716-065315.652 SS Missing parents: List()
+0716-065315.653 SS Submitting Stage 4 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-065315.653 SS Submitting 1 missing tasks from Stage 4 (MappedRDD[1] at textFile at <console>:12)
+0716-065315.654 SS Running ResultTask(4, 0)
+0716-065315.655 SS Size of task 0 is 1441 bytes
+0716-065319.108 SS Finished ResultTask(4, 0)
+0716-065319.108 SS Completed ResultTask(4, 0)
+0716-065319.109 SS Stage 4 (textFile at <console>:12) finished in 3.451 s
+0716-065319.109 SS Job finished: count at <console>:15, took 3.459051491 s
+res4: Long = 500094
+
+scala> s.count()
+0716-065319.432 SS Starting job: count at <console>:15
+0716-065319.433 SS Got job 5 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-065319.433 SS Final stage: Stage 5 (textFile at <console>:12)
+0716-065319.433 SS Parents of final stage: List()
+0716-065319.435 SS Missing parents: List()
+0716-065319.435 SS Submitting Stage 5 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-065319.436 SS Submitting 1 missing tasks from Stage 5 (MappedRDD[1] at textFile at <console>:12)
+0716-065319.437 SS Running ResultTask(5, 0)
+0716-065319.438 SS Size of task 0 is 1441 bytes
+0716-065322.899 SS Finished ResultTask(5, 0)
+0716-065322.900 SS Completed ResultTask(5, 0)
+0716-065322.900 SS Stage 5 (textFile at <console>:12) finished in 3.459 s
+0716-065322.900 SS Job finished: count at <console>:15, took 3.467644673 s
+res5: Long = 500094
+
+scala> s.count()
+0716-065323.140 SS Starting job: count at <console>:15
+0716-065323.140 SS Got job 6 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-065323.140 SS Final stage: Stage 6 (textFile at <console>:12)
+0716-065323.140 SS Parents of final stage: List()
+0716-065323.142 SS Missing parents: List()
+0716-065323.143 SS Submitting Stage 6 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-065323.143 SS Submitting 1 missing tasks from Stage 6 (MappedRDD[1] at textFile at <console>:12)
+0716-065323.144 SS Running ResultTask(6, 0)
+0716-065323.151 SS Size of task 0 is 1441 bytes
+0716-065326.606 SS Finished ResultTask(6, 0)
+0716-065326.607 SS Completed ResultTask(6, 0)
+0716-065326.607 SS Stage 6 (textFile at <console>:12) finished in 3.455 s
+0716-065326.607 SS Job finished: count at <console>:15, took 3.467330697 s
+res6: Long = 500094
+
+scala> s.count()
+0716-065326.834 SS Starting job: count at <console>:15
+0716-065326.834 SS Got job 7 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-065326.834 SS Final stage: Stage 7 (textFile at <console>:12)
+0716-065326.834 SS Parents of final stage: List()
+0716-065326.836 SS Missing parents: List()
+0716-065326.837 SS Submitting Stage 7 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-065326.837 SS Submitting 1 missing tasks from Stage 7 (MappedRDD[1] at textFile at <console>:12)
+0716-065326.838 SS Running ResultTask(7, 0)
+0716-065326.840 SS Size of task 0 is 1441 bytes
+0716-065330.311 SS Finished ResultTask(7, 0)
+0716-065330.312 SS Completed ResultTask(7, 0)
+0716-065330.312 SS Stage 7 (textFile at <console>:12) finished in 3.471 s
+0716-065330.313 SS Job finished: count at <console>:15, took 3.478585634 s
+res7: Long = 500094
+
+scala> s.count()
+0716-065330.552 SS Starting job: count at <console>:15
+0716-065330.552 SS Got job 8 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-065330.552 SS Final stage: Stage 8 (textFile at <console>:12)
+0716-065330.552 SS Parents of final stage: List()
+0716-065330.557 SS Missing parents: List()
+0716-065330.558 SS Submitting Stage 8 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-065330.559 SS Submitting 1 missing tasks from Stage 8 (MappedRDD[1] at textFile at <console>:12)
+0716-065330.559 SS Running ResultTask(8, 0)
+0716-065330.561 SS Size of task 0 is 1441 bytes
+0716-065334.021 SS Finished ResultTask(8, 0)
+0716-065334.021 SS Completed ResultTask(8, 0)
+0716-065334.022 SS Stage 8 (textFile at <console>:12) finished in 3.457 s
+0716-065334.022 SS Job finished: count at <console>:15, took 3.469624104 s
+res8: Long = 500094
+
+scala> s.count()
+0716-065334.302 SS Starting job: count at <console>:15
+0716-065334.302 SS Got job 9 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0716-065334.302 SS Final stage: Stage 9 (textFile at <console>:12)
+0716-065334.302 SS Parents of final stage: List()
+0716-065334.304 SS Missing parents: List()
+0716-065334.305 SS Submitting Stage 9 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0716-065334.306 SS Submitting 1 missing tasks from Stage 9 (MappedRDD[1] at textFile at <console>:12)
+0716-065334.306 SS Running ResultTask(9, 0)
+0716-065334.308 SS Size of task 0 is 1441 bytes
+0716-065337.746 SS Finished ResultTask(9, 0)
+0716-065337.747 SS Completed ResultTask(9, 0)
+0716-065337.747 SS Stage 9 (textFile at <console>:12) finished in 3.439 s
+0716-065337.748 SS Job finished: count at <console>:15, took 3.445476953 s
+res9: Long = 500094
+
+scala> Killed 1 processes
+Killed 1 processes
+localhost: Killed 0 processes
+Formatting Tachyon @ localhost
+0716-065339.403 TU Deleting /mnt/tachyon/tachyon/tachyon_checkpoint.data
+0716-065339.404 TU Deleting /mnt/tachyon/tachyon/tachyon_log.data
+0716-065340.405 TU Formatting s3n://2012-05-19-sample/tachyon/data
+0716-065341.645 TU Response '/tachyon%2Fdata' - Unexpected response code 404, expected 200
+0716-065341.957 TU Response '/tachyon%2Fdata' - Unexpected response code 404, expected 200
+0716-065341.973 TU Response '/tachyon%2Fdata_%24folder%24' - Unexpected response code 404, expected 200
+0716-065342.043 TU Response '/tachyon' - Unexpected response code 404, expected 200
+0716-065342.081 TU Response '/tachyon%2Fdata' - Unexpected response code 404, expected 200
+0716-065342.096 TU Response '/tachyon%2Fdata_%24folder%24' - Unexpected response code 404, expected 200
+0716-065342.233 TU Formatting s3n://2012-05-19-sample/tachyon/workers
+0716-065342.254 TU Response '/tachyon%2Fworkers' - Unexpected response code 404, expected 200
+0716-065342.400 TU Response '/tachyon%2Fworkers' - Unexpected response code 404, expected 200
+0716-065342.414 TU Response '/tachyon%2Fworkers_%24folder%24' - Unexpected response code 404, expected 200
+0716-065342.457 TU Response '/tachyon' - Unexpected response code 404, expected 200
+0716-065342.488 TU Response '/tachyon%2Fworkers' - Unexpected response code 404, expected 200
+0716-065342.517 TU Response '/tachyon%2Fworkers_%24folder%24' - Unexpected response code 404, expected 200
+
