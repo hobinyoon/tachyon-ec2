@@ -129,7 +129,7 @@ def req_spot_inst(conn):
 
 def update_etc_hosts(ec2_inst_info):
 	filename = "/etc/hosts"
-	print "Updating local %s ..." % filename
+	print "Updating %s ..." % filename
 
 	for eii in ec2_inst_info:
 		new_entry = "%s %s" % (eii.ipaddr, eii.hostname)
@@ -143,7 +143,11 @@ def update_etc_hosts(ec2_inst_info):
 		if output >= 1:
 			# modify the ip address
 			cmd = "sed -i='' 's/.* %s$/%s %s/' %s" % (eii.hostname, eii.ipaddr, eii.hostname, filename)
-			subprocess.check_call(cmd, shell=True)
+			try:
+				subprocess.check_call(cmd, shell=True)
+			except subprocess.CalledProcessError as e:
+				print "Are you root?"
+				sys.exit(1)
 			print "  Modified \"%s\"" % new_entry
 		else:
 			# append the ip hostname pair
