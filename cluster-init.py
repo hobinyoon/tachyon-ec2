@@ -127,37 +127,34 @@ def req_spot_inst(conn):
 	print res
 
 
+# remote access to root is assumed.
 def update_etc_hosts(ec2_inst_info):
-	filename = "/etc/hosts"
-	print "Updating %s ..." % filename
+	etc_hosts_filename = "/etc/hosts"
+	print "Updating %s ..." % etc_hosts_filename
 
 	for eii in ec2_inst_info:
 		new_entry = "%s %s" % (eii.ipaddr, eii.hostname)
 
 		# do they have the hostname in /etc/hosts?
-		cmd = "grep \" %s$\" %s | wc -l" % (eii.hostname, filename)
+		cmd = "grep \" %s$\" %s | wc -l" % (eii.hostname, etc_hosts_filename)
 		output = subprocess.check_output(cmd, stderr=subprocess.STDOUT, shell=True)
 		#print "[%s]" % output
 		output = int(output.strip())
 
 		if output >= 1:
 			# modify the ip address
-			cmd = "sed -i='' 's/.* %s$/%s %s/' %s" % (eii.hostname, eii.ipaddr, eii.hostname, filename)
-			try:
-				subprocess.check_call(cmd, shell=True)
-			except subprocess.CalledProcessError as e:
-				print "Are you root?"
-				sys.exit(1)
+			cmd = "sed -i='' 's/.* %s$/%s %s/' %s" % (eii.hostname, eii.ipaddr, eii.hostname, etc_hosts_filename)
+			remote_exe("localhost", "root", cmd)
 			print "  Modified \"%s\"" % new_entry
 		else:
 			# append the ip hostname pair
-			cmd = "echo \"%s\" >> %s" % (new_entry, filename)
-			subprocess.check_call(cmd, shell=True)
-			print "  Added \"%s\" to %s" % (new_entry, filename)
+			cmd = "echo \"%s\" >> %s" % (new_entry, etc_hosts_filename)
+			remote_exe("localhost", "root", cmd)
+			print "  Added \"%s\" to %s" % (new_entry, etc_hosts_filename)
 	print ""
 
 
-def remote_exe(remote_addr, cmd):
+def remote_exe(remote_addr, user, cmd):
 	# nesting quotation marks does not work. make a temp file and redirect it.
 	#cmd = "ssh ubuntu@%s 'sudo bash -c 'echo \"%s\" >> %s''" % (remote_addr, new_entry, filename)
 
@@ -170,7 +167,7 @@ def remote_exe(remote_addr, cmd):
 	# terminal." is not disappearing even after following
 	# http://stackoverflow.com/questions/7114990/pseudo-terminal-will-not-be-allocated-because-stdin-is-not-a-terminal
 	# Worse, it makes the script hangs.
-	cmd = "ssh ubuntu@%s < %s" % (remote_addr, remote_cmd_filename)
+	cmd = "ssh %s@%s < %s" % (user, remote_addr, remote_cmd_filename)
 	subprocess.check_call(cmd, shell=True)
 
 	os.remove(remote_cmd_filename)
@@ -202,7 +199,7 @@ def remote_init(ec2_inst_info):
 		for e2 in ec2_inst_info:
 			cmd += (" %s %s" % (e2.hostname, e2.private_ipaddr))
 		# can be parallelized when it becomes a matter.
-		remote_exe(e.ipaddr, cmd)
+		remote_exe(e.ipaddr, "ubuntu", cmd)
 		cnt += 1
 
 
