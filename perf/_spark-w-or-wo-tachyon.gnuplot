@@ -16,8 +16,10 @@ OUTFILE = system("echo $OUTFILE")
 I_MIN = system("echo $I_MIN") + 0
 I_MAX = system("echo $I_MAX") + 0
 TITLE = system("echo $TITLE")
+Y_RANGE_MAX = system("echo $Y_RANGE_MAX")
 set title TITLE
 set rmargin 6
+#set yrange[:Y_RANGE_MAX]
 
 set output OUTFILE
 

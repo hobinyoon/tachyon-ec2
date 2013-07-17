@@ -1,6 +1,7 @@
 #! /usr/bin/python
 
 import sys
+import os
 import subprocess
 
 
@@ -37,21 +38,21 @@ def update_etc_hosts(machine_info):
 
 
 def delete_ssh_known_hosts(machine_info):
-	known_hosts_file = "~/.ssh/known_hosts"
+	known_hosts_file = os.path.expanduser("~")+ "/.ssh/known_hosts"
 
 	print "Deleting hostnames in %s" % known_hosts_file
+	cmd = "ssh-keygen -f \"%s\" -R %s" % (known_hosts_file, "localhost")
+	subprocess.check_call(cmd, shell=True)
+	print "  Deleted %s from %s" % ("localhost", known_hosts_file)
+
 	for mi in machine_info:
-		cmd = "sed -i='' '/^%s.*/d' %s" % (mi.hostname, known_hosts_file)
+		cmd = "ssh-keygen -f \"%s\" -R %s" % (known_hosts_file, mi.hostname)
 		subprocess.check_call(cmd, shell=True)
 		print "  Deleted %s from %s" % (mi.hostname, known_hosts_file)
 
 		# dots in ipaddr need to be escaped. although the chance of incorrect
 		# deletion is very low.
-		cmd = "sed -i='' '/^%s.*/d' %s" % (mi.priv_ip, known_hosts_file)
-		subprocess.check_call(cmd, shell=True)
-		print "  Deleted %s from %s" % (mi.priv_ip, known_hosts_file)
-
-		cmd = "ssh-keygen -f \"/home/ubuntu/.ssh/known_hosts\" -R localhost"
+		cmd = "ssh-keygen -f \"%s\" -R %s" % (known_hosts_file, mi.priv_ip)
 		subprocess.check_call(cmd, shell=True)
 		print "  Deleted %s from %s" % (mi.priv_ip, known_hosts_file)
 	print ""

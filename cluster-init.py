@@ -177,17 +177,17 @@ def remote_exe(remote_addr, cmd):
 
 
 def delete_ssh_known_hosts(ec2_inst_info):
-	known_hosts_file = "~/.ssh/known_hosts"
+	known_hosts_file = os.path.expanduser("~")+ "/.ssh/known_hosts"
 
 	print "Deleting hostnames in %s" % known_hosts_file
 	for eii in ec2_inst_info:
-		cmd = "sed -i='' '/^%s.*/d' %s" % (eii.hostname, known_hosts_file)
+		cmd = "ssh-keygen -f \"%s\" -R %s" % (known_hosts_file, eii.hostname)
 		subprocess.check_call(cmd, shell=True)
 		print "  Deleted %s from %s" % (eii.hostname, known_hosts_file)
 
 		# dots in ipaddr need to be escaped. although the chance of incorrect
 		# deletion is very low.
-		cmd = "sed -i='' '/^%s.*/d' %s" % (eii.ipaddr, known_hosts_file)
+		cmd = "ssh-keygen -f \"%s\" -R %s" % (known_hosts_file, eii.ipaddr)
 		subprocess.check_call(cmd, shell=True)
 		print "  Deleted %s from %s" % (eii.ipaddr, known_hosts_file)
 	print ""

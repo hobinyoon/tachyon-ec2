@@ -4,6 +4,7 @@ export INFILE_SO=../result/spark-only-07162013-064954.gz_
 export OUTFILE=../result/spark-only-07162013-064954.gz_.pdf
 export I_MIN=5
 export I_MAX=14
+#export Y_RANGE_MAX=7
 export TITLE="Spark reading local files. gzipped files"
 gnuplot _spark-w-or-wo-tachyon.gnuplot
 
@@ -14,6 +15,7 @@ gnuplot _spark-w-or-wo-tachyon.gnuplot
 
 export INFILE_SO=../result/spark-tachyon-07162013-064425.gz_
 export OUTFILE=../result/spark-tachyon-07162013-064425.gz_.pdf
+#export Y_RANGE_MAX=35
 export TITLE="Spark with Tachyon. gzipped files"
 gnuplot _spark-w-or-wo-tachyon.gnuplot
 
