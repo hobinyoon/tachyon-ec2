@@ -74,52 +74,6 @@ class Ec2InstInfo:
 		return self.private_ipaddr < other.private_ipaddr
 
 
-def assign_hostname(ec2_inst_info):
-	i = 0
-	for eii in ec2_inst_info:
-		hn = "tachyon-ec2-%d" % i
-		eii.hostname = hn
-		i += 1
-
-
-def wait_and_get_tachyon_ec2_instance_info(conn, num_inst):
-	# Assume that tachyon ec2 instances have the tag name "tachyon". Does not
-	# check the value of the tag.
-
-	sir = None
-	sys.stdout.write("Waiting for %d tachyon instances ." % num_inst)
-	sys.stdout.flush()
-
-	reservations = None
-
-	while True:
-		reservations = conn.get_all_instances(filters={'tag-key': 'tachyon'})
-		if len(reservations) == num_inst:
-			break
-		time.sleep(2)
-		sys.stdout.write(".")
-		sys.stdout.flush()
-	sys.stdout.write(" done\n")
-
-	tachyon_ec2_instances = []
-	for r in reservations:
-		for i in r.instances:
-			#print_attrs(i)
-			ii = Ec2InstInfo(
-				i.id, i.image_id,
-				i.ip_address, i.private_ip_address,
-				i.instance_type, i._placement,
-				i.launch_time)
-			tachyon_ec2_instances.append(ii)
-	for ti in tachyon_ec2_instances:
-		print "  %s" % ti
-	print ""
-
-	tei_sorted = sorted(tachyon_ec2_instances)
-	assign_hostname(tei_sorted)
-	return tei_sorted
-
-
 def req_spot_inst(conn):
 	# TODO: parameterize image-id, count, and max-price
 	res = conn.request_spot_instances(price = 0.014, image_id = 'ami-a87a05c1', count=2, type='one-time', launch_group='tachyon', key_name='hobinyoon@gmail.com', security_groups=['tachyon'], instance_type='m1.medium')
@@ -178,29 +132,86 @@ def delete_ssh_known_hosts(ec2_inst_info):
 
 	print "Deleting hostnames in %s" % known_hosts_file
 	for eii in ec2_inst_info:
-		cmd = "ssh-keygen -f \"%s\" -R %s" % (known_hosts_file, eii.hostname)
+		cmd = "ssh-keygen -f \"%s\" -R %s > /dev/null 2>&1" % (known_hosts_file, eii.hostname)
 		subprocess.check_call(cmd, shell=True)
 		print "  Deleted %s from %s" % (eii.hostname, known_hosts_file)
 
 		# dots in ipaddr need to be escaped. although the chance of incorrect
 		# deletion is very low.
-		cmd = "ssh-keygen -f \"%s\" -R %s" % (known_hosts_file, eii.ipaddr)
+		cmd = "ssh-keygen -f \"%s\" -R %s > /dev/null 2>&1" % (known_hosts_file, eii.ipaddr)
 		subprocess.check_call(cmd, shell=True)
 		print "  Deleted %s from %s" % (eii.ipaddr, known_hosts_file)
 	print ""
 
 
-def remote_init(ec2_inst_info):
-	print "Initializing tachyon ec2 instances"
+def remote_init(ec2_inst_info, scriptfile):
+	print "Initializing ec2 instances"
 
 	cnt = 0
 	for e in ec2_inst_info:
-		cmd = "~/work/tachyon-ec2/_cluster-init.py %d" % cnt
+		cmd = "%s %d" % (scriptfile, cnt)
 		for e2 in ec2_inst_info:
 			cmd += (" %s %s" % (e2.hostname, e2.private_ipaddr))
-		# can be parallelized when it becomes a matter.
-		remote_exe(e.ipaddr, "ubuntu", cmd)
+		# can be parallelized when needed
+		#remote_exe(e.ipaddr, "ubuntu", cmd)
+		remote_exe(e.hostname, "ubuntu", cmd)
 		cnt += 1
+
+
+# wait for new or tachyon instances.  assume that a running instance with empty
+# tag is a newly launched instance.
+def wait_for_instances_and_tag(conn, cluster_name, num_inst):
+	sir = None
+	sys.stdout.write("Waiting for %d new or cassandra instances ." % num_inst)
+	sys.stdout.flush()
+
+	insts = []
+	while True:
+		reservations = conn.get_all_instances()
+		insts = []
+		for r in reservations:
+			#print_attrs(r)
+			for i in r.instances:
+				if i._state.name == "running":
+					if len(i.tags) == 0:
+						insts.append(i)
+					elif ("cluster_name" in i.tags) and (i.tags["cluster_name"] == cluster_name):
+						insts.append(i)
+
+		if len(insts) >= num_inst:
+			break
+
+		time.sleep(2)
+		sys.stdout.write(".")
+		sys.stdout.flush()
+	print ""
+	print "  %s\n" % insts
+
+	sys.stdout.write("Tagging instances ...")
+	for i in insts:
+		i.add_tag("cluster_name", cluster_name)
+	print " done\n"
+
+	return insts
+
+
+def assign_hostname_and_get_info(insts, prefix):
+	inst_info = []
+	for i in insts:
+		inst_info.append(Ec2InstInfo(
+				i.id, i.image_id,
+				i.ip_address, i.private_ip_address,
+				i.instance_type, i._placement,
+				i.launch_time))
+
+	instinfo_sorted = sorted(inst_info)
+	i = 0
+	for ii in instinfo_sorted:
+		ii.hostname = "%s%d" % (prefix, i)
+		i += 1
+
+	#print instinfo_sorted
+	return instinfo_sorted
 
 
 def main(argv):
@@ -210,14 +221,15 @@ def main(argv):
 	
 	region_name = "us-east-1"
 	conn = get_conn(region_name)
-
 	#req_spot_inst(conn)
-	ec2_inst_info = wait_and_get_tachyon_ec2_instance_info(conn, 2)
+
+	insts = wait_for_instances_and_tag(conn, "tachyon", 2)
+	ec2_inst_info = assign_hostname_and_get_info(insts, "tachyon-ec2-")
 
 	delete_ssh_known_hosts(ec2_inst_info)
 	update_etc_hosts(ec2_inst_info)
 
-	remote_init(ec2_inst_info)
+	remote_init(ec2_inst_info, "~/work/tachyon-ec2/_cluster-init.py")
 
 
 if __name__ == "__main__":
