@@ -71,10 +71,6 @@ run_by_sizes()
 }
 
 
-cd ~/work/tachyon
-bin/stop.sh
-sudo rm -rf /mnt/ramdisk/*
-
 for ((i = 0; i < 10; i ++))
 do
 	echo "run1 #: "$i | tee -a $OUTFILE
