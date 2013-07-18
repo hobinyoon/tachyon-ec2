@@ -3,14 +3,59 @@
 
 sparkshellcount()
 {
+	local_fn=/mnt/tachyon/$1
+	tachyon_fn=tachyon://tachyon-ec2-0:19998/$1
+
+	echo "restaring tachyon"
+	cd ~/work/tachyon
+	bin/start-local.sh
+	echo
+
 	echo "spark-shell count"
 
 	jps -l | grep -v Jps | sort -k 2
 	echo
 
+	# drop file system cache of the file
+	linux-fadvise $local_fn POSIX_FADV_DONTNEED
+
 	cd ~/work/spark-0.7.0
 	./spark-shell <<END_SCRIPT
-val s = sc.textFile("$1")
+val s = sc.textFile("$tachyon_fn")
+s.count()
+END_SCRIPT
+
+	# tachyon daemons need to be stopped for tee outside stop waiting
+	cd ~/work/tachyon
+	bin/stop.sh
+	sudo rm -rf /mnt/ramdisk/*
+	bin/format.sh
+	echo
+}
+
+
+sparkshellcount_11()
+{
+	local_fn=/mnt/tachyon/$1
+	tachyon_fn=tachyon://tachyon-ec2-0:19998/$1
+
+	echo "restaring tachyon"
+	cd ~/work/tachyon
+	bin/start-local.sh
+	echo
+
+	echo "spark-shell count"
+
+	jps -l | grep -v Jps | sort -k 2
+	echo
+
+	# drop file system cache of the file
+	linux-fadvise $local_fn POSIX_FADV_DONTNEED
+
+	cd ~/work/spark-0.7.0
+	./spark-shell <<END_SCRIPT
+val s = sc.textFile("$tachyon_fn")
+s.count()
 s.count()
 s.count()
 s.count()
@@ -22,17 +67,6 @@ s.count()
 s.count()
 s.count()
 END_SCRIPT
-}
-
-
-sparkshellcount_with_tachyon()
-{
-	echo "restaring tachyon"
-	cd ~/work/tachyon
-	bin/start-local.sh
-	echo
-
-	sparkshellcount $1
 
 	# tachyon daemons need to be stopped for tee outside stop waiting
 	cd ~/work/tachyon
@@ -44,6 +78,7 @@ sparkshellcount_with_tachyon()
 
 
 declare -a SIZES=(
+1
 100
 1000
 10000
@@ -52,24 +87,16 @@ declare -a SIZES=(
 )
 
 
-OUTFILE=~/work/tachyon/logs/sparkshell-`date +"%m%d%Y-%H%M%S"`
+OUTFILE=~/work/tachyon/logs/spark-tachyon-local-`date +"%m%d%Y-%H%M%S"`
 
 
-run_sparkshell_example()
+run_by_sizes()
 {
-	declare -a extensions=(
-	".gz"
-	""
-	)
-
-	for e in "${extensions[@]}"
+	for s in "${SIZES[@]}"
 	do
-		for s in "${SIZES[@]}"
-		do
-			# spark-shell with tachyon
-			filename=tachyon://localhost:19998/hit_data.tsv.$s$e
-			( sparkshellcount_with_tachyon $filename 2>&1 ) | tee -a $OUTFILE
-		done
+		# spark-shell with tachyon. whether the file is backed by localfs or s3n is up to tachyon
+		filename=hit_data.tsv.$s
+		( $1 $filename 2>&1 ) | tee -a $OUTFILE
 	done
 }
 
@@ -77,11 +104,16 @@ run_sparkshell_example()
 cd ~/work/tachyon
 bin/stop.sh
 sudo rm -rf /mnt/ramdisk/*
+bin/format.sh
+echo
 
-# ideally, run multiple times... but
-for ((i = 0; i < 1; i ++))
+for ((i = 0; i < 10; i ++))
 do
-	echo "run #: "$i | tee -a $OUTFILE
+	echo "run1 #: "$i | tee -a $OUTFILE
 	echo "" | tee -a $OUTFILE
-	run_sparkshell_example
+	run_by_sizes sparkshellcount
 done
+
+echo "run11:" | tee -a $OUTFILE
+echo "" | tee -a $OUTFILE
+run_by_sizes sparkshellcount_11
