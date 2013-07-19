@@ -19,10 +19,11 @@ set output OUTFILE
 
 set pointsize 0.5
 set boxwidth 0.075
+set style fill solid
 
 plot \
 INFILE u 0:(0):xticlabel(1) w points pointsize 0.01 lc rgb "#E0E0E0" notitle, \
-INFILE u ($0 - 0.1):2 w boxes lc rgb "blue" t "first", \
+INFILE u ($0 - 0.1):2 w boxes lc rgb "#8080FF" t "first", \
 INFILE u ($0 - 0.1):2:(sprintf("%.4f", $2)) w labels center offset 0,0.75 tc rgb "blue" notitle, \
-INFILE u ($0 + 0.1):3 w boxes lc rgb "red" t "second and later", \
+INFILE u ($0 + 0.1):3 w boxes lc rgb "#FF8080" t "second and later", \
 INFILE u ($0 + 0.1):3:(sprintf("%.4f", $3)) w labels center offset 0,0.75 tc rgb "red" notitle
