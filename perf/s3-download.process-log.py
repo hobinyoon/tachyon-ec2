@@ -45,10 +45,12 @@ def get_downtime(filename):
 	return dt
 
 
-def print_filename_downtime():
-	print "# filename avg min max time..."
+def gen_output(out_fn):
+	fo = open(out_fn, "w")
+	fo.write("# filename avg min max time...\n")
 	for fd in sorted(filename_downtime):
-		print filename_downtime[fd]
+		fo.write("%s\n" % filename_downtime[fd])
+	print "Generated %s." % out_fn
 
 
 filename_downtime = {}
@@ -75,19 +77,20 @@ def filter0(filename):
 			get_downtime(filename).add(time)
 			continue
 	
-	#print_filename_downtime()
 	return filename_downtime
 
 
 def main(argv):
 	if len(argv) != 2:
 		sys.exit("Usage: %s filename\n"
-				"  Ex: %s ../result/s3-download-07192013-062102"
+				"  Ex: %s ../result/s3-download-07192013-200247"
 				% (argv[0], argv[0]))
-	filename = argv[1]
+	in_fn = argv[1]
 
-	filter0(filename)
-	print_filename_downtime()
+	filter0(in_fn)
+
+	out_fn = in_fn + ".p1"
+	gen_output(out_fn)
 
 
 if __name__ == "__main__":

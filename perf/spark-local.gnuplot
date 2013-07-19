@@ -18,6 +18,7 @@ set title TITLE
 
 set output OUTFILE
 
+set logscale y
 set pointsize 0.5
 
 X_BEGIN=-0.25
@@ -40,11 +41,11 @@ plot \
 INFILE_SL u 0:(0):xticlabel(1) w points pointsize 0.01 lc rgb "#E0E0E0" notitle, \
 INFILE_SL u ($0 + _offset(0)):2:3:4 w errorbars pointtype 1 lc rgb "blue" t "spark only , first", \
 INFILE_SL u ($0 + _offset(0)):2:(sprintf("%.2f", $2)) w labels right offset -0.75,0 tc rgb "blue" notitle, \
-INFILE_SL u ($0 + _offset(1)):5:6:7 w errorbars pointtype 1 lc rgb "blue" t "spark only, second and later", \
+INFILE_SL u ($0 + _offset(1)):5:6:7 w errorbars pointtype 2 lc rgb "blue" t "spark only, second and later", \
 INFILE_SL u ($0 + _offset(1)):5:(sprintf("%.2f", $5)) w labels right offset -0.75,0 tc rgb "blue" notitle, \
-INFILE_STL u ($0 + _offset(2)):2:3:4 w errorbars pointtype 2 lc rgb "red" t "spark - tachyon, first", \
-INFILE_STL u ($0 + _offset(2)):2:(sprintf("%.2f", $2)) w labels right offset -0.75,0 tc rgb "red" notitle, \
+INFILE_STL u ($0 + _offset(2)):2:3:4 w errorbars pointtype 1 lc rgb "red" t "spark - tachyon, first", \
+INFILE_STL u ($0 + _offset(2)):2:(sprintf("%.2f", $2)) w labels left offset 0.75,0 tc rgb "red" notitle, \
 INFILE_STL u ($0 + _offset(3)):5:6:7 w errorbars pointtype 2 lc rgb "red" t "spark - tachyon, second and later", \
-INFILE_STL u ($0 + _offset(3)):5:(sprintf("%.2f", $5)) w labels right offset -0.75,0 tc rgb "red" notitle, \
+INFILE_STL u ($0 + _offset(3)):5:(sprintf("%.2f", $5)) w labels left offset 0.75,0 tc rgb "red" notitle, \
 INFILE_STL u ($0 + _offset(4)):2:3:4 w points pointsize 0.01 lc rgb "#E0E0E0" t "TODO: spark - tachyon - remote tachyon, first", \
 INFILE_STL u ($0 + _offset(5)):5:6:7 w points pointsize 0.01 lc rgb "#E0E0E0" t "TODO: spark - tachyon - remote tachyon, second and later"
