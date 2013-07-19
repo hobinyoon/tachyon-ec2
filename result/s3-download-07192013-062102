@@ -1,0 +1,271 @@
+rm: cannot remove ‘/mnt/data/*’: No such file or directory
+File s3://2012-05-19-sample/hit_data.tsv.100 saved as '/mnt/data/hit_data.tsv.100' (55735 bytes in 0.1 seconds, 865.83 kB/s)
+
+real	0m0.165s
+user	0m0.076s
+sys	0m0.028s
+File s3://2012-05-19-sample/hit_data.tsv.1000 saved as '/mnt/data/hit_data.tsv.1000' (776400 bytes in 0.1 seconds, 7.31 MB/s)
+
+real	0m0.230s
+user	0m0.076s
+sys	0m0.064s
+File s3://2012-05-19-sample/hit_data.tsv.10000 saved as '/mnt/data/hit_data.tsv.10000' (12330369 bytes in 0.3 seconds, 38.20 MB/s)
+
+real	0m0.437s
+user	0m0.144s
+sys	0m0.140s
+WARNING: MD5 signatures do not match: computed=2f57ffa768b005cc2107265fd505e6c6, received="86950add68390e50f538d14b1d538e37-8"
+File s3://2012-05-19-sample/hit_data.tsv.100000 saved as '/mnt/data/hit_data.tsv.100000' (125141299 bytes in 3.7 seconds, 32.00 MB/s)
+
+real	0m3.842s
+user	0m0.860s
+sys	0m1.468s
+WARNING: MD5 signatures do not match: computed=2a87d87681b7b144dbec91e613d17cb6, received="4700285224bcaa9cea2ce3ea591c8279-40"
+File s3://2012-05-19-sample/hit_data.tsv.500000 saved as '/mnt/data/hit_data.tsv.500000' (618418417 bytes in 22.4 seconds, 26.29 MB/s)
+
+real	0m22.600s
+user	0m4.428s
+sys	0m5.960s
+File s3://2012-05-19-sample/hit_data.tsv.100 saved as '/mnt/data/hit_data.tsv.100' (55735 bytes in 0.1 seconds, 1037.60 kB/s)
+
+real	0m0.182s
+user	0m0.108s
+sys	0m0.024s
+File s3://2012-05-19-sample/hit_data.tsv.1000 saved as '/mnt/data/hit_data.tsv.1000' (776400 bytes in 0.1 seconds, 7.20 MB/s)
+
+real	0m0.207s
+user	0m0.088s
+sys	0m0.028s
+File s3://2012-05-19-sample/hit_data.tsv.10000 saved as '/mnt/data/hit_data.tsv.10000' (12330369 bytes in 0.3 seconds, 39.35 MB/s)
+
+real	0m0.431s
+user	0m0.168s
+sys	0m0.136s
+WARNING: MD5 signatures do not match: computed=2f57ffa768b005cc2107265fd505e6c6, received="86950add68390e50f538d14b1d538e37-8"
+File s3://2012-05-19-sample/hit_data.tsv.100000 saved as '/mnt/data/hit_data.tsv.100000' (125141299 bytes in 3.5 seconds, 34.05 MB/s)
+
+real	0m3.641s
+user	0m0.948s
+sys	0m1.112s
+WARNING: MD5 signatures do not match: computed=2a87d87681b7b144dbec91e613d17cb6, received="4700285224bcaa9cea2ce3ea591c8279-40"
+File s3://2012-05-19-sample/hit_data.tsv.500000 saved as '/mnt/data/hit_data.tsv.500000' (618418417 bytes in 16.0 seconds, 36.92 MB/s)
+
+real	0m16.108s
+user	0m4.624s
+sys	0m5.956s
+File s3://2012-05-19-sample/hit_data.tsv.100 saved as '/mnt/data/hit_data.tsv.100' (55735 bytes in 0.0 seconds, 1721.01 kB/s)
+
+real	0m0.156s
+user	0m0.096s
+sys	0m0.032s
+File s3://2012-05-19-sample/hit_data.tsv.1000 saved as '/mnt/data/hit_data.tsv.1000' (776400 bytes in 0.1 seconds, 6.31 MB/s)
+
+real	0m0.246s
+user	0m0.060s
+sys	0m0.080s
+File s3://2012-05-19-sample/hit_data.tsv.10000 saved as '/mnt/data/hit_data.tsv.10000' (12330369 bytes in 0.7 seconds, 16.88 MB/s)
+
+real	0m0.802s
+user	0m0.124s
+sys	0m0.152s
+WARNING: MD5 signatures do not match: computed=2f57ffa768b005cc2107265fd505e6c6, received="86950add68390e50f538d14b1d538e37-8"
+File s3://2012-05-19-sample/hit_data.tsv.100000 saved as '/mnt/data/hit_data.tsv.100000' (125141299 bytes in 3.3 seconds, 35.84 MB/s)
+
+real	0m3.466s
+user	0m0.936s
+sys	0m1.268s
+WARNING: MD5 signatures do not match: computed=2a87d87681b7b144dbec91e613d17cb6, received="4700285224bcaa9cea2ce3ea591c8279-40"
+File s3://2012-05-19-sample/hit_data.tsv.500000 saved as '/mnt/data/hit_data.tsv.500000' (618418417 bytes in 14.5 seconds, 40.80 MB/s)
+
+real	0m14.571s
+user	0m4.068s
+sys	0m5.752s
+File s3://2012-05-19-sample/hit_data.tsv.100 saved as '/mnt/data/hit_data.tsv.100' (55735 bytes in 0.0 seconds, 1185.24 kB/s)
+
+real	0m0.172s
+user	0m0.068s
+sys	0m0.060s
+File s3://2012-05-19-sample/hit_data.tsv.1000 saved as '/mnt/data/hit_data.tsv.1000' (776400 bytes in 0.1 seconds, 10.45 MB/s)
+
+real	0m0.201s
+user	0m0.100s
+sys	0m0.040s
+File s3://2012-05-19-sample/hit_data.tsv.10000 saved as '/mnt/data/hit_data.tsv.10000' (12330369 bytes in 0.3 seconds, 41.41 MB/s)
+
+real	0m0.414s
+user	0m0.188s
+sys	0m0.120s
+WARNING: MD5 signatures do not match: computed=2f57ffa768b005cc2107265fd505e6c6, received="86950add68390e50f538d14b1d538e37-8"
+File s3://2012-05-19-sample/hit_data.tsv.100000 saved as '/mnt/data/hit_data.tsv.100000' (125141299 bytes in 3.0 seconds, 39.57 MB/s)
+
+real	0m3.146s
+user	0m0.912s
+sys	0m1.124s
+WARNING: MD5 signatures do not match: computed=2a87d87681b7b144dbec91e613d17cb6, received="4700285224bcaa9cea2ce3ea591c8279-40"
+File s3://2012-05-19-sample/hit_data.tsv.500000 saved as '/mnt/data/hit_data.tsv.500000' (618418417 bytes in 16.4 seconds, 35.93 MB/s)
+
+real	0m16.546s
+user	0m4.344s
+sys	0m5.588s
+File s3://2012-05-19-sample/hit_data.tsv.100 saved as '/mnt/data/hit_data.tsv.100' (55735 bytes in 0.0 seconds, 1439.34 kB/s)
+
+real	0m0.177s
+user	0m0.096s
+sys	0m0.044s
+File s3://2012-05-19-sample/hit_data.tsv.1000 saved as '/mnt/data/hit_data.tsv.1000' (776400 bytes in 0.1 seconds, 8.91 MB/s)
+
+real	0m0.216s
+user	0m0.092s
+sys	0m0.052s
+File s3://2012-05-19-sample/hit_data.tsv.10000 saved as '/mnt/data/hit_data.tsv.10000' (12330369 bytes in 0.3 seconds, 42.36 MB/s)
+
+real	0m0.380s
+user	0m0.176s
+sys	0m0.136s
+WARNING: MD5 signatures do not match: computed=2f57ffa768b005cc2107265fd505e6c6, received="86950add68390e50f538d14b1d538e37-8"
+File s3://2012-05-19-sample/hit_data.tsv.100000 saved as '/mnt/data/hit_data.tsv.100000' (125141299 bytes in 3.2 seconds, 37.87 MB/s)
+
+real	0m3.284s
+user	0m0.940s
+sys	0m1.200s
+WARNING: MD5 signatures do not match: computed=2a87d87681b7b144dbec91e613d17cb6, received="4700285224bcaa9cea2ce3ea591c8279-40"
+File s3://2012-05-19-sample/hit_data.tsv.500000 saved as '/mnt/data/hit_data.tsv.500000' (618418417 bytes in 15.0 seconds, 39.33 MB/s)
+
+real	0m15.145s
+user	0m4.224s
+sys	0m6.576s
+File s3://2012-05-19-sample/hit_data.tsv.100 saved as '/mnt/data/hit_data.tsv.100' (55735 bytes in 0.0 seconds, 1300.90 kB/s)
+
+real	0m0.170s
+user	0m0.084s
+sys	0m0.048s
+File s3://2012-05-19-sample/hit_data.tsv.1000 saved as '/mnt/data/hit_data.tsv.1000' (776400 bytes in 0.1 seconds, 7.05 MB/s)
+
+real	0m0.246s
+user	0m0.108s
+sys	0m0.048s
+File s3://2012-05-19-sample/hit_data.tsv.10000 saved as '/mnt/data/hit_data.tsv.10000' (12330369 bytes in 0.3 seconds, 40.17 MB/s)
+
+real	0m0.457s
+user	0m0.196s
+sys	0m0.172s
+WARNING: MD5 signatures do not match: computed=2f57ffa768b005cc2107265fd505e6c6, received="86950add68390e50f538d14b1d538e37-8"
+File s3://2012-05-19-sample/hit_data.tsv.100000 saved as '/mnt/data/hit_data.tsv.100000' (125141299 bytes in 2.6 seconds, 45.18 MB/s)
+
+real	0m2.766s
+user	0m0.996s
+sys	0m1.328s
+WARNING: MD5 signatures do not match: computed=2a87d87681b7b144dbec91e613d17cb6, received="4700285224bcaa9cea2ce3ea591c8279-40"
+File s3://2012-05-19-sample/hit_data.tsv.500000 saved as '/mnt/data/hit_data.tsv.500000' (618418417 bytes in 16.9 seconds, 34.98 MB/s)
+
+real	0m16.986s
+user	0m4.480s
+sys	0m6.332s
+File s3://2012-05-19-sample/hit_data.tsv.100 saved as '/mnt/data/hit_data.tsv.100' (55735 bytes in 0.0 seconds, 1521.85 kB/s)
+
+real	0m0.146s
+user	0m0.072s
+sys	0m0.040s
+File s3://2012-05-19-sample/hit_data.tsv.1000 saved as '/mnt/data/hit_data.tsv.1000' (776400 bytes in 0.1 seconds, 12.31 MB/s)
+
+real	0m0.188s
+user	0m0.088s
+sys	0m0.056s
+File s3://2012-05-19-sample/hit_data.tsv.10000 saved as '/mnt/data/hit_data.tsv.10000' (12330369 bytes in 0.3 seconds, 34.13 MB/s)
+
+real	0m0.450s
+user	0m0.176s
+sys	0m0.148s
+WARNING: MD5 signatures do not match: computed=2f57ffa768b005cc2107265fd505e6c6, received="86950add68390e50f538d14b1d538e37-8"
+File s3://2012-05-19-sample/hit_data.tsv.100000 saved as '/mnt/data/hit_data.tsv.100000' (125141299 bytes in 2.6 seconds, 46.52 MB/s)
+
+real	0m2.695s
+user	0m0.936s
+sys	0m1.132s
+WARNING: MD5 signatures do not match: computed=2a87d87681b7b144dbec91e613d17cb6, received="4700285224bcaa9cea2ce3ea591c8279-40"
+File s3://2012-05-19-sample/hit_data.tsv.500000 saved as '/mnt/data/hit_data.tsv.500000' (618418417 bytes in 16.3 seconds, 36.12 MB/s)
+
+real	0m16.476s
+user	0m4.488s
+sys	0m6.808s
+File s3://2012-05-19-sample/hit_data.tsv.100 saved as '/mnt/data/hit_data.tsv.100' (55735 bytes in 0.0 seconds, 1919.96 kB/s)
+
+real	0m0.157s
+user	0m0.072s
+sys	0m0.060s
+File s3://2012-05-19-sample/hit_data.tsv.1000 saved as '/mnt/data/hit_data.tsv.1000' (776400 bytes in 0.1 seconds, 6.13 MB/s)
+
+real	0m0.248s
+user	0m0.104s
+sys	0m0.036s
+File s3://2012-05-19-sample/hit_data.tsv.10000 saved as '/mnt/data/hit_data.tsv.10000' (12330369 bytes in 0.5 seconds, 23.29 MB/s)
+
+real	0m0.632s
+user	0m0.132s
+sys	0m0.176s
+WARNING: MD5 signatures do not match: computed=2f57ffa768b005cc2107265fd505e6c6, received="86950add68390e50f538d14b1d538e37-8"
+File s3://2012-05-19-sample/hit_data.tsv.100000 saved as '/mnt/data/hit_data.tsv.100000' (125141299 bytes in 2.6 seconds, 45.39 MB/s)
+
+real	0m2.759s
+user	0m1.028s
+sys	0m1.204s
+WARNING: MD5 signatures do not match: computed=2a87d87681b7b144dbec91e613d17cb6, received="4700285224bcaa9cea2ce3ea591c8279-40"
+File s3://2012-05-19-sample/hit_data.tsv.500000 saved as '/mnt/data/hit_data.tsv.500000' (618418417 bytes in 16.5 seconds, 35.75 MB/s)
+
+real	0m16.627s
+user	0m4.588s
+sys	0m6.152s
+File s3://2012-05-19-sample/hit_data.tsv.100 saved as '/mnt/data/hit_data.tsv.100' (55735 bytes in 0.0 seconds, 1269.62 kB/s)
+
+real	0m0.171s
+user	0m0.100s
+sys	0m0.032s
+File s3://2012-05-19-sample/hit_data.tsv.1000 saved as '/mnt/data/hit_data.tsv.1000' (776400 bytes in 0.1 seconds, 6.84 MB/s)
+
+real	0m0.230s
+user	0m0.088s
+sys	0m0.048s
+File s3://2012-05-19-sample/hit_data.tsv.10000 saved as '/mnt/data/hit_data.tsv.10000' (12330369 bytes in 0.6 seconds, 21.12 MB/s)
+
+real	0m0.689s
+user	0m0.208s
+sys	0m0.116s
+WARNING: MD5 signatures do not match: computed=2f57ffa768b005cc2107265fd505e6c6, received="86950add68390e50f538d14b1d538e37-8"
+File s3://2012-05-19-sample/hit_data.tsv.100000 saved as '/mnt/data/hit_data.tsv.100000' (125141299 bytes in 4.0 seconds, 30.14 MB/s)
+
+real	0m4.087s
+user	0m1.036s
+sys	0m1.200s
+WARNING: MD5 signatures do not match: computed=2a87d87681b7b144dbec91e613d17cb6, received="4700285224bcaa9cea2ce3ea591c8279-40"
+File s3://2012-05-19-sample/hit_data.tsv.500000 saved as '/mnt/data/hit_data.tsv.500000' (618418417 bytes in 21.9 seconds, 26.96 MB/s)
+
+real	0m21.989s
+user	0m4.528s
+sys	0m5.520s
+File s3://2012-05-19-sample/hit_data.tsv.100 saved as '/mnt/data/hit_data.tsv.100' (55735 bytes in 2.7 seconds, 20.23 kB/s)
+
+real	0m2.825s
+user	0m0.096s
+sys	0m0.040s
+File s3://2012-05-19-sample/hit_data.tsv.1000 saved as '/mnt/data/hit_data.tsv.1000' (776400 bytes in 0.1 seconds, 10.45 MB/s)
+
+real	0m0.198s
+user	0m0.100s
+sys	0m0.040s
+File s3://2012-05-19-sample/hit_data.tsv.10000 saved as '/mnt/data/hit_data.tsv.10000' (12330369 bytes in 0.5 seconds, 23.68 MB/s)
+
+real	0m0.599s
+user	0m0.176s
+sys	0m0.124s
+WARNING: MD5 signatures do not match: computed=2f57ffa768b005cc2107265fd505e6c6, received="86950add68390e50f538d14b1d538e37-8"
+File s3://2012-05-19-sample/hit_data.tsv.100000 saved as '/mnt/data/hit_data.tsv.100000' (125141299 bytes in 3.9 seconds, 30.45 MB/s)
+
+real	0m4.046s
+user	0m0.964s
+sys	0m1.116s
+WARNING: MD5 signatures do not match: computed=2a87d87681b7b144dbec91e613d17cb6, received="4700285224bcaa9cea2ce3ea591c8279-40"
+File s3://2012-05-19-sample/hit_data.tsv.500000 saved as '/mnt/data/hit_data.tsv.500000' (618418417 bytes in 25.6 seconds, 23.00 MB/s)
+
+real	0m25.770s
+user	0m4.588s
+sys	0m6.240s
