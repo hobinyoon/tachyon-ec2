@@ -3,6 +3,7 @@
 download_s3_data()
 {
 	\rm /mnt/data/*
+	time s3cmd get s3://2012-05-19-sample/hit_data.tsv.1 /mnt/data
 	time s3cmd get s3://2012-05-19-sample/hit_data.tsv.100 /mnt/data
 	time s3cmd get s3://2012-05-19-sample/hit_data.tsv.1000 /mnt/data
 	time s3cmd get s3://2012-05-19-sample/hit_data.tsv.10000 /mnt/data
