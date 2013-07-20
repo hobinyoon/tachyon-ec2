@@ -10,7 +10,7 @@ sparkshellcount()
 
 	cd ~/work/spark-0.7.0
 	./spark-shell <<END_SCRIPT
-val s = sc.textFile("$1")
+val s = sc.textFile("$1").cache()
 s.count()
 END_SCRIPT
 }
@@ -25,7 +25,7 @@ sparkshellcount_11()
 
 	cd ~/work/spark-0.7.0
 	./spark-shell <<END_SCRIPT
-val s = sc.textFile("$1")
+val s = sc.textFile("$1").cache()
 s.count()
 s.count()
 s.count()
@@ -58,7 +58,6 @@ run_by_sizes()
 {
 	for s in "${SIZES[@]}"
 	do
-		# spark-shell with tachyon
 		filename=s3n://2012-05-19-sample/hit_data.tsv.$s
 		( $1 $filename 2>&1 ) | tee -a $OUTFILE
 	done
