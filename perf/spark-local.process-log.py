@@ -39,7 +39,7 @@ def filter0(filename):
 		# scala> val s = sc.textFile("/mnt/data/hit_data.tsv.1")
 		if re.match("scala> val s = sc\.textFile\(\"", line):
 			line = line[28:]
-			out.write(re.sub("(/mnt/data/hit_data\.tsv\.)|(\"\)$)", "", line))
+			out.write(re.sub("(/mnt/data/hit_data\.tsv\.)|(\"\).cache\(\)$)", "", line))
 			continue
 
 		# 0718-072606.171 SS Job finished: count at <console>:15, took 9.26886005 s
@@ -175,7 +175,7 @@ def filter_c11(strio):
 def main(argv):
 	if len(argv) != 2:
 		sys.exit("Usage: %s filename\n"
-				"  Ex: %s ../result/spark-local-07182013-064832"
+				"  Ex: %s ../result/spark-local-07202013-000116"
 				% (argv[0], argv[0]))
 	
 	in_file = argv[1]
