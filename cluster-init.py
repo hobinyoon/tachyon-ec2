@@ -162,7 +162,7 @@ def remote_init(ec2_inst_info, scriptfile):
 # tag is a newly launched instance.
 def wait_for_instances_and_tag(conn, cluster_name, num_inst):
 	sir = None
-	sys.stdout.write("Waiting for %d new or cassandra instances ." % num_inst)
+	sys.stdout.write("Waiting for %d new or %s instances ." % (num_inst, cluster_name))
 	sys.stdout.flush()
 
 	insts = []
