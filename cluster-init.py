@@ -152,9 +152,12 @@ def remote_init(ec2_inst_info, scriptfile):
 		cmd = "%s %d" % (scriptfile, cnt)
 		for e2 in ec2_inst_info:
 			cmd += (" %s %s" % (e2.hostname, e2.private_ipaddr))
-		# can be parallelized when needed
-		#remote_exe(e.ipaddr, "ubuntu", cmd)
-		remote_exe(e.hostname, "ubuntu", cmd)
+		# can be parallelized when needed.
+		# can not use e.hostname. this python process does not seem to notice
+		# the change in /etc/hosts. although it would have been better so that
+		# ssh does not ask the identity of the machine next time you ssh to the
+		# machines using their hostnames.
+		remote_exe(e.ipaddr, "ubuntu", cmd)
 		cnt += 1
 
 
