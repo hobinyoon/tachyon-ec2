@@ -218,15 +218,16 @@ def assign_hostname_and_get_info(insts, prefix):
 
 
 def main(argv):
-	if len(argv) != 1:
-		sys.exit("Usage: %s\n"
-				"  Ex: %s" % (argv[0]))
+	if len(argv) != 2:
+		sys.exit("Usage: %s num-insts\n"
+				"  Ex: %s 2" % (argv[0], argv[0]))
 	
+	num_insts = int(argv[1])
 	region_name = "us-east-1"
 	conn = get_conn(region_name)
 	#req_spot_inst(conn)
 
-	insts = wait_for_instances_and_tag(conn, "tachyon", 2)
+	insts = wait_for_instances_and_tag(conn, "tachyon", num_insts)
 	ec2_inst_info = assign_hostname_and_get_info(insts, "tachyon-ec2-")
 
 	delete_ssh_known_hosts(ec2_inst_info)
