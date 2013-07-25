@@ -175,10 +175,13 @@ def wait_for_instances_and_tag(conn, cluster_name, num_inst):
 		for r in reservations:
 			#print_attrs(r)
 			for i in r.instances:
+				# print i.tags
 				if i._state.name == "running":
 					if len(i.tags) == 0:
 						insts.append(i)
-					elif ("cluster_name" in i.tags) and (i.tags["cluster_name"] == cluster_name):
+					elif "cluster_name" not in i.tags:
+						insts.append(i)
+					elif i.tags["cluster_name"] == cluster_name:
 						insts.append(i)
 
 		if len(insts) >= num_inst:
