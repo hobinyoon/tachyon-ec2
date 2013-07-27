@@ -19,7 +19,7 @@ sparkshellcount()
 	# drop file system cache of the file
 	linux-fadvise $local_fn POSIX_FADV_DONTNEED
 
-	cd ~/work/spark-0.7.0
+	cd ~/work/spark
 	./spark-shell <<END_SCRIPT
 val s = sc.textFile("$tachyon_fn")
 s.count()
@@ -52,7 +52,7 @@ sparkshellcount_11()
 	# drop file system cache of the file
 	linux-fadvise $local_fn POSIX_FADV_DONTNEED
 
-	cd ~/work/spark-0.7.0
+	cd ~/work/spark
 	./spark-shell <<END_SCRIPT
 val s = sc.textFile("$tachyon_fn")
 s.count()
@@ -87,9 +87,6 @@ declare -a SIZES=(
 )
 
 
-OUTFILE=~/work/tachyon/logs/spark-tachyon-local-`date +"%m%d%Y-%H%M%S"`
-
-
 run_by_sizes()
 {
 	for s in "${SIZES[@]}"
@@ -105,6 +102,9 @@ bin/stop.sh
 sudo rm -rf /mnt/ramdisk/*
 bin/format.sh
 echo
+
+OUTFILE=~/work/tachyon/logs/spark-tachyon-local-`date +"%m%d%Y-%H%M%S"`
+touch $OUTFILE
 
 for ((i = 0; i < 10; i ++))
 do
