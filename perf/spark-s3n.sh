@@ -8,7 +8,7 @@ sparkshellcount()
 	jps -l | grep -v Jps | sort -k 2
 	echo
 
-	cd ~/work/spark-0.7.0
+	cd ~/work/spark
 	./spark-shell <<END_SCRIPT
 val s = sc.textFile("$1").cache()
 s.count()
@@ -23,7 +23,7 @@ sparkshellcount_11()
 	jps -l | grep -v Jps | sort -k 2
 	echo
 
-	cd ~/work/spark-0.7.0
+	cd ~/work/spark
 	./spark-shell <<END_SCRIPT
 val s = sc.textFile("$1").cache()
 s.count()
@@ -51,9 +51,6 @@ declare -a SIZES=(
 )
 
 
-OUTFILE=~/work/tachyon/logs/spark-s3n-`date +"%m%d%Y-%H%M%S"`
-
-
 run_by_sizes()
 {
 	for s in "${SIZES[@]}"
@@ -63,6 +60,9 @@ run_by_sizes()
 	done
 }
 
+
+OUTFILE=~/work/tachyon/logs/spark-s3n-`date +"%m%d%Y-%H%M%S"`
+touch $OUTFILE
 
 for ((i = 0; i < 10; i ++))
 do
