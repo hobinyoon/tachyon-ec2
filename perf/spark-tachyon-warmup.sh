@@ -3,7 +3,6 @@
 
 sparkshellcount()
 {
-	local_fn=/mnt/tachyon/$1
 	tachyon_fn=tachyon://tachyon-ec2-0:19998/$1
 
 	echo "spark-shell count"
