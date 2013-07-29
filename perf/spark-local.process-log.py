@@ -36,15 +36,15 @@ def filter0(filename):
 			out.write(line)
 			continue
 
-		# scala> val s = sc.textFile("/mnt/data/hit_data.tsv.1")
+		# scala> val s = sc.textFile("/mnt/tachyon/hit_data.tsv.1")
 		if re.match("scala> val s = sc\.textFile\(\"", line):
 			line = line[28:]
-			out.write(re.sub("(/mnt/data/hit_data\.tsv\.)|(\"\).cache\(\)$)", "", line))
+			out.write(re.sub("(/mnt/tachyon/hit_data\.tsv\.)|(\"\).cache\(\)$)", "", line))
 			continue
 
-		# 0718-072606.171 SS Job finished: count at <console>:15, took 9.26886005 s
-		if re.match("............... SS Job finished: count at", line):
-			out.write(re.sub(" s$", "", line[61:]))
+		# 13/07/27 23:08:33 INFO spark.SparkContext: Job finished: count at <console>:15, took 0.357849291 s
+		if re.match(".......................................... Job finished: count at", line):
+			out.write(re.sub(" s$", "", line[85:]))
 			continue
 	
 	#sys.stdout.write(out_c1.getvalue())
@@ -146,7 +146,7 @@ def filter_c11(strio):
 
 		if ns == "run11":
 			# run1 #: 0
-			if not re.match("scala> run11:", line):
+			if not re.match("run11:", line):
 				raise Exception("Unexpected line [%s]" % line)
 			ns = "filename"
 		elif ns == "filename":
@@ -175,7 +175,7 @@ def filter_c11(strio):
 def main(argv):
 	if len(argv) != 2:
 		sys.exit("Usage: %s filename\n"
-				"  Ex: %s ../result/spark-local-07202013-000116"
+				"  Ex: %s ../result/spark-local-07272013-230819"
 				% (argv[0], argv[0]))
 	
 	in_file = argv[1]

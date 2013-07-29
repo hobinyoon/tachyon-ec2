@@ -42,9 +42,9 @@ def filter0(filename):
 			out.write(re.sub("(tachyon://tachyon-ec2-0:19998/hit_data\.tsv\.)|(\"\)$)", "", line))
 			continue
 
-		# 0718-072606.171 SS Job finished: count at <console>:15, took 9.26886005 s
-		if re.match("............... SS Job finished: count at", line):
-			out.write(re.sub(" s$", "", line[61:]))
+		# 13/07/27 23:08:33 INFO spark.SparkContext: Job finished: count at <console>:15, took 0.357849291 s
+		if re.match(".......................................... Job finished: count at", line):
+			out.write(re.sub(" s$", "", line[85:]))
 			continue
 	
 	#sys.stdout.write(out_c1.getvalue())
@@ -175,7 +175,7 @@ def filter_c11(strio):
 def main(argv):
 	if len(argv) != 2:
 		sys.exit("Usage: %s filename\n"
-				"  Ex: %s ../result/spark-tachyon-local-07182013-182813"
+				"  Ex: %s ../result/spark-tachyon-local-07272013-211120"
 				% (argv[0], argv[0]))
 	
 	in_file = argv[1]
