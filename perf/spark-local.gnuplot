@@ -32,7 +32,7 @@ X_STEP=X_LEN/I_LEN
 
 _offset(i) = X_BEGIN + X_STEP * (i - I_MIN)
 
-set rmargin 6
+set xrange [I_MIN - 0.5 : I_MAX + 0.5]
 set style fill solid 0.2 noborder
 BOXWIDTH=0.060
 
