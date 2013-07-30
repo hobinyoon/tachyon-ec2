@@ -76,9 +76,13 @@ class MachineInfo:
 
 
 def make_tachyon_data_folder():
-	print "Making tachyon data folder"
+	print "Making data folders"
 	subprocess.check_output("sudo mkdir -p /mnt/tachyon/tachyon", stderr=subprocess.STDOUT, shell=True)
 	subprocess.check_output("sudo chown -R ubuntu /mnt/tachyon", stderr=subprocess.STDOUT, shell=True)
+
+	# Shark tmp folder
+	subprocess.check_output("sudo mkdir -p /mnt/tmp", stderr=subprocess.STDOUT, shell=True)
+	subprocess.check_output("sudo chown -R ubuntu /mnt/tmp", stderr=subprocess.STDOUT, shell=True)
 	print ""
 
 
